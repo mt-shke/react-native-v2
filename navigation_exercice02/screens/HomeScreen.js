@@ -1,5 +1,4 @@
-import { Text, StyleSheet, View } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
 
 const HomeScreen = ({ navigation }) => {
     return (
@@ -7,7 +6,7 @@ const HomeScreen = ({ navigation }) => {
             <Text style={styles.title}>Bienvenue</Text>
             <TouchableOpacity
                 style={styles.btn}
-                onPress={() => navigation.push("Root")}
+                onPress={() => navigation.navigate("Drawer")}
             >
                 <Text>Portrait d'Ada Lovelace</Text>
             </TouchableOpacity>

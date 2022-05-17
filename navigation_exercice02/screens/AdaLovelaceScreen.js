@@ -22,13 +22,15 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     img: {
-        width: 260,
-        height: 300,
+        width: 300,
+        height: 360,
         alignSelf: "center",
         margin: 50,
+        resizeMode: "contain",
     },
     text: {
         alignSelf: "center",
+        fontWeight: "bold",
         fontSize: 24,
     },
 });

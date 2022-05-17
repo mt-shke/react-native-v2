@@ -15,7 +15,7 @@ const Drawer = createDrawerNavigator();
 
 const DrawerStack = () => {
     return (
-        <Drawer.Navigator>
+        <Drawer.Navigator initialRouteName="Ada Lovelace">
             <Drawer.Screen name="Ada Lovelace" component={AdaLovelaceScreen} />
             <Drawer.Screen name="Personnage" component={PersonnageScreen} />
             <Drawer.Screen name="Biographie" component={BiographieScreen} />
@@ -32,7 +32,7 @@ const NavigationStack = () => {
                 screenOptions={screenOptions}
             >
                 <Stack.Screen name="Accueil" component={HomeScreen} />
-                <Stack.Screen name="Root" component={DrawerStack} />
+                <Stack.Screen name="Drawer" component={DrawerStack} />
             </Stack.Navigator>
         </NavigationContainer>
     );

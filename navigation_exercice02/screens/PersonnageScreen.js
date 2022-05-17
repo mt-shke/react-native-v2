@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     },
     text: {
         alignSelf: "center",
-        fontSize: 20,
-        margin: 10,
+        fontSize: 18,
+        margin: 16,
     },
 });

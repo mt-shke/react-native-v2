@@ -6,10 +6,6 @@ import HomeScreen from "./screens/HomeScreen";
 import BiographieScreen from "./screens/BiographieScreen";
 import PersonnageScreen from "./screens/PersonnageScreen";
 
-const screenOptions = {
-    headerShown: false,
-};
-
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
@@ -28,7 +24,6 @@ const NavigationStack = () => {
         <NavigationContainer>
             <Stack.Navigator
                 initialRouteName="Accueil"
-                useLegacyImplementation
                 screenOptions={screenOptions}
             >
                 <Stack.Screen name="Accueil" component={HomeScreen} />
@@ -39,3 +34,7 @@ const NavigationStack = () => {
 };
 
 export default NavigationStack;
+
+const screenOptions = {
+    headerShown: false,
+};

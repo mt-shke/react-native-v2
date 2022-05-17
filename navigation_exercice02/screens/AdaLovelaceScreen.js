@@ -1,7 +1,13 @@
-import { StyleSheet, Image, Text, SafeAreaView } from "react-native";
+import {
+    StyleSheet,
+    Image,
+    Text,
+    SafeAreaView,
+    TouchableOpacity,
+} from "react-native";
 // import imgPortrait from "../assets/portrait.jpg";
 
-const AdaLovelaceScreen = (props) => {
+const AdaLovelaceScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.main}>
             <Image
@@ -11,6 +17,13 @@ const AdaLovelaceScreen = (props) => {
                 }}
             />
             <Text style={styles.text}>Ada LOVELACE</Text>
+
+            <TouchableOpacity
+                style={styles.btn}
+                onPress={() => navigation.navigate("Accueil")}
+            >
+                <Text>Accueil</Text>
+            </TouchableOpacity>
         </SafeAreaView>
     );
 };
@@ -32,5 +45,13 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         fontWeight: "bold",
         fontSize: 24,
+    },
+    btn: {
+        alignSelf: "center",
+        fontSize: 24,
+        margin: 20,
+        backgroundColor: "grey",
+        padding: 12,
+        borderRadius: 8,
     },
 });

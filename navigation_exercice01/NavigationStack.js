@@ -1,30 +1,13 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import ImgScreen from "./screens/ImgScreen";
 import TextScreen from "./screens/TextScreen";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import { Platform } from "react-native";
 
 const screenOptions = {
     headerShown: false,
 };
-
-// const Stack = createNativeStackNavigator();
-
-// const NavigationStack = () => {
-//     return (
-//         <NavigationContainer>
-//             <Stack.Navigator>
-//                 <Stack.Screen
-//                     name="ImgScreen"
-//                     component={ImgScreen}
-//                     screenOptions={{ headerShown: false }}
-//                 />
-//                 <Stack.Screen name="TextScreen" component={TextScreen} />
-//             </Stack.Navigator>
-//         </NavigationContainer>
-//     );
-// };
 
 const Tab = createBottomTabNavigator();
 
@@ -36,11 +19,17 @@ const NavigationStack = () => {
                 screenOptions={({ route }) => ({
                     tabBarIcon: ({ focused, color, size }) => {
                         let iconName;
+                        Platform.OS === "ios"
+                            ? (iconName = "ios-")
+                            : (iconName = "");
 
                         if (route.name === "ImgScreen") {
-                            iconName = focused ? "ios-image" : "ios-image";
+                            // iconName = focused
+                            //     ? iconName + "image"
+                            //     : iconName + "image";
+                            iconName += "image";
                         } else if (route.name === "TextScreen") {
-                            iconName = focused ? "ios-list" : "ios-list";
+                            iconName += "list";
                         }
 
                         return (

@@ -1,15 +1,6 @@
-import { StyleSheet, Text, View } from "react-native";
+import "react-native-gesture-handler";
 import NavigationStack from "./NavigationStack";
 
 export default function App() {
     return <NavigationStack />;
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#fff",
-        alignItems: "center",
-        justifyContent: "center",
-    },
-});

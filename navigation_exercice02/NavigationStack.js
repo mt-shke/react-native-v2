@@ -1,22 +1,38 @@
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Accueil from "./screens/Accueil";
-
-const Stack = createNativeStackNavigator();
+import AdaLovelaceScreen from "./screens/AdaLovelaceScreen";
+import HomeScreen from "./screens/HomeScreen";
+import BiographieScreen from "./screens/BiographieScreen";
+import PersonnageScreen from "./screens/PersonnageScreen";
 
 const screenOptions = {
     headerShown: false,
 };
 
-const NavigationStack = (props) => {
+const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
+
+const DrawerStack = () => {
+    return (
+        <Drawer.Navigator>
+            <Drawer.Screen name="Ada Lovelace" component={AdaLovelaceScreen} />
+            <Drawer.Screen name="Personnage" component={PersonnageScreen} />
+            <Drawer.Screen name="Biographie" component={BiographieScreen} />
+        </Drawer.Navigator>
+    );
+};
+
+const NavigationStack = () => {
     return (
         <NavigationContainer>
-            <Stack.Navigator>
-                <Stack.Screen
-                    name="Accueil"
-                    component={Accueil}
-                    screenOptions={screenOptions}
-                />
+            <Stack.Navigator
+                initialRouteName="Accueil"
+                useLegacyImplementation
+                screenOptions={screenOptions}
+            >
+                <Stack.Screen name="Accueil" component={HomeScreen} />
+                <Stack.Screen name="Root" component={DrawerStack} />
             </Stack.Navigator>
         </NavigationContainer>
     );

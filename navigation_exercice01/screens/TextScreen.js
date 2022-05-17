@@ -26,25 +26,6 @@ const TextScreen = ({ navigation }) => {
                     rerum natus. Alias praesentium, natus nihil consequuntur
                     rerum incidunt voluptatibus quasi enim?
                 </Text>
-                <Text style={styles.paragraph}>
-                    Odit error culpa dolorem corporis obcaecati. Reprehenderit
-                    cumque dicta eos atque deserunt obcaecati, velit, dolore
-                    deleniti earum, laudantium rerum natus. Alias praesentium,
-                    natus nihil consequuntur rerum incidunt voluptatibus quasi
-                    enim?
-                </Text>
-                <Text style={styles.paragraph}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Inventore quisquam maxime, dolorum quasi sapiente doloribus
-                    tempora voluptatum asperiores, velit sunt, dolorem sed.
-                    Harum provident adipisci nam! Hic a optio doloremque?
-                    Tempore hic exercitationem cumque debitis! Deleniti iure quo
-                    quis velit eum culpa, inventore ipsa quos facilis, placeat
-                    quibusdam voluptatum a in id labore saepe reiciendis sed!
-                    Corporis at quas iusto? Obcaecati voluptatem enim labore
-                    quas est quisquam, eius suscipit ullam animi delectus
-                    dolorem pariatur magni ea dicta odit voluptates!
-                </Text>
             </ScrollView>
         </SafeAreaView>
     );

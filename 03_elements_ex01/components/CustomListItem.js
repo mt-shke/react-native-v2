@@ -1,11 +1,43 @@
 import { ListItem, Avatar } from "@rneui/themed";
-import { View, StyleSheet } from "react-native";
+import { useState } from "react";
+import { StyleSheet, ScrollView } from "react-native";
+import { list } from "../data";
 
-const CustomListItem = (props) => {
+const CustomListItem = ({ research }) => {
+    // const [filteredList, setFilteredList] = useState("");
+    let filteredList = [];
+    if (research) {
+        filteredList = list.filter(
+            (elem) =>
+                elem.firstName.toLowerCase().includes(research.toLowerCase()) ||
+                elem.lastName.toLowerCase().includes(research.toLowerCase())
+        );
+        // setFilteredList(newList);
+    }
+
     return (
-        <View>
-            {list.map((item, i) => {
-                return (
+        <ScrollView>
+            {!research &&
+                list.map((item, i) => (
+                    <ListItem key={i} bottomDivider>
+                        <Avatar
+                            source={{ uri: item.avatar_url }}
+                            avatarStyle={styles.avatar}
+                        />
+                        <ListItem.Content>
+                            <ListItem.Title>
+                                {item.firstName} {item.lastName}
+                            </ListItem.Title>
+                            <ListItem.Subtitle style={styles.subtitle}>
+                                {item.promo}
+                            </ListItem.Subtitle>
+                        </ListItem.Content>
+                        <ListItem.Chevron style={styles.chevron} />
+                    </ListItem>
+                ))}
+
+            {filteredList &&
+                filteredList.map((item, i) => (
                     <ListItem key={i} bottomDivider>
                         <Avatar
                             source={{ uri: item.avatar_url }}
@@ -19,33 +51,22 @@ const CustomListItem = (props) => {
                         </ListItem.Content>
                         <ListItem.Chevron />
                     </ListItem>
-                );
-            })}
-        </View>
+                ))}
+        </ScrollView>
     );
 };
 
 export default CustomListItem;
 
-const list = [
-    {
-        firstName: "Amy",
-        lastName: "Farha",
-        avatar_url:
-            "https://picsum.photos/" + Math.floor(Math.random() * 200 + 1),
-        promo: "Appi Mobile P1",
-    },
-    {
-        firstName: "Chris",
-        lastName: "Jackson",
-        avatar_url:
-            "https://picsum.photos/" + Math.floor(Math.random() * 200 + 1),
-        promo: "Développeur web Z7",
-    },
-];
-
 const styles = StyleSheet.create({
     avatar: {
         borderRadius: 50,
+    },
+    subtitle: {
+        color: "#a7a7a7",
+    },
+    chevron: {
+        width: 20,
+        height: 20,
     },
 });

@@ -4,14 +4,17 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import CustomHeader from "./components/CustomHeader";
 import CustomListItem from "./components/CustomListItem";
 import CustomSearchBar from "./components/CustomSearchBar";
+import { useState } from "react";
 
 export default function App() {
+    const [research, setResearch] = useState("");
+
     return (
         <ThemeProvider theme={theme}>
             <SafeAreaProvider style={styles.container}>
                 <CustomHeader />
-                <CustomSearchBar />
-                <CustomListItem />
+                <CustomSearchBar setResearch={setResearch} />
+                <CustomListItem research={research} />
             </SafeAreaProvider>
         </ThemeProvider>
     );

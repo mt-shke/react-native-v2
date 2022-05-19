@@ -11,7 +11,10 @@ const Drawer = createDrawerNavigator();
 
 const DrawerStack = () => {
     return (
-        <Drawer.Navigator initialRouteName="Ada Lovelace">
+        <Drawer.Navigator
+            initialRouteName="Ada Lovelace"
+            screenOptions={drawerScreenOptions}
+        >
             <Drawer.Screen name="Ada Lovelace" component={AdaLovelaceScreen} />
             <Drawer.Screen name="Personnage" component={PersonnageScreen} />
             <Drawer.Screen name="Biographie" component={BiographieScreen} />
@@ -23,7 +26,7 @@ const NavigationStack = () => {
     return (
         <NavigationContainer>
             <Stack.Navigator
-                initialRouteName="Accueil"
+                initialRouteName="Drawer"
                 screenOptions={screenOptions}
             >
                 <Stack.Screen name="Accueil" component={HomeScreen} />
@@ -37,4 +40,27 @@ export default NavigationStack;
 
 const screenOptions = {
     headerShown: false,
+};
+
+const drawerScreenOptions = {
+    // Header
+    // headerShown: false,
+    headerStyle: {
+        backgroundColor: "lightgrey",
+        height: 70,
+    },
+    // headerTitleAlign: "center",
+    headerTitleStyle: {
+        fontWeight: "bold",
+    },
+    headerTintColor: "black",
+
+    // drawer
+    drawerStyle: {
+        backgroundColor: "white",
+        width: 240,
+    },
+    drawerActiveTintColor: "black",
+    drawerInactiveTintColor: "grey",
+    // overlayColor: "#4444",
 };

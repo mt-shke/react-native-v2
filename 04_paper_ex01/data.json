@@ -1,0 +1,20 @@
+[
+    {
+        "date": "26 mai 2021",
+        "type": "Marche à pied",
+        "distance": 6,
+        "length": 59
+    },
+    {
+        "date": "23 mai 2021",
+        "type": "Vélo",
+        "distance": 10,
+        "length": 98
+    },
+    {
+        "date": "20 mai 2021",
+        "type": "Marche à pied",
+        "distance": 2,
+        "length": 26
+    }
+]

@@ -3,7 +3,8 @@
 
 ```js
 // npm install react-native-paper
-// npm react-native-vector-icons
+// npm i react-native-vector-icons
+// npm install react-native-safe-area-context
 ```
 
 </details>

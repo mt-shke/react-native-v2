@@ -1,12 +1,17 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
+import { Provider as PaperProvider, DefaultTheme } from "react-native-paper";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import BottomNav from "./components/BottomTab";
+import Header from "./components/Header";
 
 export default function App() {
     return (
-        <View style={styles.container}>
-            <Text>Open up App.js to s app!</Text>
-            <StatusBar style="auto" />
-        </View>
+        <PaperProvider theme={theme}>
+            <SafeAreaProvider style={styles.container}>
+                <Header />
+                <BottomNav />
+            </SafeAreaProvider>
+        </PaperProvider>
     );
 }
 
@@ -14,7 +19,14 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#fff",
-        alignItems: "center",
-        justifyContent: "center",
     },
 });
+
+const theme = {
+    ...DefaultTheme,
+    colors: {
+        ...DefaultTheme.colors,
+        primary: "#6f00f8",
+        accent: "yellow",
+    },
+};

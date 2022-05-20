@@ -9,7 +9,6 @@ const CustomHeader = (props) => {
                 icon: "menu",
                 color: "#fff",
             }}
-            rightComponent={<View style={styles.headerRight}></View>}
             centerComponent={{
                 text: "Apprenants de La Manu",
                 style: styles.heading,
@@ -27,22 +26,10 @@ const styles = StyleSheet.create({
         alignItems: "center",
         height: 110,
     },
-    headerContainer: {
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#397af8",
-        width: "100%",
-        paddingVertical: 15,
-    },
     heading: {
         color: "white",
         fontSize: 16,
         fontWeight: "bold",
-    },
-    headerRight: {
-        display: "flex",
-        flexDirection: "row",
-        marginTop: 5,
     },
     subheaderText: {
         color: "white",

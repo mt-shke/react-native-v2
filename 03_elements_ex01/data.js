@@ -126,11 +126,18 @@ export const list = [
             "https://picsum.photos/" + Math.floor(Math.random() * 200 + 1),
         promo: "Appli Mobile P1",
     },
+    {
+        firstName: "Louis",
+        lastName: "ALIBERT",
+        avatar_url:
+            "https://picsum.photos/" + Math.floor(Math.random() * 200 + 1),
+        promo: "Appli Mobile P1",
+    },
+    {
+        firstName: "Prem",
+        lastName: "BALAGOUROU",
+        avatar_url:
+            "https://picsum.photos/" + Math.floor(Math.random() * 200 + 1),
+        promo: "Appli Mobile P1",
+    },
 ];
-
-const getRandomPic = () => {
-    return (
-        "https://picsum.photos/" +
-        Math.floor(Math.random() * 200 + 1).toString()
-    );
-};

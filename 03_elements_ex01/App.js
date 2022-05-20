@@ -24,13 +24,8 @@ const theme = createTheme({
     lightColors: {
         primary: "white",
     },
-    darkColors: {
-        primary: "grey",
-    },
-    // Button: {
-    //     titleStyle: {
-    //         color: "white",
-    //     },
+    // darkColors: {
+    //     primary: "grey",
     // },
 });
 

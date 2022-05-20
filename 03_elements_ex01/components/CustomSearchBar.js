@@ -4,21 +4,21 @@ import { StyleSheet, View } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 const CustomSearchBar = ({ setResearch }) => {
-    const [input, setInput] = useState("");
+    const [inputValue, setInputValue] = useState("");
 
     const searchHandler = (value) => {
-        setInput(value);
+        setInputValue(value);
         setResearch(value);
     };
 
     return (
         <SearchBar
-            value={input}
+            value={inputValue}
             onChangeText={searchHandler}
             placeholder={"John Doe"}
             containerStyle={styles.searchBar}
             inputContainerStyle={styles.inputContainerStyle}
-            leftIconContainerStyle={styles.leftContainer}
+            leftIconContainerStyle={styles.leftIconContainerStyle}
             searchIcon={SearchIcon}
             cancelIcon={false}
             clearIcon={false}
@@ -31,22 +31,18 @@ export default CustomSearchBar;
 const styles = StyleSheet.create({
     searchBar: {
         backgroundColor: "#ffffff",
-        borderWidth: 0,
-        borderColor: "white",
     },
     inputContainerStyle: {
         backgroundColor: "#e1e1e1",
+        paddingRight: 50,
     },
-    leftContainer: {
+    leftIconContainerStyle: {
         position: "absolute",
         right: 0,
     },
-    containerIcon: {
+    containerSearchIcon: {
         flexDirection: "row",
-        marginLeft: "auto",
         height: 40,
-        // marginRight: 0,
-        // padding: 0,
     },
     icon: {
         marginHorizontal: 10,
@@ -56,7 +52,7 @@ const styles = StyleSheet.create({
 
 const SearchIcon = (props) => {
     return (
-        <View style={styles.containerIcon}>
+        <View style={styles.containerSearchIcon}>
             <Divider color="black" orientation="vertical" width={1} />
             <Ionicons
                 style={styles.icon}

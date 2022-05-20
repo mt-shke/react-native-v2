@@ -21,7 +21,7 @@ const CustomListItem = ({ research }) => {
                 list.map((item, i) => (
                     <ListItem key={i} bottomDivider>
                         <Avatar
-                            source={{ uri: item.avatar_url }}
+                            source={{ uri: getRandomPic() }}
                             avatarStyle={styles.avatar}
                         />
                         <ListItem.Content>
@@ -32,7 +32,7 @@ const CustomListItem = ({ research }) => {
                                 {item.promo}
                             </ListItem.Subtitle>
                         </ListItem.Content>
-                        <ListItem.Chevron style={styles.chevron} />
+                        <ListItem.Chevron size={34} />
                     </ListItem>
                 ))}
 
@@ -40,7 +40,7 @@ const CustomListItem = ({ research }) => {
                 filteredList.map((item, i) => (
                     <ListItem key={i} bottomDivider>
                         <Avatar
-                            source={{ uri: item.avatar_url }}
+                            source={{ uri: getRandomPic() }}
                             avatarStyle={styles.avatar}
                         />
                         <ListItem.Content>
@@ -49,7 +49,7 @@ const CustomListItem = ({ research }) => {
                             </ListItem.Title>
                             <ListItem.Subtitle>{item.promo}</ListItem.Subtitle>
                         </ListItem.Content>
-                        <ListItem.Chevron />
+                        <ListItem.Chevron size={34} />
                     </ListItem>
                 ))}
         </ScrollView>
@@ -65,8 +65,11 @@ const styles = StyleSheet.create({
     subtitle: {
         color: "#a7a7a7",
     },
-    chevron: {
-        width: 20,
-        height: 20,
-    },
 });
+
+const getRandomPic = () => {
+    return (
+        "https://picsum.photos/" +
+        Math.floor(Math.random() * 200 + 1).toString()
+    );
+};

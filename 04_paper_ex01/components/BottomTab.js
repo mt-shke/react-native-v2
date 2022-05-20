@@ -1,8 +1,7 @@
-import * as React from "react";
-import { BottomNavigation, Card, Text } from "react-native-paper";
+import { useState } from "react";
+import { BottomNavigation, Text } from "react-native-paper";
 import { ScrollView, StyleSheet } from "react-native";
-import CustomCard from "./Card";
-import Ionicons from "react-native-vector-icons/Ionicons";
+import CustomCard from "./CustomCard";
 import data from "../data.json";
 
 const HomeRoute = () => (
@@ -32,19 +31,19 @@ const SettingsRoute = () => (
 );
 
 const BottomNav = () => {
-    const [index, setIndex] = React.useState(0);
-    const [routes] = React.useState([
+    const [index, setIndex] = useState(0);
+    const [routes] = useState([
         { key: "home", title: "Home", icon: "home" },
-        { key: "music", title: "History", icon: "history" },
-        { key: "albums", title: "Add", icon: "plus-box" },
-        { key: "recents", title: "Settings", icon: "account-settings" },
+        { key: "history", title: "History", icon: "history" },
+        { key: "add", title: "Add", icon: "plus-box" },
+        { key: "settings", title: "Settings", icon: "account-settings" },
     ]);
 
     const renderScene = BottomNavigation.SceneMap({
         home: HomeRoute,
-        music: HistoryRoute,
-        albums: AddRoute,
-        recents: SettingsRoute,
+        history: HistoryRoute,
+        add: AddRoute,
+        settings: SettingsRoute,
     });
 
     return (

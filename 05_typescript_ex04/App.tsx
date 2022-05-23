@@ -49,6 +49,6 @@ const allUsers: IUserData[] = [
         mail: "janedoe@gmail.com",
         age: 28,
         isLogged: true,
-        isAdmin: true,
+        isAdmin: undefined,
     },
 ];

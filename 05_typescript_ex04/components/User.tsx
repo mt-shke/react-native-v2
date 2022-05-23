@@ -9,10 +9,15 @@ const User: React.FC<IUser> = ({ user }) => {
             <Text style={styles.text}>Mail: {user.mail}</Text>
             <Text style={styles.text}>Age: {user.age}</Text>
             <Text style={styles.text}>
-                Is Online: {user.isLogged ? "true" : "false"}
+                Is Logged: {user.isLogged ? "true" : "false"}
             </Text>
             <Text style={styles.text}>
-                Is Admin: {user.isAdmin ? "true" : "false"}
+                Is Admin:
+                {user.isAdmin === undefined
+                    ? "undefined"
+                    : user.isAdmin
+                    ? "true"
+                    : "false"}
             </Text>
         </View>
     );

@@ -3,6 +3,9 @@
 
 ```js
 // npm install @react-navigation/native react-native-screens react-native-safe-area-context
+
+// npm install @react-navigation/material-bottom-tabs react-native-paper react-native-vector-icons
+
 // npm install @react-navigation/material-top-tabs react-native-tab-view
 ```
 

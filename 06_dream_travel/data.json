@@ -1,0 +1,23 @@
+[
+    {
+        "services": [
+            {
+                "title": "Leisure Travel",
+                "content": "Whether you travel to explore the world, to celebrate with family and friends, or simply need time to relax and decompress, Dream Travel International, Inc. can offer you a personalized vacation with access beyond the extraordinary.\n \n We have the skills, resources, and global connections to allow us to customize the finest travel experiences. Our global access is inclusive of hotels and resorts, cruising, tours, spa experiences, personalized activities and elite concierge services. \n \n We take the time to collaborate with you to create the most exceptional travel experience customized for you."
+            },
+
+            {
+                "title": "Family Travel",
+                "content": "We love designing trips for families! We work with families of all sizes and ages to create memory-making experiences that are fun for all. Whether you are traveling with your immediate or extended family, we focus on the details so you don't have to."
+            },
+            {
+                "title": "Cruise Travel",
+                "content": "Whether it’s a large ocean cruise, a European river cruise, adventure and specialty cruise, or a family cruise, we can help you discover and explore cultural expeditions in each destination with activities, city tours, shopping and much more. \n \n  Travelers who book their cruise through Dream Travel International, Inc. will be eligible for the Voyager Club program which offers complimentary benefits aboard the world’s finest ships such as:"
+            },
+            {
+                "title": "Celebration Travel",
+                "content": "Whether it’s a romantic dream honeymoon, a once in a lifetime destination wedding, a special anniversary, or a birthday celebration, Dream Travel International, Inc. creates journeys throughout the world for leisure travelers desiring customized special event travel experiences for celebrating life’s most cherished milestones. \n \n  We make sure that your once in a lifetime celebration is exactly how you dreamed it would be."
+            }
+        ]
+    }
+]

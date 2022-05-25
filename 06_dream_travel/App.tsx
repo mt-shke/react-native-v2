@@ -7,7 +7,6 @@ import MainStack from "./navigation/MainStack";
 export default function App() {
     return (
         <SafeAreaProvider style={styles.container}>
-            <Header backgroundColor={colors.black} />
             <MainStack />
         </SafeAreaProvider>
     );

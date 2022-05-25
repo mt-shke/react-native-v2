@@ -1,64 +1,55 @@
-import { Tab, TabView, Text } from "@rneui/themed";
+import { Tab, TabView } from "@rneui/themed";
 import { useState } from "react";
 import ServiceView from "../components/services/ServiceView";
+import { colors } from "../global/colors";
+import { StyleSheet } from "react-native";
+import data from "../data.json";
 
 const ServicesScreen = (props) => {
     const [index, setIndex] = useState(0);
+    const tabItems = ["Leisure", "Family", "Cruise", "Wedding"];
+    console.log(data[0].services);
 
     return (
         <>
             <Tab
+                containerStyle={styles.containerStyle}
                 value={index}
                 onChange={(e) => setIndex(e)}
                 indicatorStyle={{
-                    backgroundColor: "white",
-                    height: 3,
+                    backgroundColor: colors.white,
+                    height: 0,
+                    color: colors.black,
                 }}
                 variant="primary"
             >
-                <Tab.Item
-                    title="Leisure"
-                    titleStyle={{ fontSize: 11 }}
-                    icon={false}
-                />
-                <Tab.Item
-                    title="Family"
-                    titleStyle={{ fontSize: 11 }}
-                    icon={false}
-                />
-                <Tab.Item
-                    title="Cruise"
-                    titleStyle={{ fontSize: 11 }}
-                    icon={false}
-                />
-                <Tab.Item
-                    title="Wedding"
-                    titleStyle={{ fontSize: 11 }}
-                    icon={false}
-                />
+                {tabItems.map((item, index) => (
+                    <Tab.Item
+                        key={index}
+                        title={item}
+                        titleStyle={{ fontSize: 11 }}
+                        icon={false}
+                    />
+                ))}
             </Tab>
 
             <TabView value={index} onChange={setIndex} animationType="spring">
-                <TabView.Item style={{ backgroundColor: "red", width: "100%" }}>
-                    <Text h1>Leisure</Text>
-                </TabView.Item>
-                <TabView.Item
-                    style={{ backgroundColor: "blue", width: "100%" }}
-                >
-                    <ServiceView />
-                </TabView.Item>
-                <TabView.Item
-                    style={{ backgroundColor: "green", width: "100%" }}
-                >
-                    <Text h1>Cruise</Text>
-                </TabView.Item>
-                <TabView.Item
-                    style={{ backgroundColor: "green", width: "100%" }}
-                >
-                    <Text h1>Wedding</Text>
-                </TabView.Item>
+                {data[0].services.map((item, index) => (
+                    <ServiceView
+                        key={index}
+                        name={item.name}
+                        content={item.content}
+                    />
+                ))}
             </TabView>
         </>
     );
 };
+
 export default ServicesScreen;
+
+const styles = StyleSheet.create({
+    containerStyle: {
+        backgroundColor: colors.black,
+    },
+});

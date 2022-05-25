@@ -1,15 +1,64 @@
-import { ScrollView, Text } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import { ScrollView, Text, StyleSheet, Image, View } from "react-native";
+import { colors } from "../../global/colors";
+import { globalStyles } from "../../global/globalStyles";
 
-const ServiceView = (props) => {
+const ServiceView = ({ name, content }) => {
+    const path = `../../assets/${name.toLowerCase()}.jpg`;
     return (
-        <ScrollView>
-            <Text>Leisure Travel</Text>
-            <Text>
-                {
-                    "Whether you travel to explore the world, to celebrate with family and friends, or simply need time to relax and decompress, Dream Travel International, Inc. can offer you a personalized vacation with access beyond the extraordinary.\n \n We have the skills, resources, and global connections to allow us to customize the finest travel experiences. Our global access is inclusive of hotels and resorts, cruising, tours, spa experiences, personalized activities and elite concierge services. \n \n We take the time to collaborate with you to create the most exceptional travel experience customized for you."
-                }
-            </Text>
+        <ScrollView style={styles.container}>
+            <View style={styles.containerImg}>
+                <Image
+                    source={require("../../assets/leisure.jpg")}
+                    PlaceholderContent={"cruise"}
+                    style={styles.img}
+                />
+                {/* <View style={styles.overlay} /> */}
+                <LinearGradient
+                    // Background Linear Gradient
+                    colors={["transparent", colors.black]}
+                    style={styles.overlay}
+                />
+            </View>
+            <View style={styles.containerText}>
+                <Text style={globalStyles.bigTitle}>{`${name} Travel`}</Text>
+                <Text style={globalStyles.paragraph}>{`${content}`}</Text>
+            </View>
         </ScrollView>
     );
 };
 export default ServiceView;
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: colors.black,
+    },
+    containerImg: {
+        position: "relative",
+        height: 620,
+        width: "100%",
+    },
+    img: {
+        position: "absolute",
+        width: "100%",
+        height: "100%",
+        backgroundColor: "lightblue",
+        zIndex: 9,
+    },
+    overlay: {
+        position: "absolute",
+        width: "100%",
+        height: "50%",
+        bottom: 0,
+        left: 0,
+        right: 0,
+        zIndex: 10,
+    },
+    containerText: {
+        position: "relative",
+        top: -200,
+        paddingHorizontal: 10,
+        zIndex: 11,
+    },
+});

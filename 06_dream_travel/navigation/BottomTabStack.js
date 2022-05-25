@@ -6,6 +6,7 @@ import { colors } from "../global/colors";
 import CircuitScreen from "../screens/CircuitScreen";
 import ContactScreen from "../screens/ContactScreen";
 import ServicesScreen from "../screens/ServicesScreen";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -13,57 +14,68 @@ const BottomTabStack = (props) => {
     const osIcon = Platform.OS === "ios" ? "ios-" : "";
 
     return (
-        <Tab.Navigator
-            initialRouteName="CircuitScreen"
-            activeColor={colors.blue}
-            inactiveColor={colors.bgGrey}
-            barStyle={{ backgroundColor: colors.black }}
-            screenOptions={{ headerShow: false }}
-        >
-            <Tab.Screen
-                name="ServicesScreen"
-                component={ServicesScreen}
-                options={{
-                    tabBarLabel: "Services",
-                    tabBarIcon: ({ focused, color }) => (
-                        <Ionicons
-                            name={osIcon + "apps"}
-                            color={focused ? colors.blue : colors.bgGrey}
-                            size={24}
-                        />
-                    ),
-                }}
-            />
-            <Tab.Screen
-                name="CircuitScreen"
-                component={CircuitScreen}
-                options={{
-                    tabBarLabel: "Circuit",
-                    tabBarIcon: ({ focused, color }) => (
-                        <Ionicons
-                            name={osIcon + "airplane"}
-                            color={focused ? colors.blue : colors.bgGrey}
-                            size={24}
-                        />
-                    ),
-                }}
-            />
-            <Tab.Screen
-                name="ContactScreen"
-                component={ContactScreen}
-                options={{
-                    tabBarLabel: "Contact",
-                    tabBarIcon: ({ focused, color }) => (
-                        <AntDesign
-                            name={osIcon + "customerservice"}
-                            color={focused ? colors.blue : colors.bgGrey}
-                            size={24}
-                        />
-                    ),
-                }}
-            />
-        </Tab.Navigator>
+        <SafeAreaProvider style={styles.container}>
+            <Tab.Navigator
+                initialRouteName="CircuitScreen"
+                activeColor={colors.blue}
+                inactiveColor={colors.bgGrey}
+                barStyle={{ backgroundColor: colors.black }}
+                screenOptions={{ headerShow: false }}
+            >
+                <Tab.Screen
+                    name="ServicesScreen"
+                    component={ServicesScreen}
+                    options={{
+                        tabBarLabel: "Services",
+                        tabBarIcon: ({ focused }) => (
+                            <Ionicons
+                                name={osIcon + "apps"}
+                                color={focused ? colors.blue : colors.bgGrey}
+                                size={24}
+                            />
+                        ),
+                    }}
+                />
+                <Tab.Screen
+                    name="CircuitScreen"
+                    component={CircuitScreen}
+                    options={{
+                        tabBarLabel: "Circuits",
+                        tabBarIcon: ({ focused }) => (
+                            <Ionicons
+                                name={osIcon + "airplane"}
+                                color={focused ? colors.blue : colors.bgGrey}
+                                size={24}
+                            />
+                        ),
+                    }}
+                />
+                <Tab.Screen
+                    name="ContactScreen"
+                    component={ContactScreen}
+                    options={{
+                        tabBarLabel: "Contact",
+                        tabBarIcon: ({ focused }) => (
+                            <AntDesign
+                                name={osIcon + "customerservice"}
+                                color={focused ? colors.blue : colors.bgGrey}
+                                size={24}
+                            />
+                        ),
+                    }}
+                />
+            </Tab.Navigator>
+        </SafeAreaProvider>
     );
 };
 
 export default BottomTabStack;
+
+import { StyleSheet } from "react-native";
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: colors.black,
+        paddingTop: 50,
+    },
+});

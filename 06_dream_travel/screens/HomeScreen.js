@@ -1,17 +1,8 @@
 import { View, Text, Pressable } from "react-native";
+import HomeView from "../components/home/HomeView";
 
-const HomeScreen = (props) => {
-    return (
-        <View>
-            <Text>Home</Text>
-            <Pressable
-                style={{ backgroundColor: "blue", width: 40, height: 40 }}
-                onPress={() => props.navigation.navigate("BottomTabStack")}
-            >
-                <Text>Go</Text>
-            </Pressable>
-        </View>
-    );
+const HomeScreen = ({ navigation }) => {
+    return <HomeView navigation={navigation} />;
 };
 
 export default HomeScreen;

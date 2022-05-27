@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { globalStyles } from "../../global/globalStyles";
 
@@ -24,11 +23,8 @@ export default AboutUsContainer;
 
 const styles = StyleSheet.create({
     containerAboutUs: {
-        paddingTop: 50,
-        marginHorizontal: 20,
-    },
-    topTitle: {
-        paddingBottom: 50,
+        paddingVertical: 80,
+        paddingHorizontal: 20,
     },
     aboutTitle: {
         textAlign: "center",

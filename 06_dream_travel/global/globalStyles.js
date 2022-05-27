@@ -3,7 +3,7 @@ import { colors } from "./colors";
 
 export const globalStyles = StyleSheet.create({
     paragraph: {
-        color: colors.white,
+        color: colors.lightGrey,
         fontSize: 16,
         lineHeight: 30,
         marginBottom: 50,
@@ -17,6 +17,6 @@ export const globalStyles = StyleSheet.create({
         color: colors.white,
         fontSize: 32,
         fontWeight: "bold",
-        marginBottom: 50,
+        marginBottom: 70,
     },
 });

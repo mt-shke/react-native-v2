@@ -1,17 +1,15 @@
 import { ScrollView, StyleSheet } from "react-native";
 import { colors } from "../../global/colors";
-import ImgContainer from "./ImgContainer";
 import AboutUsContainer from "./AboutUsContainer";
-import LandingTextContainer from "./LandingTextContainer";
 import { useRef } from "react";
+import LandingView from "./LandingView";
 
 const HomeView = ({ navigation }) => {
     const aboutRef = useRef();
 
     return (
         <ScrollView style={styles.container}>
-            <ImgContainer />
-            <LandingTextContainer navigation={navigation} aboutRef={aboutRef} />
+            <LandingView navigation={navigation} aboutRef={aboutRef} />
             <AboutUsContainer aboutRef={aboutRef} />
         </ScrollView>
     );

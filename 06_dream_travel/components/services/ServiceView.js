@@ -4,22 +4,37 @@ import { colors } from "../../global/colors";
 import { globalStyles } from "../../global/globalStyles";
 
 const ServiceView = ({ name, content }) => {
-    const path = `../../assets/${name.toLowerCase()}.jpg`;
+    let img;
+    switch (name) {
+        case "Leisure":
+            img = <LeisureImg />;
+            break;
+
+        case "Family":
+            img = <FamilyImg />;
+            break;
+
+        case "Cruise":
+            img = <CruiseImg />;
+            break;
+
+        case "Celebration":
+            img = <CelebrationImg />;
+            break;
+        default:
+            img = <LeisureImg />;
+    }
+
     return (
         <ScrollView style={styles.container}>
-            <View style={styles.containerImg}>
-                <Image
-                    source={require("../../assets/leisure.jpg")}
-                    PlaceholderContent={"cruise"}
-                    style={styles.img}
-                />
-                {/* <View style={styles.overlay} /> */}
-                <LinearGradient
-                    // Background Linear Gradient
-                    colors={["transparent", colors.black]}
-                    style={styles.overlay}
-                />
-            </View>
+            {img}
+            <LinearGradient
+                colors={["transparent", "transparent", colors.black]}
+                start={{ x: 0.4, y: 0 }}
+                end={{ x: 0.5, y: 0.95 }}
+                locations={[0, 0.55, 1]}
+                style={styles.overlay}
+            />
             <View style={styles.containerText}>
                 <Text style={globalStyles.bigTitle}>{`${name} Travel`}</Text>
                 <Text style={globalStyles.paragraph}>{`${content}`}</Text>
@@ -27,38 +42,71 @@ const ServiceView = ({ name, content }) => {
         </ScrollView>
     );
 };
+
 export default ServiceView;
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: colors.black,
-    },
-    containerImg: {
         position: "relative",
-        height: 620,
-        width: "100%",
     },
+
     img: {
         position: "absolute",
         width: "100%",
-        height: "100%",
-        backgroundColor: "lightblue",
+        height: 620,
+        top: 0,
         zIndex: 9,
     },
     overlay: {
         position: "absolute",
         width: "100%",
-        height: "50%",
-        bottom: 0,
-        left: 0,
-        right: 0,
+        height: 620,
+        top: 0,
         zIndex: 10,
     },
     containerText: {
-        position: "relative",
-        top: -200,
+        paddingTop: 400,
+        paddingBottom: 50,
         paddingHorizontal: 10,
         zIndex: 11,
     },
 });
+
+const LeisureImg = (props) => {
+    return (
+        <Image
+            source={require("../../assets/leisure.jpg")}
+            PlaceholderContent={"leisure"}
+            style={styles.img}
+        />
+    );
+};
+const FamilyImg = (props) => {
+    return (
+        <Image
+            source={require("../../assets/family.jpg")}
+            PlaceholderContent={"family"}
+            style={styles.img}
+        />
+    );
+};
+const CruiseImg = (props) => {
+    return (
+        <Image
+            source={require("../../assets/cruise.jpg")}
+            PlaceholderContent={"cruise"}
+            style={styles.img}
+        />
+    );
+};
+const CelebrationImg = (props) => {
+    return (
+        <Image
+            source={require("../../assets/celebration.jpg")}
+            PlaceholderContent={"celebration"}
+            style={styles.img}
+        />
+    );
+};

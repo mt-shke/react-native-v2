@@ -1,5 +1,5 @@
 import { colors } from "./colors";
 import { globalStyles } from "./globalStyles";
+import { randomArray, randomNumber, screenHeight } from "./helper";
 
-export * from colors
-export * from globalStyles
+export { colors, globalStyles, randomArray, randomNumber, screenHeight };

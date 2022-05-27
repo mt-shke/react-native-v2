@@ -1,4 +1,3 @@
-import { Header } from "@rneui/themed";
 import { StyleSheet } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { colors } from "./global/colors";

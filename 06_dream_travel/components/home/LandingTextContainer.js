@@ -1,27 +1,16 @@
 import { useScrollToTop } from "@react-navigation/native";
 import { Icon } from "@rneui/themed";
-import {
-    View,
-    Text,
-    StyleSheet,
-    TouchableOpacity,
-    Dimensions,
-} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { colors } from "../../global/colors";
 import { globalStyles } from "../../global/globalStyles";
 
 const LandingTextContainer = ({ navigation, aboutRef }) => {
-    const screenHeight = Dimensions.get("screen").height;
-    const containerHeight = Math.floor(screenHeight) - 80;
-
     const scrollToAbout = () => {
         useScrollToTop(aboutRef);
     };
 
     return (
-        <View
-            style={{ ...styles.containerTextLanding, height: containerHeight }}
-        >
+        <View style={styles.containerTextLanding}>
             <View style={styles.containerSlogan}>
                 <Text
                     style={[globalStyles.title, styles.marginBottom]}
@@ -45,7 +34,7 @@ const LandingTextContainer = ({ navigation, aboutRef }) => {
 
                 {/* button about us  */}
                 <TouchableOpacity
-                    onPress={scrollToAbout}
+                    // onPress={scrollToAbout}
                     style={{
                         height: 80,
                         justifyContent: "center",
@@ -69,11 +58,10 @@ export default LandingTextContainer;
 
 const styles = StyleSheet.create({
     containerTextLanding: {
-        top: 0,
-        width: "100%",
-        height: 720,
-        justifyContent: "space-between",
+        flex: 1,
         zIndex: 11,
+        paddingVertical: 30,
+        justifyContent: "space-between",
     },
     containerSlogan: {
         paddingTop: 90,

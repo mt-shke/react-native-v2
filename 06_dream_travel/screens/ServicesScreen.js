@@ -7,8 +7,7 @@ import data from "../data.json";
 
 const ServicesScreen = (props) => {
     const [index, setIndex] = useState(0);
-    const tabItems = ["Leisure", "Family", "Cruise", "Wedding"];
-    console.log(data[0].services);
+    const tabItems = data[0].services.map((service) => service.name);
 
     return (
         <>
@@ -23,22 +22,24 @@ const ServicesScreen = (props) => {
                 }}
                 variant="primary"
             >
+                {/* Render the Top tab items  */}
                 {tabItems.map((item, index) => (
                     <Tab.Item
                         key={index}
                         title={item}
-                        titleStyle={{ fontSize: 11 }}
+                        titleStyle={styles.btnTitle}
                         icon={false}
                     />
                 ))}
             </Tab>
 
+            {/* Render the view for each tab  */}
             <TabView value={index} onChange={setIndex} animationType="spring">
-                {data[0].services.map((item, index) => (
+                {data[0].services.map((service, index) => (
                     <ServiceView
                         key={index}
-                        name={item.name}
-                        content={item.content}
+                        name={service.name}
+                        content={service.content}
                     />
                 ))}
             </TabView>
@@ -51,5 +52,9 @@ export default ServicesScreen;
 const styles = StyleSheet.create({
     containerStyle: {
         backgroundColor: colors.black,
+    },
+    btnTitle: {
+        fontSize: 11,
+        paddingHorizontal: 0,
     },
 });

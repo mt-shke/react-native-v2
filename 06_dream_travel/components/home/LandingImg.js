@@ -1,13 +1,9 @@
 import { LinearGradient } from "expo-linear-gradient";
-import { View, StyleSheet, Image, Dimensions } from "react-native";
+import { StyleSheet, Image } from "react-native";
 import { colors } from "../../global/colors";
 
-const ImgContainer = (props) => {
-    const screen = Dimensions.get("screen");
-    console.log(screen);
-
+const LandingImg = (props) => {
     return (
-        // <View style={styles.containerImg}>
         <>
             <Image
                 source={require("../../assets/home.jpg")}
@@ -15,39 +11,30 @@ const ImgContainer = (props) => {
                 style={styles.img}
             />
             <LinearGradient
-                colors={["transparent", colors.black]}
+                colors={["transparent", "#18181836", "#181818D9", colors.black]}
+                start={{ x: 0.4, y: 0.25 }}
+                end={{ x: 0.5, y: 0.9 }}
+                locations={[0, 0.65, 0.85, 1]}
                 style={styles.overlay}
             />
         </>
-        // </View>
     );
 };
 
-export default ImgContainer;
+export default LandingImg;
 
 const styles = StyleSheet.create({
-    containerImg: {
-        position: "relative",
-        height: 720,
-        width: "100%",
-    },
     img: {
         position: "absolute",
         width: "100%",
-        height: 720,
+        height: "100%",
         zIndex: 9,
-        top: 0,
-        left: 0,
-        right: 0,
         resizeMode: "cover",
     },
     overlay: {
         position: "absolute",
         width: "100%",
-        height: 320,
+        height: "100%",
         zIndex: 10,
-        top: 400,
-        left: 0,
-        right: 0,
     },
 });

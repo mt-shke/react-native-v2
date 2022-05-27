@@ -15,12 +15,10 @@ const MainStack = (props) => {
                 <Stack.Screen
                     name="HomeScreen"
                     component={HomeScreen}
-                    options={{ headerShow: false }}
                 />
                 <Stack.Screen
                     name="BottomTabStack"
                     component={BottomTabStack}
-                    options={{ headerShow: false }}
                 />
             </Stack.Navigator>
         </NavigationContainer>

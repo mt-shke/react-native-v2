@@ -3,7 +3,6 @@ import { Platform } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import { colors } from "../global/colors";
-import CircuitScreen from "../screens/CircuitScreen";
 import ContactScreen from "../screens/ContactScreen";
 import ServicesScreen from "../screens/ServicesScreen";
 import { SafeAreaProvider } from "react-native-safe-area-context";
@@ -16,7 +15,7 @@ const BottomTabStack = (props) => {
     return (
         <SafeAreaProvider style={styles.container}>
             <Tab.Navigator
-                initialRouteName="CircuitScreen"
+                initialRouteName="CircuitScreenStack"
                 activeColor={colors.blue}
                 inactiveColor={colors.bgGrey}
                 barStyle={{ backgroundColor: colors.black }}
@@ -37,8 +36,8 @@ const BottomTabStack = (props) => {
                     }}
                 />
                 <Tab.Screen
-                    name="CircuitScreen"
-                    component={CircuitScreen}
+                    name="CircuitScreenStack"
+                    component={CircuitsScreenStack}
                     options={{
                         tabBarLabel: "Circuits",
                         tabBarIcon: ({ focused }) => (
@@ -72,6 +71,7 @@ const BottomTabStack = (props) => {
 export default BottomTabStack;
 
 import { StyleSheet } from "react-native";
+import CircuitsScreenStack from "../screens/CircuitsScreen";
 
 const styles = StyleSheet.create({
     container: {

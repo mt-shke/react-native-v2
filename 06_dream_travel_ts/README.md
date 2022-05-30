@@ -10,7 +10,6 @@
 <summary>todo</summary>
 
 ```js
-// change font
 // fix homescreen aboutUs button
 // add more data/content
 // changeFocusedInput borderColor
@@ -25,12 +24,12 @@
 <details>
 <summary>Type React Navigation</summary>
 
-RootStack
+RootStack - ParamList
 
 ```js
 export type MainStackParamList = {
-    HomeScreen: HomeScreenProps;
-    BottomTabStack: BottomTabStackProps;
+    HomeScreen: undefined;
+    BottomTabStack: undefined;
 };
 
 const Stack = createNativeStackNavigator<MainStackParamList>();
@@ -54,22 +53,67 @@ const MainStack: React.FC = () => {
 
 ```
 
+Screen
+
+```js
+export type HomeScreenProps = NativeStackScreenProps<
+    MainStackParamList,
+    "HomeScreen"
+>;
+
+const HomeView: React.FC<HomeScreenProps> = ({ navigation, route }) => {
+    const { navigate } = navigation;
+
+    return (
+        <ScrollView style={styles.container}>
+            <LandingView />
+            <AboutUsContainer />
+        </ScrollView>
+    );
+};
+```
+
+Navigation / Route
+
+```js
+
+// NAVIGATION
+export type DetailedCircuitScreenNavigationProp = NativeStackNavigationProp<
+    CircuitsStackParamList,
+    "DetailedCircuitScreen"
+>;
+
+// ROUTE
+export type DetailedCircuitScreenRouteProp = RouteProp<
+    CircuitsStackParamList,
+    "DetailedCircuitScreen"
+>;
+
+
+const DetailedCircuit: React.FC = () => {
+    const navigation = useNavigation<BottomTabStackNavigationProp>();
+    const route = useRoute<DetailedCircuitScreenRouteProp>();
+```
+
 </details>
 
 <details>
 <summary>font</summary>
 
-react-native.config.js
-
-```js
-module.exports = {
-    assets: ["./assets/fonts"],
-};
-```
+expo install
 
 ```js
 // add font to: assets/fonts
-// npx react-native link
+// expo install expo-font
+```
+
+```js
+let [fontsLoaded] = useFonts({
+    "Playfair-Display": require("../assets/fonts/Playfair-Display.ttf"),
+    "Playfair-Display-Bold": require("../assets/fonts/Playfair-Display-Bold.ttf"),
+    "Readex-Pro": require("../assets/fonts/Readex-Pro.ttf"),
+    "Readex-Pro-Bold": require("../assets/fonts/Readex-Pro-Bold.ttf"),
+});
 ```
 
 </details>

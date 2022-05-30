@@ -1,7 +1,7 @@
 import { Input } from "@rneui/themed";
-import { createRef } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 import { colors } from "../../global";
+import { createRef } from "react";
 
 interface ICustomInputProps {
     inputId: string;
@@ -50,7 +50,7 @@ const CustomInput: React.FC<ICustomInputProps> = ({
             // ref={inputRef}
             containerStyle={styles.container}
             inputContainerStyle={styles.inputContainerStyle}
-            inputStyle={{ ...styles.inputStyle, height: textarea ? 200 : 44 }}
+            inputStyle={styles.inputStyle}
             label={label}
             renderErrorMessage={false}
             maxLength={40}

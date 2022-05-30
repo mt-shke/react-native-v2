@@ -52,7 +52,14 @@ const DetailedCircuit: React.FC = () => {
             </Pressable>
             <View style={styles.dataContainer}>
                 <View style={styles.titleContainer}>
-                    <Text style={[globalStyles.title]}>{circuit.country}</Text>
+                    <Text
+                        style={{
+                            ...globalStyles.title,
+                            fontFamily: "Raleway-SemiBold",
+                        }}
+                    >
+                        {circuit.country}
+                    </Text>
                     <View style={styles.containerPrice}>
                         <Text
                             style={styles.price}
@@ -113,6 +120,7 @@ const styles = StyleSheet.create({
     price: {
         color: colors.white,
         fontWeight: "bold",
+        fontFamily: "Raleway-Regular",
     },
     date: {
         color: colors.lightGrey,

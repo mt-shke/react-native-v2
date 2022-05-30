@@ -7,14 +7,6 @@ import { BottomTabStackNavigationProp } from "../../types";
 
 const LandingTextContainer: React.FC = () => {
     const navigation = useNavigation<BottomTabStackNavigationProp>();
-    // const scrollToAbout = () => {
-    //     useScrollToTop();
-    // };
-
-    // const [loaded] = useFonts({
-    //     ReadexPro: require("../../assets/fonts/ReadexPro-VariableFont_wght.ttf"),
-    //     PlayfairDisplay: require("../../assets/fonts/PlayfairDisplay.ttf"),
-    // });
 
     return (
         <View style={styles.containerTextLanding}>
@@ -34,12 +26,7 @@ const LandingTextContainer: React.FC = () => {
                     style={[styles.buttonStart, styles.marginBottom]}
                     onPress={() => navigation.navigate("BottomTabStack")}
                 >
-                    <Text
-                        style={{
-                            ...styles.start,
-                            // fontFamily: "PlayfairDisplay",
-                        }}
-                    >
+                    <Text style={styles.start}>
                         {`Start Your Dream Travel`}
                     </Text>
                 </TouchableOpacity>
@@ -93,7 +80,7 @@ const styles = StyleSheet.create({
     start: {
         color: colors.white,
         fontSize: 22,
-        fontWeight: "bold",
+        fontFamily: "Playfair-Display",
     },
     marginBottom: {
         marginBottom: 50,

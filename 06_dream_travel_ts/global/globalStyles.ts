@@ -7,16 +7,19 @@ export const globalStyles = StyleSheet.create({
         fontSize: 16,
         lineHeight: 30,
         marginBottom: 50,
+        fontFamily: "Readex-Pro",
     },
     title: {
         color: colors.white,
         fontSize: 26,
-        fontWeight: "bold",
+        // fontWeight: "bold",
+        fontFamily: "Playfair-Display",
     },
     bigTitle: {
         color: colors.white,
         fontSize: 32,
-        fontWeight: "bold",
+        // fontWeight: "bold",
         marginBottom: 70,
+        fontFamily: "Playfair-Display-Bold",
     },
 });

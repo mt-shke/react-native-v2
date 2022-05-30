@@ -23,14 +23,20 @@ const CircuitCard: React.FC<ICircuitProps> = ({ circuit }) => {
                 <Image source={{ uri: imgUrl }} style={styles.img} />
 
                 <View style={styles.titleContainer}>
-                    <Text style={[globalStyles.title, styles.country]}>
+                    <Text
+                        style={{
+                            ...globalStyles.title,
+                            ...styles.country,
+                            fontFamily: "Raleway-SemiBold",
+                        }}
+                    >
                         {circuit.country}
                     </Text>
                     <LinearGradient
                         style={styles.overlay}
                         // where the gradient starts and ends
-                        start={{ x: 0.0, y: 0 }}
-                        end={{ x: 0.75, y: 0 }}
+                        start={{ x: 0.05, y: 0 }}
+                        end={{ x: 0.7, y: 0 }}
                         //    set the array of colors of the gradient
                         colors={[colors.black, "transparent"]}
                         // where each colors start
@@ -50,8 +56,8 @@ const styles = StyleSheet.create({
         aspectRatio: 5 / 3,
         marginBottom: 50,
         flex: 1,
-        borderWidth: 2,
-        borderColor: "black",
+        elevation: 5,
+        opacity: 1,
     },
     img: {
         height: "100%",

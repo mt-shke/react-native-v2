@@ -10,11 +10,14 @@
 <summary>todo</summary>
 
 ```js
-// fix nav type
-// fix textarea
 // change font
 // fix homescreen aboutUs button
 // add more data/content
+// changeFocusedInput borderColor
+```
+
+```js
+// input - textarea
 ```
 
 </details>
@@ -32,7 +35,7 @@ export type MainStackParamList = {
 
 const Stack = createNativeStackNavigator<MainStackParamList>();
 
-const MainStack: React.FC<{}> = () => {
+const MainStack: React.FC = () => {
     return (
         <NavigationContainer>
             <Stack.Navigator
@@ -49,6 +52,24 @@ const MainStack: React.FC<{}> = () => {
     );
 };
 
+```
+
+</details>
+
+<details>
+<summary>font</summary>
+
+react-native.config.js
+
+```js
+module.exports = {
+    assets: ["./assets/fonts"],
+};
+```
+
+```js
+// add font to: assets/fonts
+// npx react-native link
 ```
 
 </details>

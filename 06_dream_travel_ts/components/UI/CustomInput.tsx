@@ -1,5 +1,6 @@
 import { Input } from "@rneui/themed";
-import { StyleSheet } from "react-native";
+import { createRef } from "react";
+import { StyleSheet, Text, TextInput, View } from "react-native";
 import { colors } from "../../global";
 
 interface ICustomInputProps {
@@ -13,13 +14,46 @@ const CustomInput: React.FC<ICustomInputProps> = ({
     label,
     textarea,
 }) => {
+    // const inputRef = createRef<TextInput>();
+
+    if (textarea) {
+        return (
+            <View style={{ paddingHorizontal: 12, marginBottom: 20 }}>
+                <Text
+                    style={{
+                        fontWeight: "bold",
+                        color: "#86939e",
+                        // color: colors.lightGrey,
+                        fontSize: 16,
+                    }}
+                >
+                    {label}
+                </Text>
+                <TextInput
+                    style={{
+                        ...styles.inputContainerStyle,
+                        paddingHorizontal: 14,
+                        borderRadius: 14,
+                        fontSize: 18,
+                    }}
+                    multiline
+                    numberOfLines={8}
+                    // onChangeText={(text) => text}
+                    // value={value}
+                />
+            </View>
+        );
+    }
+
     return (
         <Input
+            // ref={inputRef}
             containerStyle={styles.container}
             inputContainerStyle={styles.inputContainerStyle}
             inputStyle={{ ...styles.inputStyle, height: textarea ? 200 : 44 }}
             label={label}
             renderErrorMessage={false}
+            maxLength={40}
         />
     );
 };
@@ -33,6 +67,7 @@ const styles = StyleSheet.create({
     },
     inputStyle: {
         paddingHorizontal: 14,
+        color: colors.white,
     },
 
     inputContainerStyle: {
@@ -44,5 +79,6 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         marginHorizontal: 6,
         zIndex: 10,
+        color: colors.white,
     },
 });

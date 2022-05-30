@@ -5,7 +5,6 @@ import { colors, randomArray } from "../global";
 import CircuitCard from "../components/circuits/CircuitCard";
 import DetailedCircuit from "../components/circuits/detailedCircuit/DetailedCircuit";
 import { SearchBar } from "@rneui/themed";
-import { color } from "@rneui/base";
 
 const Stack = createNativeStackNavigator();
 
@@ -29,7 +28,6 @@ export default CircuitsScreenStack;
 const CircuitsScreen = (props) => {
     const circuitsData = data[0].circuits;
     const newEntries = randomArray();
-    console.log(circuitsData);
 
     return (
         <ScrollView style={styles.container}>

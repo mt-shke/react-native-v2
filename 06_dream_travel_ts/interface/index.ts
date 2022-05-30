@@ -1,4 +1,4 @@
-export interface IData {
+export interface IAppData {
     services: IService[];
     circuits: ICircuit[];
 }

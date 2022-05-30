@@ -11,6 +11,7 @@ const ServicesScreen: React.FC = (props) => {
 
     return (
         <>
+            {/* Render the Top tab items  */}
             <Tab
                 containerStyle={styles.containerStyle}
                 value={index}
@@ -18,11 +19,9 @@ const ServicesScreen: React.FC = (props) => {
                 indicatorStyle={{
                     backgroundColor: colors.white,
                     height: 0,
-                    // color: colors.black,
                 }}
                 variant="primary"
             >
-                {/* Render the Top tab items  */}
                 {tabItems.map((item, index) => (
                     <Tab.Item
                         key={index}

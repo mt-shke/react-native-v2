@@ -1,7 +1,7 @@
 import { View, Text, Image, StyleSheet } from "react-native";
 import { colors, globalStyles } from "../../global";
 
-const ContactHeader: React.FC<{}> = () => {
+const ContactHeader: React.FC = () => {
     return (
         <>
             <View>

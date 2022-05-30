@@ -1,27 +1,24 @@
-import { CompositeScreenProps } from "@react-navigation/native";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import {
+    NativeStackNavigationProp,
+    NativeStackScreenProps,
+} from "@react-navigation/native-stack";
 
 // STACKS
 
-// export type VeryMain = CompositeScreenProps<
-//     HomeScreenProps<keyof MainStackParamList>,
-//     BottomTabStackProps<>
-// >;
-
 export type MainStackParamList = {
-    HomeScreen: HomeScreenProps;
-    BottomTabStack: BottomTabStackParamList;
+    HomeScreen: undefined;
+    BottomTabStack: undefined;
 };
 
 export type BottomTabStackParamList = {
-    ServicesScreen: ServicesScreenProps;
-    CircuitsStack: CircuitsStackParamList;
-    ContactScreen: ContactScreenProps;
+    ServicesScreen: undefined;
+    CircuitsStack: undefined;
+    ContactScreen: undefined;
 };
 
 export type CircuitsStackParamList = {
-    CircuitsScreen: CircuitsScreenProps;
-    DetailedCircuitScreen: DetailedCircuitScreenProps;
+    CircuitsScreen: undefined;
+    DetailedCircuitScreen: { circuitId: number };
 };
 
 // SCREENS
@@ -52,6 +49,18 @@ export type CircuitsScreenProps = NativeStackScreenProps<
 >;
 
 export type DetailedCircuitScreenProps = NativeStackScreenProps<
+    CircuitsStackParamList,
+    "DetailedCircuitScreen"
+>;
+
+// NAVIGATION
+
+export type BottomTabStackNavigationProp = NativeStackNavigationProp<
+    MainStackParamList,
+    "BottomTabStack"
+>;
+
+export type DetailedCircuitScreenNavigationProp = NativeStackNavigationProp<
     CircuitsStackParamList,
     "DetailedCircuitScreen"
 >;

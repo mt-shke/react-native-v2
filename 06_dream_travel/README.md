@@ -3,7 +3,6 @@
 
 ```js
 // - homesView > aboutUs > navigate to anchor/ref
-// contact screens
 ```
 
 </details>
@@ -23,6 +22,15 @@
     // where each colors start
     locations={[0, 0.55, 1]}
 />
+```
+
+</details>
+
+<details>
+<summary>setup android studio emulator</summary>
+
+```js
+// https://www.youtube.com/watch?v=ZGIU5aIRi9M
 ```
 
 </details>

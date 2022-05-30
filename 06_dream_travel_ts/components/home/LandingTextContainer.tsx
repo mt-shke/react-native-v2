@@ -1,15 +1,20 @@
-import { useNavigation, useScrollToTop } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { Icon } from "@rneui/themed";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { colors } from "../../global/colors";
 import { globalStyles } from "../../global/globalStyles";
-import { HomeScreenProps } from "../../types";
+import { BottomTabStackNavigationProp } from "../../types";
 
 const LandingTextContainer: React.FC = () => {
-    const navigation = useNavigation<HomeScreenProps>();
+    const navigation = useNavigation<BottomTabStackNavigationProp>();
     // const scrollToAbout = () => {
     //     useScrollToTop();
     // };
+
+    // const [loaded] = useFonts({
+    //     ReadexPro: require("../../assets/fonts/ReadexPro-VariableFont_wght.ttf"),
+    //     PlayfairDisplay: require("../../assets/fonts/PlayfairDisplay.ttf"),
+    // });
 
     return (
         <View style={styles.containerTextLanding}>
@@ -29,7 +34,12 @@ const LandingTextContainer: React.FC = () => {
                     style={[styles.buttonStart, styles.marginBottom]}
                     onPress={() => navigation.navigate("BottomTabStack")}
                 >
-                    <Text style={[styles.start]}>
+                    <Text
+                        style={{
+                            ...styles.start,
+                            // fontFamily: "PlayfairDisplay",
+                        }}
+                    >
                         {`Start Your Dream Travel`}
                     </Text>
                 </TouchableOpacity>

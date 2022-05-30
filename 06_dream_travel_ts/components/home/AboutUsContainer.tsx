@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from "react-native";
 import { globalStyles } from "../../global/globalStyles";
 
-const AboutUsContainer: React.FC<{}> = () => {
+const AboutUsContainer: React.FC = () => {
     return (
         <View style={styles.containerAboutUs}>
             <Text

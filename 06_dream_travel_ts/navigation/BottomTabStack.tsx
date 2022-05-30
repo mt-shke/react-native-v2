@@ -1,7 +1,4 @@
-import {
-    createMaterialBottomTabNavigator,
-    MaterialBottomTabNavigationProp,
-} from "@react-navigation/material-bottom-tabs";
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { Platform, StyleSheet } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AntDesign from "react-native-vector-icons/AntDesign";
@@ -15,8 +12,8 @@ import { BottomTabStackParamList } from "../types";
 
 const Tab = createMaterialBottomTabNavigator<BottomTabStackParamList>();
 
-const BottomTabStack: React.FC = () => {
-    const osIcon = Platform.OS === "ios" ? "ios-" : "";
+const BottomTabStack: React.FC<BottomTabStackParamList> = () => {
+    // const osIcon = Platform.OS === "ios" ? "ios-" : "";
 
     return (
         <SafeAreaProvider style={styles.container}>
@@ -34,7 +31,8 @@ const BottomTabStack: React.FC = () => {
                         tabBarLabel: "Services",
                         tabBarIcon: ({ focused }) => (
                             <Ionicons
-                                name={osIcon + "apps"}
+                                // name={osIcon + "apps"}
+                                name={"apps"}
                                 color={focused ? colors.blue : colors.bgGrey}
                                 size={24}
                             />
@@ -48,7 +46,8 @@ const BottomTabStack: React.FC = () => {
                         tabBarLabel: "Circuits",
                         tabBarIcon: ({ focused }) => (
                             <Ionicons
-                                name={osIcon + "airplane"}
+                                // name={osIcon + "airplane"}
+                                name={"airplane"}
                                 color={focused ? colors.blue : colors.bgGrey}
                                 size={24}
                             />
@@ -62,7 +61,8 @@ const BottomTabStack: React.FC = () => {
                         tabBarLabel: "Contact",
                         tabBarIcon: ({ focused }) => (
                             <AntDesign
-                                name={osIcon + "customerservice"}
+                                // name={osIcon + "customerservice"}
+                                name={"customerservice"}
                                 color={focused ? colors.blue : colors.bgGrey}
                                 size={24}
                             />

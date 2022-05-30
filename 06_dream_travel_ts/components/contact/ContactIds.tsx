@@ -5,7 +5,7 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import React from "react";
 
-const ContactIds: React.FC<{}> = () => {
+const ContactIds: React.FC = () => {
     return (
         <View style={styles.container}>
             <View style={styles.contact}>

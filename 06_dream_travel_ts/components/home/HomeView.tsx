@@ -5,9 +5,7 @@ import AboutUsContainer from "./AboutUsContainer";
 import LandingView from "./LandingView";
 
 const HomeView: React.FC<HomeScreenProps> = ({ navigation, route }) => {
-    const nav = () => {
-        navigation.navigate("BottomTabStack");
-    };
+    const { navigate } = navigation;
 
     return (
         <ScrollView style={styles.container}>

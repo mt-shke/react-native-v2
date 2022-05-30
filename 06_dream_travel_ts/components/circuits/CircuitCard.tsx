@@ -3,13 +3,13 @@ import { LinearGradient } from "expo-linear-gradient";
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { colors, globalStyles } from "../../global";
 import { ICircuitProps } from "../../interface";
-import { CircuitsScreenProps } from "../../types";
+import { DetailedCircuitScreenNavigationProp } from "../../types";
 
 const CircuitCard: React.FC<ICircuitProps> = ({ circuit }) => {
     const imgUrl =
         "https://source.unsplash.com/random/900×700/?" + circuit.country;
 
-    const navigation = useNavigation<CircuitsScreenProps>();
+    const navigation = useNavigation<DetailedCircuitScreenNavigationProp>();
 
     return (
         <TouchableOpacity

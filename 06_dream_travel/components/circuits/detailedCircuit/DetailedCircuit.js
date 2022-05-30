@@ -22,16 +22,16 @@ const DetailedCircuit = ({ route }) => {
         "https://source.unsplash.com/random/900×700/?" +
         circuit.country +
         " nature";
-    const imgUrlCity =
+    const ImgUrlMonument =
         "https://source.unsplash.com/random/900×700/?" +
         circuit.country +
-        " city";
+        " monument";
     return (
         <View style={styles.container}>
             <ScrollView horizontal={true} style={styles.containerImg}>
                 <Image source={{ uri: imgUrl }} style={styles.img} />
                 <Image source={{ uri: imgUrlNature }} style={styles.img} />
-                <Image source={{ uri: imgUrlCity }} style={styles.img} />
+                <Image source={{ uri: ImgUrlMonument }} style={styles.img} />
             </ScrollView>
             <Pressable
                 style={styles.iconBackContainer}

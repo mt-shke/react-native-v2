@@ -2,7 +2,7 @@ import { View } from "react-native";
 import CustomButton from "../UI/CustomButton";
 import CustomInput from "../UI/CustomInput";
 
-const Form: React.FC<{}> = () => {
+const Form: React.FC = () => {
     return (
         <View>
             <CustomInput label="Firstname Lastname" inputId="name" />

@@ -76,6 +76,6 @@ import CircuitsScreenStack from "../screens/CircuitsScreen";
 const styles = StyleSheet.create({
     container: {
         backgroundColor: colors.black,
-        paddingTop: 50,
+        paddingTop: 30,
     },
 });

@@ -4,10 +4,17 @@ import CircuitCard from "../components/circuits/CircuitCard";
 import { SearchBar } from "@rneui/themed";
 import { ICircuit } from "../interface";
 import { data } from "../data";
+import { useState } from "react";
 
 const CircuitsScreen: React.FC = (props) => {
-    const circuitsData: ICircuit[] = data.circuits as ICircuit[];
+    const [value, setValue] = useState<string>("");
+    const circuitsData: ICircuit[] = data.circuits;
     const newEntries: number[] = randomArray();
+    const filteredData: ICircuit[] = circuitsData.filter(
+        (circuit) =>
+            value.trim() !== "" &&
+            circuit.country.toLowerCase().includes(value.toLowerCase().trim())
+    );
 
     return (
         <ScrollView style={styles.container}>
@@ -18,13 +25,23 @@ const CircuitsScreen: React.FC = (props) => {
                 leftIconContainerStyle={styles.leftIconContainerStyle}
                 placeholder="Destination"
                 clearIcon={false}
+                value={value}
+                onChangeText={(val) => setValue(val)}
             />
-            {newEntries.map((entry, index) => (
-                <CircuitCard
-                    key={`${circuitsData[entry].country}${index}`}
-                    circuit={circuitsData[entry]}
-                />
-            ))}
+            {!value &&
+                newEntries.map((entry, index) => (
+                    <CircuitCard
+                        key={`${circuitsData[entry].country}${index}`}
+                        circuit={circuitsData[entry]}
+                    />
+                ))}
+            {filteredData &&
+                filteredData.map((circuit, index) => (
+                    <CircuitCard
+                        key={`${circuit.country}${index}`}
+                        circuit={circuit}
+                    />
+                ))}
         </ScrollView>
     );
 };
@@ -40,6 +57,7 @@ const styles = StyleSheet.create({
         backgroundColor: colors.black,
         marginBottom: 6,
         borderTopColor: "transparent",
+        borderBottomWidth: 0,
     },
     inputStyle: {
         paddingHorizontal: 14,
@@ -49,7 +67,7 @@ const styles = StyleSheet.create({
         right: 12,
     },
     inputContainerStyle: {
-        borderRadius: 20,
+        borderRadius: 14,
         borderWidth: 1,
         borderColor: colors.bgGrey,
         backgroundColor: colors.black,

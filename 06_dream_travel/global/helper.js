@@ -5,7 +5,7 @@ export const randomNumber = () => Math.floor(Math.random() * 39);
 
 export const randomArray = () => {
     let unique = [];
-    while (unique.length <= 5) {
+    while (unique.length <= 15) {
         let newNumber = randomNumber();
         unique = [...unique, newNumber];
     }

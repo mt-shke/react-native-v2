@@ -10,12 +10,15 @@ import { colors, globalStyles } from "../../../global";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import React from "react";
-import { DetailedCircuitScreenProps } from "../../../types";
+import {
+    BottomTabStackNavigationProp,
+    DetailedCircuitScreenRouteProp,
+} from "../../../types";
 import { data } from "../../../data";
 
 const DetailedCircuit: React.FC = () => {
-    const navigation = useNavigation<DetailedCircuitScreenProps>();
-    const route = useRoute<DetailedCircuitScreenProps>();
+    const navigation = useNavigation<BottomTabStackNavigationProp>();
+    const route = useRoute<DetailedCircuitScreenRouteProp>();
     const { circuitId } = route.params;
     const circuit = data.circuits[circuitId];
 
@@ -49,9 +52,7 @@ const DetailedCircuit: React.FC = () => {
             </Pressable>
             <View style={styles.dataContainer}>
                 <View style={styles.titleContainer}>
-                    <Text style={[globalStyles.title, styles.title]}>
-                        {circuit.country}
-                    </Text>
+                    <Text style={[globalStyles.title]}>{circuit.country}</Text>
                     <View style={styles.containerPrice}>
                         <Text
                             style={styles.price}

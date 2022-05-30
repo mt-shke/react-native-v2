@@ -1,3 +1,4 @@
+import { RouteProp } from "@react-navigation/native";
 import {
     NativeStackNavigationProp,
     NativeStackScreenProps,
@@ -61,6 +62,12 @@ export type BottomTabStackNavigationProp = NativeStackNavigationProp<
 >;
 
 export type DetailedCircuitScreenNavigationProp = NativeStackNavigationProp<
+    CircuitsStackParamList,
+    "DetailedCircuitScreen"
+>;
+
+// ROUTE
+export type DetailedCircuitScreenRouteProp = RouteProp<
     CircuitsStackParamList,
     "DetailedCircuitScreen"
 >;

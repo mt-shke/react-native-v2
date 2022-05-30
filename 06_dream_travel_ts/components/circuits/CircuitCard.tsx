@@ -50,6 +50,8 @@ const styles = StyleSheet.create({
         aspectRatio: 5 / 3,
         marginBottom: 50,
         flex: 1,
+        borderWidth: 2,
+        borderColor: "black",
     },
     img: {
         height: "100%",

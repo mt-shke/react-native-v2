@@ -10,13 +10,12 @@ const Clock: React.FC = ({}) => {
             setDate(newDate);
             console.log(newDate);
         }, 1000);
-
         return () => clearInterval(intervalId);
     }, []);
 
     return (
         <View style={styles.container}>
-            <Text style={{ ...styles.text }}>{`${date ?? ""}`}</Text>
+            <Text style={styles.text}>{`${date ?? ""}`}</Text>
         </View>
     );
 };
@@ -24,9 +23,12 @@ export default Clock;
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         justifyContent: "center",
         alignItems: "center",
         height: 180,
+        backgroundColor: "lightblue",
+        width: "100%",
     },
     text: {
         fontWeight: "bold",

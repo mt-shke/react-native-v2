@@ -12,9 +12,11 @@ export default function App() {
     return (
         <View style={styles.container}>
             {isVisible && <Clock />}
-            <Pressable style={styles.btn} onPress={() => viewHandler()}>
-                <Text>{isVisible ? "Hide" : "Show"}</Text>
-            </Pressable>
+            <View style={styles.containerBtn}>
+                <Pressable style={styles.btn} onPress={() => viewHandler()}>
+                    <Text>{isVisible ? "Hide" : "Show"}</Text>
+                </Pressable>
+            </View>
         </View>
     );
 }
@@ -26,12 +28,20 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
-    btn: {
+    containerBtn: {
         marginVertical: 20,
+        position: "absolute",
+        left: 0,
+        right: 0,
+        bottom: 200,
+        width: "100%",
+    },
+    btn: {
+        alignSelf: "center",
+        backgroundColor: "orange",
+        color: "white",
+        borderRadius: 12,
         paddingHorizontal: 20,
         paddingVertical: 6,
-        alignSelf: "center",
-        backgroundColor: "lightblue",
-        borderRadius: 12,
     },
 });

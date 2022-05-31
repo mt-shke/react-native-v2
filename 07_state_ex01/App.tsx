@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { StyleSheet, Text, View, Pressable } from "react-native";
 import Clock from "./src/components/Clock";
+import Rootstack from "./src/navigation/Rootstack";
 
 export default function App() {
     const [isVisible, setIsVisible] = useState<boolean>(true);
@@ -8,6 +9,8 @@ export default function App() {
     const viewHandler = () => {
         setIsVisible((prev) => !prev);
     };
+
+    // return <Rootstack />;
 
     return (
         <View style={styles.container}>

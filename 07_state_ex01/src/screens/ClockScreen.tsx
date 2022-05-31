@@ -1,7 +1,14 @@
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useEffect, useState } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { RoostackParamList } from "../navigation/Rootstack";
 
-const Clock: React.FC = ({}) => {
+type IClockScreenProps = NativeStackScreenProps<
+    RoostackParamList,
+    "ClockScreen"
+>;
+
+const ClockScreen: React.FC<IClockScreenProps> = ({ navigation }) => {
     const [date, setDate] = useState<null | string>(null);
 
     useEffect(() => {
@@ -17,10 +24,17 @@ const Clock: React.FC = ({}) => {
     return (
         <View style={styles.container}>
             <Text style={styles.text}>{`${date ?? ""}`}</Text>
+            <TouchableOpacity
+                style={styles.btn}
+                onPress={() => navigation.navigate("HomeScreen")}
+            >
+                <Text>To Home</Text>
+            </TouchableOpacity>
         </View>
     );
 };
-export default Clock;
+
+export default ClockScreen;
 
 const styles = StyleSheet.create({
     container: {
@@ -35,5 +49,10 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         fontSize: 24,
         alignSelf: "center",
+    },
+    btn: {
+        marginTop: 200,
+        padding: 20,
+        backgroundColor: "orange",
     },
 });

@@ -6,7 +6,6 @@ import LandingView from "./LandingView";
 
 const HomeView: React.FC<HomeScreenProps> = ({ navigation, route }) => {
     const { navigate } = navigation;
-
     return (
         <ScrollView style={styles.container}>
             <LandingView />

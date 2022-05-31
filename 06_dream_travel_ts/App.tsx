@@ -1,7 +1,7 @@
 import { StyleSheet, View, Text } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { colors } from "./global/colors";
-import useCustomFont from "./hooks/useCustomFont";
+import useCustomFont from "./hooks/useCustomFonts";
 import MainStack from "./navigation/MainStack";
 
 export default function App() {

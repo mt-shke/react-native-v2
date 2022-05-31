@@ -124,5 +124,6 @@ const styles = StyleSheet.create({
     },
     date: {
         color: colors.lightGrey,
+        fontFamily: "Raleway-Regular",
     },
 });

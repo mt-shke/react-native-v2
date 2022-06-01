@@ -1,3 +1,4 @@
+import { RouteProp, useRoute } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useEffect, useState } from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
@@ -8,25 +9,35 @@ type IClockScreenProps = NativeStackScreenProps<
     "ClockScreen"
 >;
 
-const ClockScreen: React.FC<IClockScreenProps> = ({ navigation }) => {
-    const [date, setDate] = useState<null | string>(null);
+const ClockScreen: React.FC<IClockScreenProps> = ({ navigation, route }) => {
+    const [isMount, setIsMount] = useState(true);
 
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            const newDate: string = new Date().toLocaleTimeString("fr-FR");
-            setDate(newDate);
-            console.log(newDate);
-        }, 1000);
+    if (!isMount && route.params) {
+        const { pressTime } = route.params;
+        if (pressTime) {
+            // const pressedTime = Math.round(pressTime / 100);
+            // const dateNow = Math.round(Number(new Date()) / 100);
+            // const result = dateNow - pressedTime;
+            console.log(pressTime);
 
-        return () => clearInterval(intervalId);
-    }, []);
+            // if (result <= 100) {
+            //     setIsMount(true);
+            // }
+        }
+    }
+
+    const navigateHandler = () => {
+        setIsMount(false);
+        navigation.navigate("HomeScreen");
+        return;
+    };
 
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>{`${date ?? ""}`}</Text>
+            {isMount && <Cloc />}
             <TouchableOpacity
                 style={styles.btn}
-                onPress={() => navigation.navigate("HomeScreen")}
+                onPress={() => navigateHandler()}
             >
                 <Text>To Home</Text>
             </TouchableOpacity>
@@ -56,3 +67,18 @@ const styles = StyleSheet.create({
         backgroundColor: "orange",
     },
 });
+
+const Cloc = (props) => {
+    const [date, setDate] = useState<null | string>(null);
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            const newDate: string = new Date().toLocaleTimeString("fr-FR");
+            setDate(newDate);
+            console.log(newDate);
+        }, 1000);
+
+        return () => clearInterval(intervalId);
+    }, []);
+    return <Text style={styles.text}>{`${date ?? ""}`}</Text>;
+};

@@ -10,23 +10,26 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 
 export type RoostackParamList = {
     HomeScreen: undefined;
-    ClockScreen: undefined;
+    ClockScreen: { pressTime: string };
 };
 
 const Stack = createNativeStackNavigator<RoostackParamList>();
 const Tab = createMaterialBottomTabNavigator<RoostackParamList>();
 
-const IoniconsIcon: React.FC = Ionicons;
+const IoniconsIcon: any = Ionicons as any;
 
 const Rootstack: React.FC = () => {
+    // Using Native stack
     return (
         <NavigationContainer>
-            <Stack.Navigator>
+            <Stack.Navigator initialRouteName="ClockScreen">
                 <Stack.Screen name="HomeScreen" component={HomeScreen} />
                 <Stack.Screen name="ClockScreen" component={ClockScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     );
+
+    // Using Material bottom tabs
     // return (
     //     <NavigationContainer>
     //         <Tab.Navigator>

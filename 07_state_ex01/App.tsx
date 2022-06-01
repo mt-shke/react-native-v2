@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { StyleSheet, Text, View, Pressable } from "react-native";
+import BackImg from "./src/components/BackgImg";
 import Clock from "./src/components/Clock";
 import Rootstack from "./src/navigation/Rootstack";
 
@@ -10,18 +11,20 @@ export default function App() {
         setIsVisible((prev) => !prev);
     };
 
-    // return <Rootstack />;
+    // Using React navigation
+    return <Rootstack />;
 
-    return (
-        <View style={styles.container}>
-            {isVisible && <Clock />}
-            <View style={styles.containerBtn}>
-                <Pressable style={styles.btn} onPress={() => viewHandler()}>
-                    <Text>{isVisible ? "Hide" : "Show"}</Text>
-                </Pressable>
-            </View>
-        </View>
-    );
+    // Using custom button
+    // return (
+    //     <View style={styles.container}>
+    //         {isVisible && <Clock />}
+    //         <View style={styles.containerBtn}>
+    //             <Pressable style={styles.btn} onPress={() => viewHandler()}>
+    //                 <Text>{isVisible ? "Hide" : "Show"}</Text>
+    //             </Pressable>
+    //         </View>
+    //     </View>
+    // );
 }
 
 const styles = StyleSheet.create({

@@ -20,6 +20,7 @@ const Clock: React.FC = ({}) => {
         </View>
     );
 };
+
 export default Clock;
 
 const styles = StyleSheet.create({

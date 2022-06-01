@@ -1,9 +1,9 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
+import { colors } from "../globals";
 import { IProductProps } from "../interfaces";
 import CardBody from "./CardBody";
 import CardFooter from "./CardFooter";
 import CardHeader from "./CardHeader";
-import LikeBtn from "./LikeBtn";
 
 const Card: React.FC<IProductProps> = ({ product }) => {
     return (
@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
         width: "48%",
         marginBottom: 14,
         aspectRatio: 3 / 5,
-        borderWidth: 2,
-        borderColor: "darkgrey",
+        borderWidth: 1,
+        borderColor: colors.grey,
+        borderRadius: 6,
     },
 });

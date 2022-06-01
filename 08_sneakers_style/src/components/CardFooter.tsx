@@ -5,7 +5,7 @@ import LikeBtn from "./LikeBtn";
 const CardFooter: React.FC<IProductProps> = ({ product }) => {
     return (
         <View style={styles.container}>
-            <Text>{`${product.size}`}</Text>
+            <Text style={styles.text}>{`Taille: ${product.size}`}</Text>
             <LikeBtn likes={product.likes} />
         </View>
     );
@@ -18,5 +18,9 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         width: "100%",
         justifyContent: "space-between",
+        paddingHorizontal: 8,
+    },
+    text: {
+        fontSize: 14,
     },
 });

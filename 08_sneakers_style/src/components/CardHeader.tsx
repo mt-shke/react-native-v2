@@ -18,5 +18,7 @@ const styles = StyleSheet.create({
     },
     text: {
         alignSelf: "flex-end",
+        fontWeight: "bold",
+        fontSize: 18,
     },
 });

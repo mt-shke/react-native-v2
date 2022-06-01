@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet } from "react-native";
-import { IProductProps } from "../interfaces";
+import AntDesign from "react-native-vector-icons/AntDesign";
+import { colors } from "../globals";
 
 interface ILikesBtnProps {
     likes: string;
@@ -8,7 +9,10 @@ interface ILikesBtnProps {
 const LikeBtn: React.FC<ILikesBtnProps> = ({ likes }) => {
     return (
         <View style={styles.container}>
-            <Text>{`${likes} coeur`}</Text>
+            <Text>
+                {`${likes ?? ""} `}
+                <AntDesign name="heart" color={colors.blue} size={12} />
+            </Text>
         </View>
     );
 };

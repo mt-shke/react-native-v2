@@ -1,22 +1,38 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import Card from "./src/components/Card";
 import PRODUITS from "./data";
 import { IProduct } from "./src/interfaces";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaView } from "react-native-safe-area-context";
+import Searchbar from "./src/components/Searchbar";
+import { useState } from "react";
 
 export default function App() {
-    const allProducts: IProduct[] = PRODUITS;
-    const data: IProduct = PRODUITS[0];
-    console.log(data);
+    const allProducts: IProduct[] = PRODUITS as IProduct[];
+    const [search, setSearch] = useState<string>("");
+    const emptySearch = search.trim() === "";
+
+    const filteredProduct: IProduct[] = allProducts.filter(
+        (product) =>
+            (emptySearch &&
+                product.title
+                    .toLowerCase()
+                    .includes(search.toLowerCase().trim())) ||
+            (emptySearch &&
+                product.brand
+                    .toLowerCase()
+                    .includes(search.toLowerCase().trim()))
+    );
+
+    // const productsToRender = !search.length ? allProducts : filteredProduct;
+    const productsToRender = emptySearch ? allProducts : filteredProduct;
 
     return (
         <SafeAreaView style={styles.container}>
+            <Searchbar setSearch={setSearch} />
             <ScrollView>
                 <View style={styles.containerSV}>
-                    {allProducts.map((product, index) => (
-                        // <View style={styles.containerCard} key={index}>
+                    {productsToRender.map((product, index) => (
                         <Card product={product} key={index} />
-                        // </View>
                     ))}
                 </View>
             </ScrollView>
@@ -36,9 +52,6 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
         paddingHorizontal: 14,
-    },
-    containerCard: {
-        width: "48%",
-        marginBottom: 14,
+        paddingVertical: 10,
     },
 });

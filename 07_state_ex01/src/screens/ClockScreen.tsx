@@ -2,6 +2,7 @@ import { RouteProp, useRoute } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useEffect, useState } from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { timeNow } from "../helper";
 import { RoostackParamList } from "../navigation/Rootstack";
 
 type IClockScreenProps = NativeStackScreenProps<
@@ -12,19 +13,24 @@ type IClockScreenProps = NativeStackScreenProps<
 const ClockScreen: React.FC<IClockScreenProps> = ({ navigation, route }) => {
     const [isMount, setIsMount] = useState(true);
 
-    if (!isMount && route.params) {
-        const { pressTime } = route.params;
-        if (pressTime) {
-            // const pressedTime = Math.round(pressTime / 100);
-            // const dateNow = Math.round(Number(new Date()) / 100);
-            // const result = dateNow - pressedTime;
-            console.log(pressTime);
-
-            // if (result <= 100) {
-            //     setIsMount(true);
-            // }
+    const setMount = () => {
+        if (!isMount && route.params) {
+            const { pressTime } = route.params;
+            if (pressTime) {
+                const now = timeNow();
+                console.log(pressTime);
+                console.log(now);
+                const result = now - pressTime;
+                console.log(result);
+                if (result <= 100) {
+                    setTimeout(() => {
+                        setIsMount(true);
+                    }, 100);
+                }
+            }
         }
-    }
+    };
+    setMount();
 
     const navigateHandler = () => {
         setIsMount(false);

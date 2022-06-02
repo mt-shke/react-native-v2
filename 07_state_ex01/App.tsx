@@ -12,19 +12,20 @@ export default function App() {
     };
 
     // Using React navigation
-    return <Rootstack />;
+    // return <Rootstack />;
 
     // Using custom button
-    // return (
-    //     <View style={styles.container}>
-    //         {isVisible && <Clock />}
-    //         <View style={styles.containerBtn}>
-    //             <Pressable style={styles.btn} onPress={() => viewHandler()}>
-    //                 <Text>{isVisible ? "Hide" : "Show"}</Text>
-    //             </Pressable>
-    //         </View>
-    //     </View>
-    // );
+    return (
+        <View style={styles.container}>
+            {isVisible && <Clock />}
+            {!isVisible && <BackImg />}
+            <View style={styles.containerBtn}>
+                <Pressable style={styles.btn} onPress={() => viewHandler()}>
+                    <Text>{isVisible ? "Hide" : "Show"}</Text>
+                </Pressable>
+            </View>
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({

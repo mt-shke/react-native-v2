@@ -1,2 +1,1 @@
-export const timeNow: () => string = () =>
-    new Date().toLocaleTimeString("fr-FR");
+export const timeNow: () => number = () => Math.round(Number(new Date()) / 100);

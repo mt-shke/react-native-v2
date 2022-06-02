@@ -10,7 +10,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 
 export type RoostackParamList = {
     HomeScreen: undefined;
-    ClockScreen: { pressTime: string };
+    ClockScreen: { pressTime: number };
 };
 
 const Stack = createNativeStackNavigator<RoostackParamList>();

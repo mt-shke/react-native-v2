@@ -9,7 +9,6 @@ import { colors } from "./src/globals";
 
 export default function App() {
     const allProducts: IProduct[] = PRODUITS as IProduct[];
-
     const [search, setSearch] = useState<string>("");
     const emptySearch = search.trim() === "";
 
@@ -25,7 +24,7 @@ export default function App() {
                     .includes(search.toLowerCase().trim()))
     );
 
-    const productsToRender = emptySearch ? allProducts : filteredProduct;
+    const productsToRender = !search.length ? allProducts : filteredProduct;
 
     return (
         <SafeAreaProvider>

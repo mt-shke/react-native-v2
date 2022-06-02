@@ -1,12 +1,12 @@
 export interface IProduct {
-    id: string;
+    id: number;
     brand: string;
     title: string;
     desc: string;
-    price: string;
-    likes: string;
-    size: string;
-    stocked: string;
+    price: number;
+    likes?: number;
+    size: number | "toutes tailles";
+    stocked: boolean;
     photo: any;
 }
 

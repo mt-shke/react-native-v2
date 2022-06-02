@@ -2,11 +2,11 @@ import { View, Text, StyleSheet } from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import { colors } from "../globals";
 
-interface ILikesBtnProps {
-    likes: string;
+interface ILikeBtnProps {
+    likes?: string;
 }
 
-const LikeBtn: React.FC<ILikesBtnProps> = ({ likes }) => {
+const LikeBtn: React.FC<ILikeBtnProps> = ({ likes }) => {
     return (
         <View style={styles.container}>
             <Text>

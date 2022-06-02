@@ -12,7 +12,7 @@ const Searchbar: React.FC<ISearchBarProps> = ({ setSearch }) => {
 
     const searchHandler = (val: string) => {
         setValue(val);
-        setSearch(value);
+        setSearch(val);
     };
 
     return (
@@ -34,7 +34,7 @@ export default Searchbar;
 
 const styles = StyleSheet.create({
     containerSearch: {
-        backgroundColor: "lightgrey",
+        backgroundColor: colors.lightgrey,
         borderTopWidth: 0,
         borderBottomWidth: 1,
         borderBottomColor: colors.grey,
@@ -42,14 +42,14 @@ const styles = StyleSheet.create({
         paddingBottom: 20,
     },
     inputContainerStyle: {
-        backgroundColor: "lightgrey",
+        backgroundColor: colors.lightgrey,
         borderWidth: 1,
         borderBottomWidth: 1,
         borderRadius: 10,
         borderColor: colors.grey,
     },
     input: {
-        color: colors.darkGrey,
+        color: colors.darkgrey,
     },
     iconContainer: {
         position: "absolute",

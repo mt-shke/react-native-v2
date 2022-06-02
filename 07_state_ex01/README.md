@@ -8,3 +8,12 @@
 ```
 
 </details>
+
+<details>
+<summary>Animated</summary>
+
+```js
+// @types/react-native
+```
+
+</details>

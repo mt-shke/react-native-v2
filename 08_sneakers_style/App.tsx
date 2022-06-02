@@ -30,7 +30,7 @@ export default function App() {
         <SafeAreaProvider>
             <SafeAreaView style={styles.container}>
                 <Searchbar setSearch={setSearch} />
-                <ScrollView>
+                <ScrollView >
                     <View style={styles.containerSV}>
                         {productsToRender.map((product, index) => (
                             <Card product={product} key={index} />

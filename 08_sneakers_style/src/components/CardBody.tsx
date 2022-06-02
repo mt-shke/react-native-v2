@@ -13,7 +13,7 @@ const CardBody: React.FC<IProductProps> = ({ product }) => {
                 <Text
                     style={styles.desc}
                     ellipsizeMode={"tail"}
-                    numberOfLines={4}
+                    numberOfLines={3}
                 >{`${product.desc}`}</Text>
             </View>
         </View>
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 14,
         fontWeight: "bold",
-        marginBottom: 4,
+        marginBottom: 5,
     },
     desc: {
         fontSize: 14,

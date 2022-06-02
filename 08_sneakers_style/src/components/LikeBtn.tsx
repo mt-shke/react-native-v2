@@ -1,24 +1,41 @@
-import { View, Text, StyleSheet } from "react-native";
+import { useState } from "react";
+import { View, Text, TouchableOpacity } from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import { colors } from "../globals";
 
 interface ILikeBtnProps {
-    likes?: string;
+    likes?: number | undefined;
 }
 
 const LikeBtn: React.FC<ILikeBtnProps> = ({ likes }) => {
+    const [isLiked, setIsLiked] = useState<boolean>(false);
+    let numOfLikes: number = 0;
+
+    if (likes) {
+        numOfLikes = isLiked ? likes + 1 : likes;
+    }
+    if (!likes && isLiked) {
+        numOfLikes = 1;
+    }
+
     return (
-        <View style={styles.container}>
-            <Text>
-                {`${likes ?? ""} `}
-                <AntDesign name="heart" color={colors.blue} size={12} />
-            </Text>
-        </View>
+        <TouchableOpacity onPress={() => setIsLiked((p) => !p)}>
+            <View>
+                <Text>
+                    {`${numOfLikes ? numOfLikes : ""} `}
+                    {isLiked ? (
+                        <AntDesign name="heart" color={colors.blue} size={12} />
+                    ) : (
+                        <AntDesign
+                            name="hearto"
+                            color={colors.blue}
+                            size={12}
+                        />
+                    )}
+                </Text>
+            </View>
+        </TouchableOpacity>
     );
 };
 
 export default LikeBtn;
-
-const styles = StyleSheet.create({
-    container: {},
-});

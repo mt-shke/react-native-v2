@@ -15,6 +15,7 @@ const BackImg: React.FC = (props) => {
         Animated.timing(fadeAnim, {
             toValue: 1,
             duration: 1000,
+            useNativeDriver: true,
         }).start();
     };
 
@@ -23,7 +24,7 @@ const BackImg: React.FC = (props) => {
     return (
         <SafeAreaView style={styles.container}>
             <Animated.View>
-                <View style={styles.ai}>
+                <View style={[styles.fadingContainer, { opacity: fadeAnim }]}>
                     <ImageBackground
                         source={{ uri: imgUrl }}
                         resizeMode="cover"
@@ -58,8 +59,9 @@ const styles = StyleSheet.create({
         color: "white",
         padding: 30,
     },
-    ai: {
-        flex: 1,
+    fadingContainer: {
+        padding: 20,
+        backgroundColor: "green",
     },
     vi: {
         flex: 1,

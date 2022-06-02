@@ -4,7 +4,7 @@ export interface IProduct {
     title: string;
     desc: string;
     price: number;
-    likes?: number;
+    likes?: number | undefined;
     size: number | "toutes tailles";
     stocked: boolean;
     photo: any;

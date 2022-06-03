@@ -7,7 +7,7 @@ export interface IProduct {
     likes?: number | undefined;
     size: number | "toutes tailles";
     stocked: boolean;
-    photo: any;
+    photo?: any;
 }
 
 export interface IProductProps {

@@ -23,15 +23,11 @@ const LikeBtn: React.FC<ILikeBtnProps> = ({ likes }) => {
             <View>
                 <Text>
                     {`${numOfLikes ? numOfLikes : ""} `}
-                    {isLiked ? (
-                        <AntDesign name="heart" color={colors.blue} size={12} />
-                    ) : (
-                        <AntDesign
-                            name="hearto"
-                            color={colors.blue}
-                            size={12}
-                        />
-                    )}
+                    <AntDesign
+                        name={isLiked ? "heart" : "hearto"}
+                        color={colors.blue}
+                        size={12}
+                    />
                 </Text>
             </View>
         </TouchableOpacity>

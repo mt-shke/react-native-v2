@@ -12,3 +12,13 @@ export type HomeScreenProps = NativeStackScreenProps<
     RootstackParamList,
     "HomeScreen"
 >;
+
+export type SignInScreenProps = NativeStackScreenProps<
+    RootstackParamList,
+    "SignInScreen"
+>;
+
+export type SignUpScreenProps = NativeStackScreenProps<
+    RootstackParamList,
+    "SignUpScreen"
+>;

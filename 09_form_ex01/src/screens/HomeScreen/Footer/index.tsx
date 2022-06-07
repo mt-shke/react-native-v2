@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
-import Button from "../../../components/UI/Button";
+import CustomButton from "../../../components/UI/CustomButton";
 import { RootstackParamList } from "../../../ts/types";
 
 const Footer: React.FC = (props) => {
@@ -16,12 +16,12 @@ const Footer: React.FC = (props) => {
                 <TouchableOpacity
                     onPress={() => navigation.navigate("SignInScreen")}
                 >
-                    <Button>Se connecter</Button>
+                    <CustomButton>Se connecter</CustomButton>
                 </TouchableOpacity>
                 <TouchableOpacity
                     onPress={() => navigation.navigate("SignUpScreen")}
                 >
-                    <Button color="white">S'inscrire</Button>
+                    <CustomButton color="white">S'inscrire</CustomButton>
                 </TouchableOpacity>
             </View>
         </View>
@@ -37,5 +37,7 @@ const styles = StyleSheet.create({
 
     containerBtn: {
         marginTop: 50,
+        width: 200,
+        alignSelf: "center",
     },
 });

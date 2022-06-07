@@ -1,11 +1,12 @@
 import { Text, StyleSheet } from "react-native";
 import { colors } from "../../globals";
+import { globalStyles } from "../../globals/globalStyles";
 
-interface IButtonProps {
+interface ICustomButtonProps {
     color?: "white";
 }
 
-const Button: React.FC<IButtonProps> = ({ color, children }) => {
+const CustomButton: React.FC<ICustomButtonProps> = ({ color, children }) => {
     if (color === "white") {
         const whiteBtnStyle = {
             color: colors.black,
@@ -23,18 +24,18 @@ const Button: React.FC<IButtonProps> = ({ color, children }) => {
     return <Text style={styles.btn}>{`${children}`}</Text>;
 };
 
-export default Button;
+export default CustomButton;
 
 const styles = StyleSheet.create({
     btn: {
         backgroundColor: colors.orange,
         color: colors.black,
-        alignSelf: "center",
         paddingVertical: 10,
-        paddingHorizontal: 24,
         fontWeight: "bold",
-        fontSize: 18,
+        fontSize: globalStyles.fontSize,
         borderRadius: 20,
-        marginBottom: 30,
+        marginBottom: 26,
+        width: "100%",
+        textAlign: "center",
     },
 });

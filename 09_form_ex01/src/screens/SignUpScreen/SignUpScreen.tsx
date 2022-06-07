@@ -1,14 +1,14 @@
 import { View, Text, StyleSheet } from "react-native";
 
-const Rootstack: React.FC = (props) => {
+const SignUpScreen: React.FC = (props) => {
     return (
         <View style={styles.container}>
-            <Text>Rootstack</Text>
+            <Text>SignUpScreen</Text>
         </View>
     );
 };
 
-export default Rootstack;
+export default SignUpScreen;
 
 const styles = StyleSheet.create({
     container: {

@@ -5,8 +5,16 @@ import CustomInput from "../../../components/UI/CustomInput";
 const SignInForm: React.FC = (props) => {
     return (
         <View style={styles.form}>
-            <CustomInput inputId="email" label="Email" />
-            <CustomInput inputId="password" label="Mot de passe" />
+            <CustomInput
+                inputId="email"
+                label="Email"
+                placeholder="Entre votre email"
+            />
+            <CustomInput
+                inputId="password"
+                label="Mot de passe"
+                placeholder="Entre votre mot de passe"
+            />
             <View style={styles.containerBtn}>
                 <CustomButton>Se connecter</CustomButton>
             </View>

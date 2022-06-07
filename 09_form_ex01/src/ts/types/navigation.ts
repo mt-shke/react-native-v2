@@ -1,12 +1,20 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
+// STACKS
+
 export type RootstackParamList = {
     HomeScreen: undefined;
     SignInScreen: undefined;
-    SignUpScreen: undefined;
+    SignUpStack: undefined;
+    SuccessScreen: undefined;
 };
 
-// SCREENS
+export type SignUpStackParamList = {
+    SignUpScreen: undefined;
+    SignUpEndScreen: undefined;
+};
+
+// SCREENS Props
 
 export type HomeScreenProps = NativeStackScreenProps<
     RootstackParamList,
@@ -19,6 +27,16 @@ export type SignInScreenProps = NativeStackScreenProps<
 >;
 
 export type SignUpScreenProps = NativeStackScreenProps<
-    RootstackParamList,
+    SignUpStackParamList,
     "SignUpScreen"
+>;
+
+export type SignUpEndScreenProps = NativeStackScreenProps<
+    SignUpStackParamList,
+    "SignUpEndScreen"
+>;
+
+export type SuccessScreenProps = NativeStackScreenProps<
+    RootstackParamList,
+    "SuccessScreen"
 >;

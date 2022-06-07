@@ -1,15 +1,9 @@
-import { useState } from "react";
-import {
-    StyleSheet,
-    TextInput,
-    View,
-    Text,
-    TextInputFocusEventData,
-    NativeSyntheticEvent,
-} from "react-native";
+import { useEffect, useState } from "react";
+import { StyleSheet, TextInput, View, Text } from "react-native";
 import { colors } from "../../globals";
 import { globalStyles } from "../../globals/globalStyles";
 import validator from "validator";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 interface ICustomInputProps {
     inputId: string;
@@ -24,14 +18,28 @@ const CustomInput: React.FC<ICustomInputProps> = ({
 }) => {
     const [inputValue, setInputValue] = useState<string>("");
     const [error, setError] = useState<boolean>(false);
+    const [isValueVisible, setIsValueVisible] = useState<boolean>(true);
+
+    useEffect(() => {
+        if (inputId === "password") {
+            setIsValueVisible(false);
+        }
+    }, []);
 
     const checkValue = () => {
-        if (inputId === "email" && validator.isEmail(inputValue)) {
+        // Check if input is email
+        if (inputId === "email") {
+            if (!validator.isEmail(inputValue)) {
+                setError(true);
+                return;
+            }
             setError(false);
         }
-        if (inputId === "email" && !validator.isEmail(inputValue)) {
-            setError(true);
-        }
+
+        // Check length
+        validator.isLength(inputValue, { min: 6, max: 40 })
+            ? setError(false)
+            : setError(true);
     };
 
     return (
@@ -46,6 +54,7 @@ const CustomInput: React.FC<ICustomInputProps> = ({
             </Text>
             <View style={styles.containerInput}>
                 <TextInput
+                    secureTextEntry={!isValueVisible}
                     onChangeText={(val: string) => setInputValue(val)}
                     onBlur={checkValue}
                     value={inputValue}
@@ -60,6 +69,15 @@ const CustomInput: React.FC<ICustomInputProps> = ({
                             : colors.background,
                     }}
                 />
+                {inputId === "password" && (
+                    <Ionicons
+                        onPress={() => setIsValueVisible((p) => !p)}
+                        name={isValueVisible ? "eye-off" : "eye"}
+                        color={colors.black}
+                        size={globalStyles.fontSize}
+                        style={styles.eye}
+                    />
+                )}
             </View>
         </View>
     );
@@ -70,17 +88,25 @@ export default CustomInput;
 const styles = StyleSheet.create({
     container: {
         backgroundColor: colors.background,
+        marginBottom: 20,
     },
     label: {
         fontSize: globalStyles.fontSize,
         marginBottom: 8,
     },
-    containerInput: {},
+    containerInput: {
+        justifyContent: "center",
+    },
     input: {
         borderWidth: 1,
         borderColor: colors.black,
         borderRadius: 8,
         paddingVertical: 4,
         paddingHorizontal: 12,
+    },
+    eye: {
+        position: "absolute",
+        right: 0,
+        padding: 12,
     },
 });

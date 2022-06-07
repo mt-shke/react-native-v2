@@ -19,7 +19,7 @@ const Footer: React.FC = (props) => {
                     <CustomButton>Se connecter</CustomButton>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    onPress={() => navigation.navigate("SignUpScreen")}
+                    onPress={() => navigation.navigate("SignUpStack")}
                 >
                     <CustomButton color="white">S'inscrire</CustomButton>
                 </TouchableOpacity>

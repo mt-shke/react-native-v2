@@ -1,9 +1,11 @@
+import { ReactNode } from "react";
 import { Text, StyleSheet } from "react-native";
 import { colors } from "../../globals";
 import { globalStyles } from "../../globals/globalStyles";
 
 interface ICustomButtonProps {
     color?: "white";
+    children?: ReactNode;
 }
 
 const CustomButton: React.FC<ICustomButtonProps> = ({ color, children }) => {
@@ -15,13 +17,11 @@ const CustomButton: React.FC<ICustomButtonProps> = ({ color, children }) => {
             borderColor: colors.black,
         };
         return (
-            <Text
-                style={{ ...styles.btn, ...whiteBtnStyle }}
-            >{`${children}`}</Text>
+            <Text style={{ ...styles.btn, ...whiteBtnStyle }}>{children}</Text>
         );
     }
 
-    return <Text style={styles.btn}>{`${children}`}</Text>;
+    return <Text style={styles.btn}>{children}</Text>;
 };
 
 export default CustomButton;

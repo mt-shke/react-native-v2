@@ -1,12 +1,10 @@
 import { NavigationContainer } from "@react-navigation/native";
-import {
-    createNativeStackNavigator,
-    NativeStackNavigationOptions,
-} from "@react-navigation/native-stack";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { screenOptions } from "../globals";
 import HomeScreen from "../screens/HomeScreen/HomeScreen";
 import SignInScreen from "../screens/SignInScreen/SignInScreen";
-import SignUpScreen from "../screens/SignUpScreen/SignUpScreen";
 import { RootstackParamList } from "../ts/types";
+import SignUpStack from "./SignUpStack";
 
 const Stack = createNativeStackNavigator<RootstackParamList>();
 
@@ -15,7 +13,7 @@ const Rootstack: React.FC = () => {
         <NavigationContainer>
             <Stack.Navigator
                 initialRouteName="HomeScreen"
-                defaultScreenOptions={screenOptions}
+                screenOptions={screenOptions}
             >
                 <Stack.Screen
                     name="HomeScreen"
@@ -28,8 +26,8 @@ const Rootstack: React.FC = () => {
                     options={screenOptions}
                 />
                 <Stack.Screen
-                    name="SignUpScreen"
-                    component={SignUpScreen}
+                    name="SignUpStack"
+                    component={SignUpStack}
                     options={screenOptions}
                 />
             </Stack.Navigator>
@@ -37,7 +35,3 @@ const Rootstack: React.FC = () => {
     );
 };
 export default Rootstack;
-
-const screenOptions: NativeStackNavigationOptions = {
-    headerShown: false,
-};

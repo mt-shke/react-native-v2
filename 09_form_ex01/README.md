@@ -2,7 +2,8 @@
 <summary>Todo</summary>
 
 ```js
-style;
+// style
+// successScreen rootstack => params
 ```
 
 </details>

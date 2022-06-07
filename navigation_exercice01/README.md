@@ -13,7 +13,7 @@ Main dependencies
 Native stack
 
 ```js
-//  @react-navigation/native-stack
+// npm i @react-navigation/native-stack
 ```
 
 Bottom-tabs

@@ -5,7 +5,6 @@ import SignUpForm from "./Form";
 const SignUpScreen: React.FC = (props) => {
     return (
         <View style={styles.container}>
-            <Text>SignUpScreen</Text>
             <SignUpForm />
         </View>
     );

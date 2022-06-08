@@ -3,6 +3,9 @@
 
 ```js
 // style
+// image
+// button suivant arrow
+
 // successScreen rootstack => params
 ```
 

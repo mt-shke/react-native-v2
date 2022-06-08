@@ -6,29 +6,34 @@ import { colors } from "../../../globals";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { SignUpStackParamList } from "../../../ts/types";
+import CustomDateInput from "../../../components/UI/DateInput";
+import DateTimePicker from "../../../components/UI/DateTimePicker";
 
 const SignUpEndForm: React.FC = (props) => {
     const navigation =
         useNavigation<
             NativeStackNavigationProp<SignUpStackParamList, "SignUpScreen">
         >();
+
     return (
         <View style={styles.form}>
             <CustomInput
                 inputId="firstname"
                 label="Prénom"
-                placeholder="Entre votre prénom"
+                placeholder="Entrez votre prénom"
             />
             <CustomInput
                 inputId="lastName"
                 label="Nom"
-                placeholder="Entre votre nom"
+                placeholder="Entrez votre nom"
             />
-            <CustomInput
+            {/* <CustomInput
                 inputId="birthdate"
                 label="Date de naissance"
-                placeholder="Entre votre date de naissance"
-            />
+                placeholder="Entrez votre date de naissance"
+            /> */}
+            {/* <CustomDateInput />  */}
+            <DateTimePicker />
             <View style={styles.containerBtn}>
                 <TouchableOpacity
                 // onPress={() => navigation.navigate("SignUpEndScreen")}

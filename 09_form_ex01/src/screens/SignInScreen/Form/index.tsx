@@ -7,13 +7,15 @@ const SignInForm: React.FC = (props) => {
         <View style={styles.form}>
             <CustomInput
                 inputId="email"
+                type="email"
                 label="Email"
-                placeholder="Entre votre email"
+                placeholder="Entrez votre email"
             />
             <CustomInput
                 inputId="password"
+                type="password"
                 label="Mot de passe"
-                placeholder="Entre votre mot de passe"
+                placeholder="Entrez votre mot de passe"
             />
             <View style={styles.containerBtn}>
                 <CustomButton>Se connecter</CustomButton>

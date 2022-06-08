@@ -1,8 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { View, Text, StyleSheet, Pressable } from "react-native";
-import { colors } from "../../globals";
-import { RootstackParamList } from "../../ts/types";
+import { colors } from "../../../globals";
+import { RootstackParamList } from "../../../ts/types";
 
 const NoAccount: React.FC = (props) => {
     const navigation =
@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: "row",
         justifyContent: "center",
+        marginTop: 40,
     },
     link: {
         color: colors.yellow,

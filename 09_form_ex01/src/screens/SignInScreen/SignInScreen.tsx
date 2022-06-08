@@ -6,7 +6,6 @@ import NoAccount from "./NoAccount";
 const SignInScreen: React.FC = (props) => {
     return (
         <View style={styles.container}>
-            <Text>Img style to change</Text>
             <SignInForm />
             <NoAccount />
         </View>
@@ -19,5 +18,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: colors.background,
+        justifyContent: "center",
     },
 });

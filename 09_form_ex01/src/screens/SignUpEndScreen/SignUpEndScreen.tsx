@@ -13,7 +13,6 @@ const SignUpEndScreen: React.FC = (props) => {
 
     return (
         <View style={styles.container}>
-            <Text>SignUpEndScreen</Text>
             <SignUpEndForm />
         </View>
     );

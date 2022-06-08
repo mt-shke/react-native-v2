@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { screenOptions } from "../globals";
 import HomeScreen from "../screens/HomeScreen/HomeScreen";
 import SignInScreen from "../screens/SignInScreen/SignInScreen";
+import SuccessScreen from "../screens/SuccessScreen/SuccessScreen";
 import { RootstackParamList } from "../ts/types";
 import SignUpStack from "./SignUpStack";
 
@@ -28,6 +29,11 @@ const Rootstack: React.FC = () => {
                 <Stack.Screen
                     name="SignUpStack"
                     component={SignUpStack}
+                    options={screenOptions}
+                />
+                <Stack.Screen
+                    name="SuccessScreen"
+                    component={SuccessScreen}
                     options={screenOptions}
                 />
             </Stack.Navigator>

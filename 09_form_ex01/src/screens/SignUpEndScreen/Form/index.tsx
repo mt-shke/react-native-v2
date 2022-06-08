@@ -1,42 +1,61 @@
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import CustomButton from "../../../components/UI/CustomButton";
 import CustomInput from "../../../components/UI/CustomInput";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import { colors } from "../../../globals";
-import { useNavigation } from "@react-navigation/native";
+import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { SignUpStackParamList } from "../../../ts/types";
-import CustomDateInput from "../../../components/UI/DateInput";
-import DateTimePicker from "../../../components/UI/DateTimePicker";
+import { RootstackParamList, SignUpStackParamList } from "../../../ts/types";
+import DateTimePicker from "../../../components/UI/CustomInput/DateTimePicker";
+import DateInput from "../../../components/UI/CustomInput/DateInput";
+import SelectInputCivility from "../../../components/UI/SelectInputCivility";
+import useFormData from "../../../hooks/useFormData";
+import { IData } from "../../../ts/interfaces";
+import { useEffect, useState } from "react";
 
 const SignUpEndForm: React.FC = (props) => {
     const navigation =
         useNavigation<
-            NativeStackNavigationProp<SignUpStackParamList, "SignUpScreen">
+            NativeStackNavigationProp<RootstackParamList, "SignUpStack">
         >();
+    const route =
+        useRoute<RouteProp<SignUpStackParamList, "SignUpEndScreen">>();
+    const { formData: data } = route.params;
+    // const {formData, setFormData} = useFormData()
+    const [formData, setFormData] = useState({});
 
+    useEffect(() => {
+        if (!formData) {
+            setFormData({ data });
+        }
+    }, []);
+
+    const updateData = (data: IData) => {
+        const inputId = Object.keys(data)[0];
+        const inputValue = Object.values(data)[0];
+        const newData = { ...formData, [inputId]: inputValue };
+        setFormData(newData);
+    };
+
+    console.log(formData);
     return (
         <View style={styles.form}>
+            <SelectInputCivility />
             <CustomInput
                 inputId="firstname"
                 label="Prénom"
                 placeholder="Entrez votre prénom"
+                updateData={updateData}
             />
             <CustomInput
                 inputId="lastName"
                 label="Nom"
                 placeholder="Entrez votre nom"
+                updateData={updateData}
             />
-            {/* <CustomInput
-                inputId="birthdate"
-                label="Date de naissance"
-                placeholder="Entrez votre date de naissance"
-            /> */}
-            {/* <CustomDateInput />  */}
-            <DateTimePicker />
+
+            <DateInput inputId="date" label="Date de naissance" />
             <View style={styles.containerBtn}>
                 <TouchableOpacity
-                // onPress={() => navigation.navigate("SignUpEndScreen")}
+                    onPress={() => navigation.replace("SuccessScreen")}
                 >
                     <CustomButton>Terminer</CustomButton>
                 </TouchableOpacity>

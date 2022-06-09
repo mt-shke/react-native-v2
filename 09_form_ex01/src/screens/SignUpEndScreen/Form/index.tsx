@@ -8,7 +8,7 @@ import SelectInputCivility from "../../../components/UI/SelectInputCivility";
 import { IData, IFormData } from "../../../ts/interfaces";
 import { useEffect, useState } from "react";
 import {
-    validateBirthdate,
+    validateBirthDate,
     validateCivility,
     validateEmail,
     validateName,
@@ -35,15 +35,15 @@ const SignUpEndForm: React.FC = (props) => {
         validateName(formData.firstname) &&
         validateName(formData.lastname) &&
         validateCivility(formData.civility) &&
-        validateBirthdate(formData.birthdate);
+        validateBirthDate(formData.birthDate);
 
     useEffect(() => {}, [formIsValid, formData]);
 
     const updateData = (data: IData) => {
         const inputId = Object.keys(data)[0];
         const inputValue = Object.values(data)[0];
-        const newData = { ...formData, [inputId]: inputValue };
-        setFormData((prev) => newData);
+        const newData = { ...formData, [inputId]: inputValue.toString() };
+        setFormData(newData);
     };
 
     return (
@@ -68,9 +68,9 @@ const SignUpEndForm: React.FC = (props) => {
             />
 
             <DateInput
-                inputId="date"
+                inputId="birthDate"
                 label="Date de naissance"
-                value={formData.birthdate}
+                value={formData.birthDate}
                 updateData={updateData}
             />
             <View style={styles.containerBtn}>

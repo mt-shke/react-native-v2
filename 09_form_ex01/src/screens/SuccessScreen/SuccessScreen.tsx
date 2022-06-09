@@ -6,7 +6,7 @@ import { RootstackParamList } from "../../ts/types";
 const SuccessScreen: React.FC = ({}) => {
     const route = useRoute<RouteProp<RootstackParamList, "SuccessScreen">>();
 
-    const { firstname, lastname, birthdate, civility, email } =
+    const { firstname, lastname, birthDate, civility, email } =
         route.params.formData;
 
     return (
@@ -15,7 +15,7 @@ const SuccessScreen: React.FC = ({}) => {
             <Text>{`Welcome ${
                 civility + " " + firstname + " " + lastname
             }`}</Text>
-            <Text>{`Your birth date is ${birthdate}`}</Text>
+            <Text>{`Your birth date is ${birthDate}`}</Text>
             <Text>{`Your email is ${email}`}</Text>
         </View>
     );

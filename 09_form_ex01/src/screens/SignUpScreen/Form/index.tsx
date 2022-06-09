@@ -84,6 +84,7 @@ const SignUpForm: React.FC = (props) => {
 
             <CustomInput
                 inputId="password"
+                type="password"
                 value={formData.password}
                 label="Mot de passe"
                 updateData={updateData}
@@ -91,6 +92,7 @@ const SignUpForm: React.FC = (props) => {
             />
             <CustomInput
                 inputId="passwordConfirmation"
+                type="password"
                 value={formData.passwordConfirmation}
                 label="Confirmation du mot de passe"
                 updateData={updateData}

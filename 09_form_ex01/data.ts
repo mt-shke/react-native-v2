@@ -5,7 +5,7 @@ export const users = [
         firstname: "John",
         lastname: "Doe",
         civility: "Monsieur",
-        birthdate: "18/03/1934",
+        birthDate: "18/03/1934",
     },
     {
         email: "jane@doe.com",
@@ -13,7 +13,7 @@ export const users = [
         firstname: "Jane",
         lastname: "Doe",
         civility: "Madame",
-        birthdate: "4/11/1845",
+        birthDate: "4/11/1845",
     },
     {
         email: "emma@doe.com",
@@ -21,7 +21,7 @@ export const users = [
         firstname: "Emmanuelle",
         lastname: "Doe",
         civility: "Mademoiselle",
-        birthdate: "7/6/2002",
+        birthDate: "7/6/2002",
     },
 ];
 
@@ -32,5 +32,5 @@ export const defaultFormData = {
     firstname: "",
     lastname: "",
     civility: "",
-    birthdate: "",
+    birthDate: "",
 };

@@ -51,7 +51,6 @@ const SignInForm: React.FC = (props) => {
         <View style={styles.form}>
             <CustomInput
                 inputId="email"
-                type="email"
                 label="Email"
                 value={credentials.email}
                 updateData={updateData}

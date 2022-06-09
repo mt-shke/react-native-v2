@@ -7,7 +7,7 @@ import { IData } from "../../../ts/interfaces";
 
 interface ICustomInputProps {
     inputId: string;
-    type?: "password" | "email" | "text";
+    type?: "password";
     label: string;
     value: string;
     updateData: (data: IData) => void;

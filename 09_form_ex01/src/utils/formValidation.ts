@@ -30,9 +30,10 @@ export const validateName = (value: string) => {
 
 export const validateCivility = (value: string) => {
     // To do compare typeof
-    return ["Monsieur", "Madama", "Mademoiselle"].includes(value);
+    return ["Monsieur", "Madame", "Mademoiselle"].includes(value);
 };
 
-export const validateBirthdate = (val: string) => {
-    return true;
+export const validateBirthDate = (val: string) => {
+    // todo
+    return val ? true : false;
 };

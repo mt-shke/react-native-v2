@@ -11,7 +11,7 @@ export interface IUser {
     civility: userCivilityType | "";
     firstname: string;
     lastname: string;
-    birthdate: string;
+    birthDate: string;
 }
 
 // SignIn Credentials
@@ -30,7 +30,7 @@ export interface IFormData {
     civility: string;
     firstname: string;
     lastname: string;
-    birthdate: string;
+    birthDate: string;
 }
 
 // export interface IFormDataSignUpEndScreen {
@@ -40,5 +40,5 @@ export interface IFormData {
 //     civility?: string;
 //     firstname?: string;
 //     lastname?: string;
-//     birthdate?: string;
+//     birthDate?: string;
 // }

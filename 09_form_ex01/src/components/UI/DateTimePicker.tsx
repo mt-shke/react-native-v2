@@ -2,10 +2,11 @@ import { useState } from "react";
 import { View, StyleSheet } from "react-native";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import { colors, globalStyles } from "../../../globals";
+import { colors, globalStyles } from "../../globals";
 
 interface IDateTimePickerProps {
     setValue: (value: string) => void;
+    onPressHandler: () => void;
 }
 
 const DateTimePicker: React.FC<IDateTimePickerProps> = ({ setValue }) => {

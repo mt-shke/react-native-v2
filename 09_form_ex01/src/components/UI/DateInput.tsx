@@ -3,7 +3,9 @@ import { StyleSheet, View, Text, Pressable } from "react-native";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { colors, globalStyles } from "../../globals";
 import { IData } from "../../ts/interfaces";
-import DateTimePicker from "./CustomInput/DateTimePicker";
+import DateTimePickerModal from "react-native-modal-datetime-picker";
+
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 interface IDateInputProps {
     inputId: string;
@@ -20,6 +22,7 @@ const DateInput: React.FC<IDateInputProps> = ({
 }) => {
     const [inputValue, setInputValue] = useState<string>("");
     const [error, setError] = useState<boolean>(false);
+    const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
     useEffect(() => {
         if (value.length) {
@@ -27,39 +30,72 @@ const DateInput: React.FC<IDateInputProps> = ({
         }
     }, []);
 
+    // Set State
     const setValueHandler = (val: string) => {
         setInputValue(val);
+
         updateData({ [inputId]: val });
+    };
+
+    // Date Modal
+    const showDatePicker = () => {
+        setDatePickerVisibility(true);
+    };
+
+    const hideDatePicker = () => {
+        setDatePickerVisibility(false);
+    };
+
+    const handleConfirm = (date: Date) => {
+        // const options = {
+        //     weekday: "long",
+        //     year: "numeric",
+        //     month: "long",
+        //     day: "numeric",
+        // };
+
+        const dateFr = date.toLocaleDateString("fr-FR");
+        // const dateFr = date.toLocaleDateString("fr-FR", options);
+        // const dateFr = new Intl.DateTimeFormat("fr-FR", {
+        //     month: "long",
+        //     day: "numeric",
+        // }).format(date);
+
+        setValueHandler(dateFr);
+        hideDatePicker();
     };
 
     return (
         <View style={styles.container}>
-            <Text
-                style={{
-                    ...styles.label,
-                    color: error ? colors.yellow : colors.black,
-                }}
-            >
-                {label}
-            </Text>
-            <View style={styles.containerInput}>
-                <Text
-                    // onBlur={checkValue}
-                    // value={inputValue}
-                    numberOfLines={1}
-                    ellipsizeMode={"tail"}
-                    style={{
-                        ...styles.input,
-                        borderColor: error ? colors.brown : colors.black,
-                        backgroundColor: error
-                            ? colors.orange
-                            : colors.background,
-                    }}
-                >
-                    {inputValue}
-                </Text>
-                <DateTimePicker setValue={setValueHandler} />
-            </View>
+            <Text style={styles.label}>{label}</Text>
+            <Pressable onPress={showDatePicker}>
+                <View style={styles.containerInput}>
+                    <Text
+                        // onBlur={checkValue}
+                        // value={inputValue}
+                        numberOfLines={1}
+                        ellipsizeMode={"tail"}
+                        style={styles.input}
+                    >
+                        {inputValue}
+                    </Text>
+                    <View style={styles.containerDate}>
+                        <Ionicons
+                            name={"md-calendar-outline"}
+                            color={colors.black}
+                            size={globalStyles.fontSize}
+                            // size={32}
+                            style={styles.icon}
+                        />
+                        <DateTimePickerModal
+                            isVisible={isDatePickerVisible}
+                            mode="date"
+                            onConfirm={handleConfirm}
+                            onCancel={hideDatePicker}
+                        />
+                    </View>
+                </View>
+            </Pressable>
         </View>
     );
 };
@@ -90,5 +126,12 @@ const styles = StyleSheet.create({
         position: "absolute",
         right: 0,
         padding: 12,
+    },
+
+    // Date
+    containerDate: {
+        position: "absolute",
+        right: 0,
+        padding: 10,
     },
 });

@@ -26,6 +26,15 @@ const SignUpEndForm: React.FC = (props) => {
     const routeFormData = route.params.formData;
     const [formData, setFormData] = useState<IFormData>(routeFormData);
 
+    useEffect(() => {}, [formData]);
+
+    const updateData = (data: IData) => {
+        const inputId = Object.keys(data)[0];
+        const inputValue = Object.values(data)[0];
+        const newData = { ...formData, [inputId]: inputValue.toString() };
+        setFormData(newData);
+    };
+
     const formIsValid =
         validateEmail(formData.email) &&
         validatePasswordConfirmation(
@@ -36,15 +45,6 @@ const SignUpEndForm: React.FC = (props) => {
         validateName(formData.lastname) &&
         validateCivility(formData.civility) &&
         validateBirthDate(formData.birthDate);
-
-    useEffect(() => {}, [formIsValid, formData]);
-
-    const updateData = (data: IData) => {
-        const inputId = Object.keys(data)[0];
-        const inputValue = Object.values(data)[0];
-        const newData = { ...formData, [inputId]: inputValue.toString() };
-        setFormData(newData);
-    };
 
     return (
         <View style={styles.form}>

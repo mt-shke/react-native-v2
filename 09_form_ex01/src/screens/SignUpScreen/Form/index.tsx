@@ -3,20 +3,51 @@ import CustomButton from "../../../components/UI/CustomButton";
 import CustomInput from "../../../components/UI/CustomInput";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { colors } from "../../../globals";
-import { useNavigation } from "@react-navigation/native";
+import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { SignUpStackParamList } from "../../../ts/types";
-import SelectInputCivility from "../../../components/UI/SelectInputCivility";
 import { useEffect, useState } from "react";
-import { IData, IFormData } from "../../../ts/interfaces";
+import {
+    IData,
+    IFormData,
+    IFormDataSignUpEndScreen,
+} from "../../../ts/interfaces";
+import validator from "validator";
+import {
+    validateEmail,
+    validateLength,
+    validatePassword,
+    validatePasswordConfirmation,
+} from "../../../utils";
 
 const SignUpForm: React.FC = (props) => {
     const navigation =
         useNavigation<
             NativeStackNavigationProp<SignUpStackParamList, "SignUpScreen">
         >();
+    const route =
+        useRoute<RouteProp<SignUpStackParamList, "SignUpEndScreen">>();
+    const defaultFormData = {
+        email: "",
+        password: "",
+        passwordConfirmation: "",
+        civility: "",
+        firstname: "",
+        lastname: "",
+        birthdate: "",
+    };
 
-    const [formData, setFormData] = useState<IFormData>({});
+    const routeFormData = route.params?.formData;
+    const [formData, setFormData] = useState<IFormData>(defaultFormData);
+
+    const formIsValid =
+        validateEmail(formData.email) &&
+        validatePasswordConfirmation(
+            formData.password,
+            formData.passwordConfirmation
+        );
+
+    useEffect(() => {}, [formIsValid]);
 
     const updateData = (data: IData) => {
         const inputId = Object.keys(data)[0];
@@ -25,15 +56,36 @@ const SignUpForm: React.FC = (props) => {
         setFormData(newData);
     };
 
-    const noError =
-        formData["email"] &&
-        formData["password"] &&
-        formData["passwordConfirmation"] &&
-        formData["password"] === formData["passwordConfirmation"];
+    const nextButtonHandler = () => {
+        if (!formIsValid) {
+            setFormData(formData);
+            return;
+        }
+        navigation.navigate("SignUpEndScreen", {
+            formData,
+        });
+    };
 
-    console.log(formData);
+    let button = (
+        <TouchableOpacity onPress={nextButtonHandler}>
+            <CustomButton color="white">Valider</CustomButton>
+        </TouchableOpacity>
+    );
 
-    useEffect(() => {}, [formData]);
+    if (formIsValid) {
+        button = (
+            <TouchableOpacity onPress={nextButtonHandler}>
+                <CustomButton>
+                    Suivant
+                    <MaterialCommunityIcons
+                        name="arrow-right-thin"
+                        size={20}
+                        color={colors.black}
+                    />
+                </CustomButton>
+            </TouchableOpacity>
+        );
+    }
 
     return (
         <View style={styles.form}>
@@ -41,41 +93,30 @@ const SignUpForm: React.FC = (props) => {
                 inputId="email"
                 type="email"
                 label="Email"
-                placeholder="Entre votre email"
+                value={formData.email}
                 updateData={updateData}
+                validate={(val: string) => validateEmail(val)}
             />
+
             <CustomInput
                 inputId="password"
                 type="password"
+                value={formData.password}
                 label="Mot de passe"
-                placeholder="Entre votre mot de passe"
                 updateData={updateData}
+                validate={(val: string) => validatePassword(val)}
             />
             <CustomInput
                 inputId="passwordConfirmation"
                 type="password"
+                value={formData.passwordConfirmation}
                 label="Confirmation du mot de passe"
-                placeholder="Entre votre mot de passe"
                 updateData={updateData}
+                validate={(val: string) =>
+                    validatePasswordConfirmation(val, formData.password)
+                }
             />
-            <View style={styles.containerBtn}>
-                <TouchableOpacity
-                    onPress={() =>
-                        navigation.navigate("SignUpEndScreen", { formData })
-                    }
-                >
-                    {noError && (
-                        <CustomButton>
-                            Suivant
-                            <MaterialCommunityIcons
-                                name="arrow-right-thin"
-                                size={20}
-                                color={colors.black}
-                            />
-                        </CustomButton>
-                    )}
-                </TouchableOpacity>
-            </View>
+            <View style={styles.containerBtn}>{button}</View>
         </View>
     );
 };

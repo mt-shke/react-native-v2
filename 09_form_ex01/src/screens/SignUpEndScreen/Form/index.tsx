@@ -18,13 +18,14 @@ const SignUpEndForm: React.FC = (props) => {
         >();
     const route =
         useRoute<RouteProp<SignUpStackParamList, "SignUpEndScreen">>();
-    const { formData: data } = route.params;
+    const data = route.params?.formData;
     // const {formData, setFormData} = useFormData()
     const [formData, setFormData] = useState({});
 
     useEffect(() => {
-        if (!formData) {
-            setFormData({ data });
+        if (!formData && data) {
+            console.log("in cl");
+            setFormData(data);
         }
     }, []);
 
@@ -35,7 +36,6 @@ const SignUpEndForm: React.FC = (props) => {
         setFormData(newData);
     };
 
-    console.log(formData);
     return (
         <View style={styles.form}>
             <SelectInputCivility />

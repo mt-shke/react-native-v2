@@ -12,14 +12,23 @@ export interface IUser {
     birthdate: string;
 }
 
+// SignIn Credentials
+
+export interface ICredentials {
+    email: string;
+    password: string;
+}
+
+// Form
+
 export interface IFormData {
-    email?: string;
-    password?: string;
-    passwordConfirmation?: string;
-    civility?: string;
-    firstname?: string;
-    lastname?: string;
-    birthdate?: string;
+    email: string;
+    password: string;
+    passwordConfirmation: string;
+    civility: string;
+    firstname: string;
+    lastname: string;
+    birthdate: string;
 }
 
 export interface IFormDataSignUpEndScreen {

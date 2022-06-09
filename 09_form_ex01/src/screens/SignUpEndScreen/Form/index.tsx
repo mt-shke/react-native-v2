@@ -4,12 +4,17 @@ import CustomInput from "../../../components/UI/CustomInput";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootstackParamList, SignUpStackParamList } from "../../../ts/types";
-import DateTimePicker from "../../../components/UI/CustomInput/DateTimePicker";
-import DateInput from "../../../components/UI/CustomInput/DateInput";
 import SelectInputCivility from "../../../components/UI/SelectInputCivility";
-import useFormData from "../../../hooks/useFormData";
-import { IData } from "../../../ts/interfaces";
+import { IData, IFormData } from "../../../ts/interfaces";
 import { useEffect, useState } from "react";
+import {
+    validateBirthdate,
+    validateCivility,
+    validateEmail,
+    validateName,
+    validatePasswordConfirmation,
+} from "../../../utils";
+import DateInput from "../../../components/UI/DateInput";
 
 const SignUpEndForm: React.FC = (props) => {
     const navigation =
@@ -18,47 +23,71 @@ const SignUpEndForm: React.FC = (props) => {
         >();
     const route =
         useRoute<RouteProp<SignUpStackParamList, "SignUpEndScreen">>();
-    const data = route.params?.formData;
-    // const {formData, setFormData} = useFormData()
-    const [formData, setFormData] = useState({});
+    const routeFormData = route.params.formData;
+    const [formData, setFormData] = useState<IFormData>(routeFormData);
 
-    useEffect(() => {
-        if (!formData && data) {
-            console.log("in cl");
-            setFormData(data);
-        }
-    }, []);
+    const formIsValid =
+        validateEmail(formData.email) &&
+        validatePasswordConfirmation(
+            formData.password,
+            formData.passwordConfirmation
+        ) &&
+        validateName(formData.firstname) &&
+        validateName(formData.lastname) &&
+        validateCivility(formData.civility) &&
+        validateBirthdate(formData.birthdate);
+
+    useEffect(() => {}, [formIsValid, formData]);
 
     const updateData = (data: IData) => {
         const inputId = Object.keys(data)[0];
         const inputValue = Object.values(data)[0];
         const newData = { ...formData, [inputId]: inputValue };
-        setFormData(newData);
+        setFormData((prev) => newData);
     };
 
     return (
         <View style={styles.form}>
-            <SelectInputCivility />
+            <SelectInputCivility
+                updateData={updateData}
+                value={formData.civility}
+            />
             <CustomInput
                 inputId="firstname"
                 label="Prénom"
-                placeholder="Entrez votre prénom"
+                value={formData.firstname}
                 updateData={updateData}
+                validate={(val: string) => validateName(val)}
             />
             <CustomInput
-                inputId="lastName"
-                label="Nom"
-                placeholder="Entrez votre nom"
+                inputId="lastname"
+                label="Prénom"
+                value={formData.lastname}
                 updateData={updateData}
+                validate={(val: string) => validateName(val)}
             />
 
-            <DateInput inputId="date" label="Date de naissance" />
+            <DateInput
+                inputId="date"
+                label="Date de naissance"
+                value={formData.birthdate}
+                updateData={updateData}
+            />
             <View style={styles.containerBtn}>
-                <TouchableOpacity
-                    onPress={() => navigation.replace("SuccessScreen")}
-                >
-                    <CustomButton>Terminer</CustomButton>
-                </TouchableOpacity>
+                {formIsValid && (
+                    <TouchableOpacity
+                        onPress={() =>
+                            navigation.replace("SuccessScreen", { formData })
+                        }
+                    >
+                        <CustomButton>Terminer</CustomButton>
+                    </TouchableOpacity>
+                )}
+                {!formIsValid && (
+                    <TouchableOpacity onPress={() => {}}>
+                        <CustomButton color="white">Valider</CustomButton>
+                    </TouchableOpacity>
+                )}
             </View>
         </View>
     );

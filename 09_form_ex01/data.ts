@@ -24,3 +24,13 @@ export const users = [
         birthdate: "7/6/2002",
     },
 ];
+
+export const defaultFormData = {
+    email: "",
+    password: "",
+    passwordConfirmation: "",
+    firstname: "",
+    lastname: "",
+    civility: "",
+    birthdate: "",
+};

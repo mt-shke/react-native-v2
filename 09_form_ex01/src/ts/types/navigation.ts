@@ -7,7 +7,7 @@ export type RootstackParamList = {
     HomeScreen: undefined;
     SignInScreen: undefined;
     SignUpStack: undefined;
-    SuccessScreen: undefined;
+    SuccessScreen: { formData: IFormData };
 };
 
 export type SignUpStackParamList = {

@@ -3,12 +3,15 @@ import { StyleSheet, View, Text, Pressable } from "react-native";
 import { colors } from "../../globals";
 import { globalStyles } from "../../globals/globalStyles";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import { IData } from "../../ts/interfaces";
 
 interface ICustomSelectInputProps {
     inputId: string;
     label?: string;
     options: string[];
     placeholder?: string;
+    updateData: (val: IData) => void;
+    value: string;
 }
 
 const CustomSelectInput: React.FC<ICustomSelectInputProps> = ({
@@ -16,18 +19,23 @@ const CustomSelectInput: React.FC<ICustomSelectInputProps> = ({
     label,
     options,
     placeholder,
+    updateData,
+    value,
 }) => {
     const [inputValue, setInputValue] = useState<string>("");
     const [error, setError] = useState<boolean>(false);
     const [modal, setModal] = useState(false);
 
     useEffect(() => {
-        if (placeholder) {
-            setInputValue(placeholder);
+        if (value.length) {
+            setInputValue(value);
         }
     }, []);
 
-    const checkValue = () => {};
+    const setValueHandler = (val: string) => {
+        setInputValue(val);
+        updateData({ [inputId]: val });
+    };
 
     return (
         <View style={styles.container}>
@@ -67,7 +75,7 @@ const CustomSelectInput: React.FC<ICustomSelectInputProps> = ({
                     <SelectOptionsModal
                         options={options}
                         setModal={setModal}
-                        setValue={setInputValue}
+                        setValue={setValueHandler}
                     />
                 )}
             </View>

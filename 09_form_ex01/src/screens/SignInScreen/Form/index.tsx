@@ -45,10 +45,7 @@ const SignInForm: React.FC = (props) => {
             setErrorMessage("Mot de passe incorrect");
             return;
         }
-
-        navigation.navigate("SuccessScreen");
     };
-    console.log(errorMessage);
 
     return (
         <View style={styles.form}>
@@ -78,7 +75,7 @@ const SignInForm: React.FC = (props) => {
                     <Text style={styles.errorMsg}>{errorMessage}</Text>
                 </View>
             ) : (
-                ""
+                <></>
             )}
         </View>
     );

@@ -1,30 +1,36 @@
 import { useEffect, useState } from "react";
 import { StyleSheet, View, Text, Pressable } from "react-native";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import { colors, globalStyles } from "../../../globals";
-import DateTimePicker from "./DateTimePicker";
+import { colors, globalStyles } from "../../globals";
+import { IData } from "../../ts/interfaces";
+import DateTimePicker from "./CustomInput/DateTimePicker";
 
 interface IDateInputProps {
     inputId: string;
     label?: string;
-    placeholder?: string;
+    value: string;
+    updateData: (val: IData) => void;
 }
 
 const DateInput: React.FC<IDateInputProps> = ({
     inputId,
     label,
-    placeholder,
+    value,
+    updateData,
 }) => {
     const [inputValue, setInputValue] = useState<string>("");
     const [error, setError] = useState<boolean>(false);
 
     useEffect(() => {
-        // if (placeholder) {
-        //     setInputValue(placeholder);
-        // }
+        if (value.length) {
+            setInputValue(value);
+        }
     }, []);
 
-    const checkValue = () => {};
+    const setValueHandler = (val: string) => {
+        setInputValue(val);
+        updateData({ [inputId]: val });
+    };
 
     return (
         <View style={styles.container}>
@@ -52,7 +58,7 @@ const DateInput: React.FC<IDateInputProps> = ({
                 >
                     {inputValue}
                 </Text>
-                <DateTimePicker setValue={setInputValue} />
+                <DateTimePicker setValue={setValueHandler} />
             </View>
         </View>
     );

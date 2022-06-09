@@ -7,18 +7,13 @@ import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { SignUpStackParamList } from "../../../ts/types";
 import { useEffect, useState } from "react";
-import {
-    IData,
-    IFormData,
-    IFormDataSignUpEndScreen,
-} from "../../../ts/interfaces";
-import validator from "validator";
+import { IData, IFormData } from "../../../ts/interfaces";
 import {
     validateEmail,
-    validateLength,
     validatePassword,
     validatePasswordConfirmation,
 } from "../../../utils";
+import { defaultFormData } from "../../../../data";
 
 const SignUpForm: React.FC = (props) => {
     const navigation =
@@ -27,16 +22,6 @@ const SignUpForm: React.FC = (props) => {
         >();
     const route =
         useRoute<RouteProp<SignUpStackParamList, "SignUpEndScreen">>();
-    const defaultFormData = {
-        email: "",
-        password: "",
-        passwordConfirmation: "",
-        civility: "",
-        firstname: "",
-        lastname: "",
-        birthdate: "",
-    };
-
     const routeFormData = route.params?.formData;
     const [formData, setFormData] = useState<IFormData>(defaultFormData);
 
@@ -91,7 +76,6 @@ const SignUpForm: React.FC = (props) => {
         <View style={styles.form}>
             <CustomInput
                 inputId="email"
-                type="email"
                 label="Email"
                 value={formData.email}
                 updateData={updateData}
@@ -100,7 +84,6 @@ const SignUpForm: React.FC = (props) => {
 
             <CustomInput
                 inputId="password"
-                type="password"
                 value={formData.password}
                 label="Mot de passe"
                 updateData={updateData}
@@ -108,7 +91,6 @@ const SignUpForm: React.FC = (props) => {
             />
             <CustomInput
                 inputId="passwordConfirmation"
-                type="password"
                 value={formData.passwordConfirmation}
                 label="Confirmation du mot de passe"
                 updateData={updateData}

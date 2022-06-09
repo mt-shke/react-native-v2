@@ -1,8 +1,11 @@
 import validator from "validator";
+import { userCivilityType } from "../ts/interfaces";
 
-export const validateLength = (value: string) => {
-    return validator.isLength(value, { min: 6, max: 40 });
+export const validateLength = (value: string, min?: number, max?: number) => {
+    return validator.isLength(value, { min: min ?? 6, max: max ?? 40 });
 };
+
+// Input validation
 
 export const validateEmail = (value: string) => {
     return validator.isEmail(value) && validateLength(value);
@@ -19,4 +22,17 @@ export const validatePasswordConfirmation = (
     const passwordsAreValids =
         validatePassword(firstPassword) && validatePassword(secondPassword);
     return passwordsAreValids && firstPassword === secondPassword;
+};
+
+export const validateName = (value: string) => {
+    return validateLength(value, 1, 50);
+};
+
+export const validateCivility = (value: string) => {
+    // To do compare typeof
+    return ["Monsieur", "Madama", "Mademoiselle"].includes(value);
+};
+
+export const validateBirthdate = (val: string) => {
+    return true;
 };

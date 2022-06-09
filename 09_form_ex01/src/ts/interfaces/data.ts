@@ -2,11 +2,13 @@ export interface IData {
     [inputId: string]: string;
 }
 
+export type userCivilityType = "Monsieur" | "Madama" | "Mademoiselle";
+
 export interface IUser {
     email: string;
     password: string;
     passwordConfirmation: string;
-    civility: string;
+    civility: userCivilityType | "";
     firstname: string;
     lastname: string;
     birthdate: string;
@@ -31,12 +33,12 @@ export interface IFormData {
     birthdate: string;
 }
 
-export interface IFormDataSignUpEndScreen {
-    email: string;
-    password: string;
-    passwordConfirmation: string;
-    civility?: string;
-    firstname?: string;
-    lastname?: string;
-    birthdate?: string;
-}
+// export interface IFormDataSignUpEndScreen {
+//     email: string;
+//     password: string;
+//     passwordConfirmation: string;
+//     civility?: string;
+//     firstname?: string;
+//     lastname?: string;
+//     birthdate?: string;
+// }

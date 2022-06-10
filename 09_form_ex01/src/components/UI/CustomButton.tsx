@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Text, StyleSheet } from "react-native";
+import { Text, StyleSheet, View } from "react-native";
 import { colors } from "../../globals";
 import { globalStyles } from "../../globals/globalStyles";
 
@@ -15,34 +15,49 @@ const CustomButton: React.FC<ICustomButtonProps> = ({
     children,
 }) => {
     if (color === "white") {
-        const whiteBtnStyle = {
-            color: colors.black,
-            backgroundColor: colors.background,
-            fontFamily: globalStyles.fontBangers,
-        };
         return (
-            <Text style={{ ...styles.btn, ...whiteBtnStyle }}>{children}</Text>
+            <View
+                style={{
+                    ...styles.container,
+                    backgroundColor: colors.background,
+                }}
+            >
+                <Text style={{ ...styles.text, color: colors.black }}>
+                    {textContent}
+                </Text>
+                {children}
+            </View>
         );
     }
 
-    return <Text style={styles.btn}>{children}</Text>;
+    return (
+        <View style={styles.container}>
+            <Text style={styles.text}>{textContent}</Text>
+            {children}
+        </View>
+    );
 };
 
 export default CustomButton;
 
 const styles = StyleSheet.create({
-    btn: {
+    container: {
+        flexDirection: "row",
         backgroundColor: colors.orange,
-        color: colors.black,
-        paddingVertical: 10,
-        fontWeight: "bold",
-        fontSize: globalStyles.fontSize,
+        paddingVertical: 4,
         borderRadius: 20,
         marginBottom: 26,
         width: "100%",
-        textAlign: "center",
-        borderWidth: 1,
+        borderWidth: 2,
         borderColor: colors.black,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    text: {
+        color: colors.black,
+        fontSize: globalStyles.fontSizeTitle,
         fontFamily: globalStyles.fontBangers,
+        letterSpacing: 6,
+        paddingHorizontal: 10,
     },
 });

@@ -66,7 +66,7 @@ const SignInForm: React.FC = (props) => {
             />
             <TouchableOpacity onPress={() => checkUser(credentials)}>
                 <View style={styles.containerBtn}>
-                    <CustomButton>Se connecter</CustomButton>
+                    <CustomButton textContent="Connection" />
                 </View>
             </TouchableOpacity>
             {message ? (
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 14,
     },
     containerBtn: {
-        width: 150,
+        width: 240,
         alignSelf: "center",
         marginTop: 40,
     },

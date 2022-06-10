@@ -62,6 +62,9 @@ const CustomInput: React.FC<ICustomInputProps> = ({
             </Text>
             <View style={styles.containerInput}>
                 <TextInput
+                    keyboardType={
+                        inputId === "email" ? "email-address" : "default"
+                    }
                     secureTextEntry={!isValueVisible}
                     onChangeText={onChangeHandler}
                     onBlur={onBlurHandler}
@@ -105,16 +108,19 @@ const styles = StyleSheet.create({
     label: {
         fontSize: globalStyles.fontSize,
         marginBottom: 8,
+        fontFamily: globalStyles.fontGrobold,
     },
     containerInput: {
         justifyContent: "center",
     },
     input: {
-        borderWidth: 1,
+        borderWidth: 2,
         borderColor: colors.black,
         borderRadius: 8,
         paddingVertical: 4,
         paddingHorizontal: 12,
+        fontFamily: globalStyles.fontLemon,
+        letterSpacing: 1,
     },
     eye: {
         position: "absolute",

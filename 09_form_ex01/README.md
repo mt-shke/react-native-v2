@@ -2,11 +2,6 @@
 <summary>Todo</summary>
 
 ```js
-// style
-// image
-// button suivant arrow
-
-// need onBlur fix
 // refac updateData
 ```
 
@@ -66,6 +61,44 @@ app.json
     // where each colors start
     locations={[0, 1]}
 />
+```
+
+</details>
+
+<details>
+<summary>Input keyboard type</summary>
+
+```js
+//   <TextInput
+//   keyboardType={type === "email" ? "email-address" : "default"}
+```
+
+```js
+// default
+// number-pad
+// decimal-pad
+// numeric
+// email-address
+// phone-pad
+// url
+```
+
+iOs only
+
+```js
+// ascii-capable
+// numbers-and-punctuation
+// name-phone-pad
+// twitter
+// web-search
+```
+
+</details>
+<details>
+<summary>Moment js</summary>
+
+```js
+// https://momentjs.com/
 ```
 
 </details>

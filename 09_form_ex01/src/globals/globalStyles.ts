@@ -7,6 +7,7 @@ export const globalStyles = {
     fontJustBuble: "just-buble-regular",
     fontLikeEat: "like-eat-regular",
     fontBangers: "Bangers-Regular",
+    fontLemon: "lemon-friday-regular",
 };
 
 export const screenOptions: NativeStackNavigationOptions = {

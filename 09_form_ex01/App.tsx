@@ -10,6 +10,7 @@ export default function App() {
         "just-buble-regular": require("./assets/fonts/just-buble-regular.ttf"),
         "like-eat-regular": require("./assets/fonts/like-eat-regular.ttf"),
         "Bangers-Regular": require("./assets/fonts/Bangers-Regular.ttf"),
+        "lemon-friday-regular": require("./assets/fonts/lemon-friday-regular.ttf"),
     });
 
     if (!loaded) {

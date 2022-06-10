@@ -1,4 +1,9 @@
-import { View, StyleSheet, TouchableOpacity, Pressable } from "react-native";
+import {
+    View,
+    StyleSheet,
+    TouchableOpacity,
+    ImageBackground,
+} from "react-native";
 import CustomButton from "../../../components/UI/CustomButton";
 import CustomInput from "../../../components/UI/CustomInput";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
@@ -14,6 +19,7 @@ import {
     validatePasswordConfirmation,
 } from "../../../utils";
 import { defaultFormData } from "../../../../data";
+import { LinearGradient } from "expo-linear-gradient";
 
 const SignUpForm: React.FC = (props) => {
     const navigation =
@@ -55,15 +61,14 @@ const SignUpForm: React.FC = (props) => {
 
     let button = (
         <TouchableOpacity onPress={nextButtonHandler}>
-            <CustomButton color="white">Valider</CustomButton>
+            <CustomButton color="white" textContent="Valider" />
         </TouchableOpacity>
     );
 
     if (formIsValid) {
         button = (
             <TouchableOpacity onPress={nextButtonHandler}>
-                <CustomButton>
-                    Suivant
+                <CustomButton textContent="Suivant">
                     <MaterialCommunityIcons
                         name="arrow-right-thin"
                         size={20}
@@ -112,10 +117,20 @@ export default SignUpForm;
 const styles = StyleSheet.create({
     form: {
         paddingHorizontal: 14,
+        paddingTop: 50,
+        backgroundColor: colors.background,
     },
     containerBtn: {
         width: 150,
         alignSelf: "center",
         marginTop: 40,
+    },
+    bg: {
+        height: 300,
+        width: "100%",
+    },
+    overlay: {
+        height: "100%",
+        width: "100%",
     },
 });

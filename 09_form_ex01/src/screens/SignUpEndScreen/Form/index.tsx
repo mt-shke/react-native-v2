@@ -80,12 +80,12 @@ const SignUpEndForm: React.FC = (props) => {
                             navigation.replace("SuccessScreen", { formData })
                         }
                     >
-                        <CustomButton>Terminer</CustomButton>
+                        <CustomButton textContent="Terminer" />
                     </TouchableOpacity>
                 )}
                 {!formIsValid && (
                     <TouchableOpacity onPress={() => {}}>
-                        <CustomButton color="white">Valider</CustomButton>
+                        <CustomButton color="white" textContent="Valider" />
                     </TouchableOpacity>
                 )}
             </View>

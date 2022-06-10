@@ -20,12 +20,12 @@ const Footer: React.FC = (props) => {
                 <TouchableOpacity
                     onPress={() => navigation.navigate("SignInScreen")}
                 >
-                    <CustomButton>Se connecter</CustomButton>
+                    <CustomButton textContent="Connection" />
                 </TouchableOpacity>
                 <TouchableOpacity
                     onPress={() => navigation.navigate("SignUpStack")}
                 >
-                    <CustomButton color="white">S'inscrire</CustomButton>
+                    <CustomButton color="white" textContent="Nous rejoindre!" />
                 </TouchableOpacity>
             </View>
         </View>
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     },
     containerBtn: {
         marginTop: 30,
-        width: 200,
+        width: 280,
         alignSelf: "center",
     },
     welcome: {

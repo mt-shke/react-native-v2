@@ -20,8 +20,6 @@ const DateTimePicker: React.FC<IDateTimePickerProps> = ({ setValue }) => {
         setDatePickerVisibility(false);
     };
 
-    
-
     const handleConfirm = (date: Date) => {
         // const options = {
         //     weekday: "long",
@@ -77,7 +75,7 @@ const styles = StyleSheet.create({
         position: "relative",
     },
     input: {
-        borderWidth: 1,
+        borderWidth: 2,
         borderColor: colors.black,
         borderRadius: 8,
         paddingVertical: 10,

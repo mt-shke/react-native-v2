@@ -1,12 +1,10 @@
 import validator from "validator";
-import { userCivilityType } from "../ts/interfaces";
 
 export const validateLength = (value: string, min?: number, max?: number) => {
     return validator.isLength(value, { min: min ?? 6, max: max ?? 40 });
 };
 
 // Input validation
-
 export const validateEmail = (value: string) => {
     return validator.isEmail(value) && validateLength(value);
 };

@@ -69,7 +69,7 @@ const CustomInput: React.FC<ICustomInputProps> = ({
                     numberOfLines={1}
                     blurOnSubmit={true}
                     placeholder={
-                        value?.length
+                        value.length
                             ? value
                             : `Entrez votre ${label.toLowerCase()}`
                     }
@@ -99,7 +99,7 @@ export default CustomInput;
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: colors.background,
+        backgroundColor: colors.transparent,
         marginBottom: 20,
     },
     label: {

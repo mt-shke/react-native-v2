@@ -4,7 +4,7 @@ const Header: React.FC = (props) => {
     return (
         <View style={styles.container}>
             <Image
-                source={require("../../../../assets/img/logo.png")}
+                source={require("../../../../assets/img/logot2.png")}
                 style={styles.logo}
             />
         </View>

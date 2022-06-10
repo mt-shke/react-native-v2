@@ -13,8 +13,7 @@ const CustomButton: React.FC<ICustomButtonProps> = ({ color, children }) => {
         const whiteBtnStyle = {
             color: colors.black,
             backgroundColor: colors.background,
-            borderWidth: 1,
-            borderColor: colors.black,
+            fontFamily: globalStyles.fontBangers,
         };
         return (
             <Text style={{ ...styles.btn, ...whiteBtnStyle }}>{children}</Text>
@@ -37,5 +36,8 @@ const styles = StyleSheet.create({
         marginBottom: 26,
         width: "100%",
         textAlign: "center",
+        borderWidth: 1,
+        borderColor: colors.black,
+        fontFamily: globalStyles.fontBangers,
     },
 });

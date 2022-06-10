@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
         justifyContent: "flex-end",
     },
     logo: {
-        marginBottom: 50,
         width: 250,
         height: 250,
         resizeMode: "contain",

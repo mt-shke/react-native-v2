@@ -13,11 +13,10 @@ const Footer: React.FC = (props) => {
 
     return (
         <View style={styles.container}>
+            <Text style={styles.welcome} numberOfLines={1}>
+                Welcome friend
+            </Text>
             <View style={styles.containerBtn}>
-                <Text style={styles.welcome} numberOfLines={1}>
-                    Welcome friend!
-                </Text>
-
                 <TouchableOpacity
                     onPress={() => navigation.navigate("SignInScreen")}
                 >
@@ -38,16 +37,18 @@ export default Footer;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        justifyContent: "center",
     },
-
     containerBtn: {
-        marginTop: 50,
+        marginTop: 30,
         width: 200,
         alignSelf: "center",
     },
     welcome: {
+        marginBottom: 50,
         fontFamily: globalStyles.fontBangers,
-        fontSize: 28,
+        fontSize: 32,
         letterSpacing: 8,
+        alignSelf: "center",
     },
 });

@@ -5,10 +5,15 @@ import { globalStyles } from "../../globals/globalStyles";
 
 interface ICustomButtonProps {
     color?: "white";
-    children?: ReactNode;
+    children?: ReactNode | string;
+    textContent: string;
 }
 
-const CustomButton: React.FC<ICustomButtonProps> = ({ color, children }) => {
+const CustomButton: React.FC<ICustomButtonProps> = ({
+    color,
+    textContent,
+    children,
+}) => {
     if (color === "white") {
         const whiteBtnStyle = {
             color: colors.black,

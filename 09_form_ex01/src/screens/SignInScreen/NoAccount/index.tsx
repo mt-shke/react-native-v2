@@ -29,6 +29,6 @@ const styles = StyleSheet.create({
         marginTop: 40,
     },
     link: {
-        color: colors.yellow,
+        color: colors.brown,
     },
 });

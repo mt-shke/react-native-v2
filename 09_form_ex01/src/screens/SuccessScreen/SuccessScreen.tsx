@@ -9,6 +9,8 @@ const SuccessScreen: React.FC = ({}) => {
     const { firstname, lastname, birthDate, civility, email } =
         route.params.formData;
 
+    console.log(firstname, lastname, birthDate, civility, email);
+
     return (
         <View style={styles.container}>
             <Text>SUCCESS!!</Text>

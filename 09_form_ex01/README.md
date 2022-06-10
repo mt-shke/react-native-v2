@@ -5,6 +5,9 @@
 // style
 // image
 // button suivant arrow
+
+// need onBlur fix
+// refac updateData
 ```
 
 </details>

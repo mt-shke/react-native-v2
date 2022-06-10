@@ -1,5 +1,5 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { IFormData, IFormDataSignUpEndScreen } from "../interfaces";
+import { IFormData } from "../interfaces";
 
 // STACKS
 
@@ -12,7 +12,7 @@ export type RootstackParamList = {
 
 export type SignUpStackParamList = {
     SignUpScreen: { formData?: IFormData };
-    SignUpEndScreen: { formData: IFormDataSignUpEndScreen };
+    SignUpEndScreen: { formData: IFormData };
 };
 
 // SCREENS Props

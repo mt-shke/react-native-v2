@@ -1,5 +1,3 @@
-import { useNavigation } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { users } from "../../../../data";
@@ -7,19 +5,21 @@ import CustomButton from "../../../components/UI/CustomButton";
 import CustomInput from "../../../components/UI/CustomInput";
 import { colors, globalStyles } from "../../../globals";
 import { ICredentials, IData } from "../../../ts/interfaces";
-import { RootstackParamList } from "../../../ts/types";
+// import { RootstackParamList } from "../../../ts/types";
+// import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+// import { useNavigation } from "@react-navigation/native";
 
 const SignInForm: React.FC = (props) => {
-    const navigation =
-        useNavigation<
-            NativeStackNavigationProp<RootstackParamList, "SignInScreen">
-        >();
+    // const navigation =
+    //     useNavigation<
+    //         NativeStackNavigationProp<RootstackParamList, "SignInScreen">
+    //     >();
 
     const [credentials, setCredentials] = useState<ICredentials>({
         email: "",
         password: "",
     });
-    const [errorMessage, setErrorMessage] = useState<string>("");
+    const [message, setMessage] = useState<string>("");
 
     const updateData = (data: IData) => {
         const inputId = Object.keys(data)[0];
@@ -33,18 +33,18 @@ const SignInForm: React.FC = (props) => {
             (user) => user.email === credentials?.email.trim()
         );
         if (!foundUser) {
-            // console.log(credentials.email);
-            setErrorMessage("Email invalide");
+            setMessage("Email invalide");
             return;
         }
 
         const passwordsMatch =
             foundUser.password === credentials?.password.trim();
         if (!passwordsMatch) {
-            // console.log(credentials.password);
-            setErrorMessage("Mot de passe incorrect");
+            setMessage("Mot de passe incorrect");
             return;
         }
+
+        setMessage("Credentials Ok!");
     };
 
     return (
@@ -69,9 +69,19 @@ const SignInForm: React.FC = (props) => {
                     <CustomButton>Se connecter</CustomButton>
                 </View>
             </TouchableOpacity>
-            {errorMessage ? (
+            {message ? (
                 <View style={styles.containerError}>
-                    <Text style={styles.errorMsg}>{errorMessage}</Text>
+                    <Text
+                        style={{
+                            ...styles.errorMsg,
+                            color:
+                                message === "Credentials Ok!"
+                                    ? colors.green
+                                    : colors.orange,
+                        }}
+                    >
+                        {message}
+                    </Text>
                 </View>
             ) : (
                 <></>

@@ -1,15 +1,13 @@
 import { useEffect, useState } from "react";
 import { StyleSheet, View, Text, Pressable } from "react-native";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { colors, globalStyles } from "../../globals";
 import { IData } from "../../ts/interfaces";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
-
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 interface IDateInputProps {
     inputId: string;
-    label?: string;
+    label: string;
     value: string;
     updateData: (val: IData) => void;
 }
@@ -33,7 +31,6 @@ const DateInput: React.FC<IDateInputProps> = ({
     // Set State
     const setValueHandler = (val: string) => {
         setInputValue(val);
-
         updateData({ [inputId]: val });
     };
 
@@ -41,26 +38,13 @@ const DateInput: React.FC<IDateInputProps> = ({
     const showDatePicker = () => {
         setDatePickerVisibility(true);
     };
-
     const hideDatePicker = () => {
         setDatePickerVisibility(false);
     };
 
+    // On confirm date
     const handleConfirm = (date: Date) => {
-        // const options = {
-        //     weekday: "long",
-        //     year: "numeric",
-        //     month: "long",
-        //     day: "numeric",
-        // };
-
         const dateFr = date.toLocaleDateString("fr-FR");
-        // const dateFr = date.toLocaleDateString("fr-FR", options);
-        // const dateFr = new Intl.DateTimeFormat("fr-FR", {
-        //     month: "long",
-        //     day: "numeric",
-        // }).format(date);
-
         setValueHandler(dateFr);
         hideDatePicker();
     };
@@ -71,8 +55,6 @@ const DateInput: React.FC<IDateInputProps> = ({
             <Pressable onPress={showDatePicker}>
                 <View style={styles.containerInput}>
                     <Text
-                        // onBlur={checkValue}
-                        // value={inputValue}
                         numberOfLines={1}
                         ellipsizeMode={"tail"}
                         style={styles.input}
@@ -84,7 +66,6 @@ const DateInput: React.FC<IDateInputProps> = ({
                             name={"md-calendar-outline"}
                             color={colors.black}
                             size={globalStyles.fontSize}
-                            // size={32}
                             style={styles.icon}
                         />
                         <DateTimePickerModal
@@ -103,7 +84,6 @@ const DateInput: React.FC<IDateInputProps> = ({
 export default DateInput;
 
 const styles = StyleSheet.create({
-    // Select Input
     container: {
         marginBottom: 20,
     },
@@ -113,7 +93,6 @@ const styles = StyleSheet.create({
     },
     containerInput: {
         position: "relative",
-        // justifyContent: "flex-end",
     },
     input: {
         borderWidth: 1,
@@ -127,8 +106,6 @@ const styles = StyleSheet.create({
         right: 0,
         padding: 12,
     },
-
-    // Date
     containerDate: {
         position: "absolute",
         right: 0,

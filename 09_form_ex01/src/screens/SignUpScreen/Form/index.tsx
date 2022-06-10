@@ -23,7 +23,9 @@ const SignUpForm: React.FC = (props) => {
     const route =
         useRoute<RouteProp<SignUpStackParamList, "SignUpEndScreen">>();
     const routeFormData = route.params?.formData;
-    const [formData, setFormData] = useState<IFormData>(defaultFormData);
+    const [formData, setFormData] = useState<IFormData>(
+        routeFormData ?? defaultFormData
+    );
 
     const formIsValid =
         validateEmail(formData.email) &&

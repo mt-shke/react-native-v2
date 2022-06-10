@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { StyleSheet, TextInput, View, Text } from "react-native";
-import validator from "validator";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import { colors, globalStyles } from "../../../globals";
-import { IData } from "../../../ts/interfaces";
+import { colors, globalStyles } from "../../globals";
+import { IData } from "../../ts/interfaces";
 
 interface ICustomInputProps {
     inputId: string;
@@ -32,11 +31,7 @@ const CustomInput: React.FC<ICustomInputProps> = ({
         if (type === "password") {
             setIsValueVisible(false);
         }
-
-        if (value.length) {
-            setInputValue(value);
-        }
-    }, [error]);
+    }, []);
 
     const onBlurHandler = () => {
         if (validationType === "change") {
@@ -76,7 +71,7 @@ const CustomInput: React.FC<ICustomInputProps> = ({
                     placeholder={
                         value?.length
                             ? value
-                            : `Entrez votre ${label?.toLowerCase()}`
+                            : `Entrez votre ${label.toLowerCase()}`
                     }
                     style={{
                         ...styles.input,
@@ -101,42 +96,6 @@ const CustomInput: React.FC<ICustomInputProps> = ({
 };
 
 export default CustomInput;
-
-// interface IDateInputProps {
-//     value:
-// }
-
-// const DateInput:React.FC = ( {value}) => {
-//     <>
-//     <Text
-//     secureTextEntry={!isValueVisible}
-//     onChangeText={(val: string) => setInputValue(val)}
-//     onBlur={checkValue}
-//     value={inputValue}
-//     numberOfLines={1}
-//     // blurOnSubmit={true}
-//     placeholder={placeholder}
-//     style={{
-//         ...styles.input,
-//         borderColor: error ? colors.brown : colors.black,
-//         backgroundColor: error
-//             ? colors.orange
-//             : colors.background,
-//     }}
-// >{value}</Text>
-// {type === "password" && (
-//     <Ionicons
-//         onPress={() => setIsValueVisible((p) => !p)}
-//         name={isValueVisible ? "eye-off" : "eye"}
-//         color={colors.black}
-//         size={globalStyles.fontSize}
-//         style={styles.eye}
-//     />
-//     </>
-
-// )}
-
-// }
 
 const styles = StyleSheet.create({
     container: {

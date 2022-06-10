@@ -32,13 +32,3 @@ export interface IFormData {
     lastname: string;
     birthDate: string;
 }
-
-// export interface IFormDataSignUpEndScreen {
-//     email: string;
-//     password: string;
-//     passwordConfirmation: string;
-//     civility?: string;
-//     firstname?: string;
-//     lastname?: string;
-//     birthDate?: string;
-// }

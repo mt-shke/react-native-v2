@@ -1,38 +1,36 @@
 import React from 'react';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
-import {
-  createNativeStackNavigator,
-  NativeStackNavigationOptions,
-} from '@react-navigation/native-stack';
 import AccountScreen from '../screens/AccountScreen';
 import StatsScreen from '../screens/StatsScreen';
-import HomeScreen from '../screens/HomeScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import {StyleSheet} from 'react-native';
+import {colors} from '../globals';
+import {screenOptions} from '../ts/types';
+import HomeStack from './HomeStack';
 // import AntDesign from 'react-native-vector-icons/AntDesign';
 
 export type RootStackParamsList = {
-  HomeScreen: undefined;
+  HomeStack: undefined;
   AccountScreen: undefined;
   StatsScreen: undefined;
 };
 
-// const Tab = createNativeStackNavigator<RootStackParamsList>();
 const Tab = createMaterialBottomTabNavigator<RootStackParamsList>();
 
 const RootStack: React.FC = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName="HomeScreen"
+        initialRouteName="HomeStack"
         activeColor={'white'}
         inactiveColor={'grey'}
-        barStyle={{backgroundColor: 'black'}}
+        barStyle={styles.bottomTab}
         screenOptions={screenOptions}>
         <Tab.Screen
-          name="HomeScreen"
-          component={HomeScreen}
+          name="HomeStack"
+          component={HomeStack}
           options={{
             tabBarLabel: 'Home',
             tabBarIcon: ({focused}) => (
@@ -81,6 +79,8 @@ const RootStack: React.FC = () => {
 };
 export default RootStack;
 
-const screenOptions: NativeStackNavigationOptions = {
-  headerShown: false,
-};
+const styles = StyleSheet.create({
+  bottomTab: {
+    backgroundColor: colors.background,
+  },
+});

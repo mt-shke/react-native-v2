@@ -21,6 +21,16 @@
 ```
 
 </details>
+
+<details>
+<summary>Setup</summary>
+
+```js
+// npm i @hookform/resolvers
+```
+
+</details>
+
 <details>
 <summary>Prettier Fix</summary>
 

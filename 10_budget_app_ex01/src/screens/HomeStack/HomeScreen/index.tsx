@@ -1,30 +1,31 @@
-import {View, Text, StyleSheet, Pressable} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+  Text,
+} from 'react-native';
 import React from 'react';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {HomeStackScreenParamList} from '../../../navigation/HomeStack';
 import Header from './header/Header';
+import LandingView from './components/LandingView';
+import UsersList from './components/UsersList';
+import {colors} from '../../../globals';
+import Transactions from './components/Transactions';
+import ContainerButton from './components/ContainerButton';
 
-export type IHomeScreenProps = NativeStackScreenProps<
-  HomeStackScreenParamList,
-  'HomeScreen'
->;
-
-const HomeScreen: React.FC<IHomeScreenProps> = ({navigation}) => {
+const HomeScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <Header />
-      <View style={styles.navbar}>
-        <Pressable onPress={() => navigation.navigate('IncomeScreen')}>
-          <View style={styles.button}>
-            <Text style={styles.link}>Incomes</Text>
-          </View>
-        </Pressable>
-        <Pressable onPress={() => navigation.navigate('ExpenseScreen')}>
-          <View style={styles.button}>
-            <Text style={styles.link}>Expenses</Text>
-          </View>
-        </Pressable>
-      </View>
+      <ScrollView>
+        <View style={styles.containerContent}>
+          <LandingView />
+          <UsersList />
+          <ContainerButton />
+        </View>
+        <View style={{height: 20}} />
+        <Transactions />
+      </ScrollView>
     </View>
   );
 };
@@ -36,20 +37,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
   },
-  navbar: {
-    width: '100%',
-    height: 70,
-    paddingVertical: 20,
-    paddingHorizontal: 50,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    backgroundColor: 'darkgrey',
-  },
-  button: {
-    borderColor: 'grey',
-  },
-  link: {
-    color: 'white',
-    fontSize: 18,
+  containerContent: {
+    padding: 20,
+    marginHorizontal: 20,
+    backgroundColor: colors.white,
+    borderRadius: 14,
+    overflow: 'hidden',
   },
 });

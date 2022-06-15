@@ -5,23 +5,33 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Header: React.FC = () => {
   return (
-    <View style={styles.container}>
-      <View style={styles.containerAvatar}>
-        <Image
-          style={styles.avatar}
-          source={{
-            uri: 'https://i.pravatar.cc/' + Math.ceil(Math.random() * 100),
-          }}
-        />
+    <>
+      <View style={styles.container}>
+        <View style={styles.containerAvatar}>
+          <Image
+            style={styles.avatar}
+            source={{
+              uri: 'https://i.pravatar.cc/' + Math.ceil(Math.random() * 100),
+            }}
+          />
+        </View>
+        <View style={styles.containerIcons}>
+          <Ionicons
+            style={styles.icon}
+            name={'search'}
+            color={colors.white}
+            size={24}
+          />
+          <Ionicons
+            style={styles.icon}
+            name={'notifications-outline'}
+            color={colors.white}
+            size={24}
+          />
+        </View>
       </View>
-
-      <Ionicons
-        // name={osIcon + "customerservice"}
-        name={'stats-chart'}
-        color={colors.grey}
-        size={20}
-      />
-    </View>
+      <View style={styles.containerBottom} />
+    </>
   );
 };
 
@@ -30,14 +40,30 @@ export default Header;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.blue,
-    height: 50,
-    paddingHorizontal: 10,
+    height: 80,
     flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 10,
   },
   containerAvatar: {},
+  containerIcons: {
+    flexDirection: 'row',
+  },
   avatar: {
     height: 40,
     width: 40,
     borderRadius: 50,
+  },
+  icon: {
+    paddingHorizontal: 6,
+  },
+  containerBottom: {
+    width: '100%',
+    backgroundColor: colors.blue,
+    height: 140,
+    borderRadius: 26,
+    position: 'absolute',
+    zIndex: -1,
   },
 });

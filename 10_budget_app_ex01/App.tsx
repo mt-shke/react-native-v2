@@ -24,7 +24,6 @@ import RootStack from './src/navigation/RootStack';
 
 const App = () => {
   // const isDarkMode = useColorScheme() === 'dark';
-
   // const backgroundStyle = {
   //   backgroundColor: 'black',
   //   flex: 1,

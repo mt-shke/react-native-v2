@@ -31,7 +31,7 @@ export const incomeSchema = object().shape({
   amount: number()
     .typeError('Must be a number')
     .min(0.01, 'Minimum amount is 0,01')
-    .max(999999, 'Maximum amount authorized is 1 000 000 €')
+    .max(999999, 'Maximum amount authorized is 999 999 €')
     .required('Amount is missing'),
   category: mixed()
     .required('Category is missing')
@@ -48,7 +48,7 @@ export const expenseSchema = object().shape({
   amount: number()
     .typeError('Must be a number')
     .min(0.01, 'Minimum amount is 0,01')
-    .max(999999, 'Maximum amount authorized is 1 000 000 €')
+    .max(999999, 'Maximum amount authorized is 999 999 €')
     .required('Amount is missing'),
   category: mixed()
     .required('Category is missing')

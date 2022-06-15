@@ -1,4 +1,4 @@
-import {object, string, number, date, mixed} from 'yup';
+import {object, string, number, mixed} from 'yup';
 
 export const expensesCategory = [
   'Alimentaire',
@@ -36,7 +36,7 @@ export const incomeSchema = object().shape({
   category: mixed()
     .required('Category is missing')
     .oneOf(Object.values(incomesCategory)),
-  // date: date().required('Date is missing'),
+  date: string().required('Date is missing'),
   comments: string(),
 });
 
@@ -53,6 +53,6 @@ export const expenseSchema = object().shape({
   category: mixed()
     .required('Category is missing')
     .oneOf(Object.values(expensesCategory)),
-  // date: date().required('Date is missing'),
+  date: string().required('Date is missing'),
   comments: string(),
 });

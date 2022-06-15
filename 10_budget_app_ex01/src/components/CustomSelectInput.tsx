@@ -56,8 +56,8 @@ const CustomSelectInput: React.FC<ICustomSelectInputProps> = ({
           )}
           name={name}
         />
-        {error && <Text style={styles.error}>{`${error.message}`}</Text>}
       </View>
+      {error && <Text style={styles.error}>{`${error.message}`}</Text>}
     </View>
   );
 };

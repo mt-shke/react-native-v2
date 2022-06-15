@@ -1,16 +1,18 @@
 import {View, Text, StyleSheet, Pressable} from 'react-native';
 import React from 'react';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {HomeStackScreenParamList} from '../navigation/HomeStack';
+import {HomeStackScreenParamList} from '../../../navigation/HomeStack';
+import Header from './header/Header';
 
-export type HomeScreenProps = NativeStackScreenProps<
+export type IHomeScreenProps = NativeStackScreenProps<
   HomeStackScreenParamList,
   'HomeScreen'
 >;
 
-const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
+const HomeScreen: React.FC<IHomeScreenProps> = ({navigation}) => {
   return (
     <View style={styles.container}>
+      <Header />
       <View style={styles.navbar}>
         <Pressable onPress={() => navigation.navigate('IncomeScreen')}>
           <View style={styles.button}>
@@ -32,7 +34,7 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
   },
   navbar: {
     width: '100%',

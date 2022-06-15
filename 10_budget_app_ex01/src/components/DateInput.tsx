@@ -3,6 +3,7 @@ import {Control, Controller} from 'react-hook-form';
 import {StyleSheet, View, Text, Pressable} from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import moment from 'moment';
 
 interface IDateInputProps {
   name: string;
@@ -23,15 +24,8 @@ const DateInput: React.FC<IDateInputProps> = ({
   error,
   control,
 }) => {
-  const [inputValue, setInputValue] = useState<string>('');
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
-  // Set State
-  //   const setValueHandler = (val: string) => {
-  //     setInputValue(val);
-  //   };
-
-  // Date Modal
   const showDatePicker = () => {
     setDatePickerVisibility(true);
   };
@@ -39,18 +33,9 @@ const DateInput: React.FC<IDateInputProps> = ({
     setDatePickerVisibility(false);
   };
 
-  // On confirm date
-  const handleConfirm = (date: Date) => {
-    const dateFr = date.toLocaleDateString('fr-FR');
-    console.log(dateFr);
-    //   setValueHandler(dateFr);
-    hideDatePicker();
-  };
-
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>
-
       <Pressable onPress={showDatePicker}>
         <Controller
           control={control}
@@ -75,7 +60,10 @@ const DateInput: React.FC<IDateInputProps> = ({
                 <DateTimePickerModal
                   isVisible={isDatePickerVisible}
                   mode="date"
-                  onConfirm={handleConfirm}
+                  onConfirm={(date: Date) => {
+                    onChange(moment(date).format('DD/MM/YYYY'));
+                    hideDatePicker();
+                  }}
                   onCancel={hideDatePicker}
                 />
               </View>
@@ -84,6 +72,7 @@ const DateInput: React.FC<IDateInputProps> = ({
           name={name}
         />
       </Pressable>
+      {error && <Text style={styles.error}>{`${error.message}`}</Text>}
     </View>
   );
 };
@@ -118,5 +107,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 0,
     padding: 10,
+  },
+  error: {
+    color: 'red',
+    fontSize: 12,
+    position: 'absolute',
+    right: 0,
+    fontStyle: 'italic',
   },
 });

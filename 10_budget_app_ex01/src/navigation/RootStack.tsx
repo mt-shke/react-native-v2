@@ -1,15 +1,14 @@
 import React from 'react';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
-import AccountScreen from '../screens/AccountScreen';
-import StatsScreen from '../screens/StatsScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {StyleSheet} from 'react-native';
 import {colors} from '../globals';
 import {screenOptions} from '../ts/types';
 import HomeStack from './HomeStack';
-// import AntDesign from 'react-native-vector-icons/AntDesign';
+import AccountScreen from '../screens/AccountScreen/AccountScreen';
+import StatsScreen from '../screens/StatsScreen/StatsScreen';
 
 export type RootStackParamsList = {
   HomeStack: undefined;
@@ -24,8 +23,8 @@ const RootStack: React.FC = () => {
     <NavigationContainer>
       <Tab.Navigator
         initialRouteName="HomeStack"
-        activeColor={'white'}
-        inactiveColor={'grey'}
+        activeColor={colors.blue}
+        inactiveColor={colors.grey}
         barStyle={styles.bottomTab}
         screenOptions={screenOptions}>
         <Tab.Screen
@@ -37,7 +36,7 @@ const RootStack: React.FC = () => {
               <Ionicons
                 // name={osIcon + "apps"}
                 name={'home'}
-                color={focused ? 'white' : 'grey'}
+                color={focused ? colors.blue : colors.grey}
                 size={20}
               />
             ),
@@ -52,7 +51,7 @@ const RootStack: React.FC = () => {
               <AntDesign
                 // name={osIcon + "airplane"}
                 name={'profile'}
-                color={focused ? 'white' : 'grey'}
+                color={focused ? colors.blue : colors.grey}
                 size={20}
               />
             ),
@@ -67,7 +66,7 @@ const RootStack: React.FC = () => {
               <Ionicons
                 // name={osIcon + "customerservice"}
                 name={'stats-chart'}
-                color={focused ? 'white' : 'grey'}
+                color={focused ? colors.blue : colors.grey}
                 size={20}
               />
             ),

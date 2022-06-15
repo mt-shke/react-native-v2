@@ -11,6 +11,7 @@ import {
   incomeSchema,
 } from '../schema/payment';
 import DateInput from './DateInput';
+import {payment} from '../ts/interfaces';
 
 export interface IFormProps {
   schema?: 'expense';
@@ -25,9 +26,8 @@ const Form: React.FC<IFormProps> = ({schema}) => {
     resolver: yupResolver(schema === 'expense' ? expenseSchema : incomeSchema),
   });
 
-  const onSubmit = data => console.log(data);
-
-  const submitHandler = () => console.log(errors);
+  const onSubmit = (data: payment | any) => console.log(data);
+  // const submitConsoleLogErrors = () => console.log(errors);
 
   return (
     <View style={styles.container}>
@@ -76,9 +76,8 @@ const Form: React.FC<IFormProps> = ({schema}) => {
         label={'Category'}
         options={schema === 'expense' ? expensesCategory : incomesCategory}
       />
-
-      <Button title="submit" onPress={submitHandler} />
-      {/* <Button title="submit" onPress={handleSubmit(onSubmit)} /> */}
+      {/* <Button title="submit" onPress={submitConsoleLogErrors} /> */}
+      <Button title="submit" onPress={handleSubmit<payment>(onSubmit)} />
     </View>
   );
 };

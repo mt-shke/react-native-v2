@@ -1,9 +1,9 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import ExpenseScreen from '../screens/ExpenseScreen';
-import HomeScreen from '../screens/HomeScreen';
-import IncomeScreen from '../screens/IncomeScreen';
 import {screenOptions} from '../ts/types';
 import React from 'react';
+import HomeScreen from '../screens/HomeStack/HomeScreen';
+import IncomeScreen from '../screens/HomeStack/IncomeScreen';
+import ExpenseScreen from '../screens/HomeStack/ExpenseScreen';
 
 export type HomeStackScreenParamList = {
   HomeScreen: undefined;

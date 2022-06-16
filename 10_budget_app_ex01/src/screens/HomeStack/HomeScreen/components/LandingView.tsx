@@ -2,14 +2,23 @@ import React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 import {colors} from '../../../../globals';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {RouteProp, useRoute} from '@react-navigation/native';
+import {HomeStackScreenParamList} from '../../../../navigation/HomeStack';
+import {IUser} from '../../../../ts/interfaces/user';
 
-const LandingView: React.FC = () => {
+interface ILandingViewProps {
+  user: IUser;
+}
+
+const LandingView: React.FC<ILandingViewProps> = ({user}) => {
+  console.log(user);
+
   return (
     <>
       <View style={styles.topContainer}>
         <View style={styles.containerHeader}>
           <Text>Available balance</Text>
-          <Text style={styles.price}>$16,485</Text>
+          <Text style={styles.price}>$16 485</Text>
         </View>
         <Image
           style={styles.flag}

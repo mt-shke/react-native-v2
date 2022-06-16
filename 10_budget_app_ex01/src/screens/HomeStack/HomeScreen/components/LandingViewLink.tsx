@@ -13,16 +13,16 @@ const LandingViewLink: React.FC = () => {
 
   return (
     <View style={styles.navbar}>
-      <Pressable onPress={() => navigation.navigate('IncomeScreen')}>
-        <View style={styles.button}>
-          <Text style={styles.link}>Add income</Text>
-        </View>
-      </Pressable>
-      <Pressable onPress={() => navigation.navigate('ExpenseScreen')}>
-        <View style={styles.button}>
-          <Text style={styles.link}>Add expense</Text>
-        </View>
-      </Pressable>
+      {/* <Pressable onPress={() => navigation.navigate('IncomeScreen')}> */}
+      <View style={styles.button}>
+        <Text style={styles.link}>Add income</Text>
+      </View>
+      {/* </Pressable> */}
+      {/* <Pressable onPress={() => navigation.navigate('ExpenseScreen')}> */}
+      <View style={styles.button}>
+        <Text style={styles.link}>Add expense</Text>
+      </View>
+      {/* </Pressable> */}
     </View>
   );
 };

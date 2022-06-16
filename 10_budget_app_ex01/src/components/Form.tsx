@@ -15,9 +15,10 @@ import {payment} from '../ts/interfaces';
 
 export interface IFormProps {
   schema?: 'expense';
+  submitForm: (data: any) => void;
 }
 
-const Form: React.FC<IFormProps> = ({schema}) => {
+const Form: React.FC<IFormProps> = ({schema, submitForm}) => {
   const {
     control,
     handleSubmit,
@@ -26,7 +27,7 @@ const Form: React.FC<IFormProps> = ({schema}) => {
     resolver: yupResolver(schema === 'expense' ? expenseSchema : incomeSchema),
   });
 
-  const onSubmit = (data: payment | any) => console.log(data);
+  const onSubmit = (data: payment | any) => submitForm(data);
   // const submitConsoleLogErrors = () => console.log(errors);
 
   return (

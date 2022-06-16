@@ -4,11 +4,12 @@ import React from 'react';
 import HomeScreen from '../screens/HomeStack/HomeScreen';
 import IncomeScreen from '../screens/HomeStack/IncomeScreen';
 import ExpenseScreen from '../screens/HomeStack/ExpenseScreen';
+import {IUserData} from '../ts/interfaces/user';
 
 export type HomeStackScreenParamList = {
-  HomeScreen: undefined;
-  IncomeScreen: undefined;
-  ExpenseScreen: undefined;
+  HomeScreen: undefined | {user: IUserData};
+  IncomeScreen: {user: IUserData};
+  ExpenseScreen: {user: IUserData};
 };
 
 const Stack = createNativeStackNavigator<HomeStackScreenParamList>();

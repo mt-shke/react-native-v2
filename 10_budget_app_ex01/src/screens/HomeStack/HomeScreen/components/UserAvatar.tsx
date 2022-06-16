@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
-import {usersname} from '../../../../data';
+import {randomUsername} from '../../../../utils';
 
 const UserAvatar: React.FC = () => {
   return (
@@ -11,9 +11,7 @@ const UserAvatar: React.FC = () => {
           uri: 'https://i.pravatar.cc/' + Math.ceil(Math.random() * 100),
         }}
       />
-      <Text style={styles.text}>
-        {usersname[Math.round(Math.random() * 26 + 1)]}
-      </Text>
+      <Text style={styles.text}>{randomUsername().slice(0, 6) + '...'}</Text>
     </View>
   );
 };

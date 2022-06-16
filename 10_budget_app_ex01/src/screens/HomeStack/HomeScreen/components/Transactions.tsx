@@ -6,6 +6,7 @@ const Transactions: React.FC = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Transactions</Text>
+      <Text style={styles.seeAll}>See all</Text>
     </View>
   );
 };
@@ -13,10 +14,23 @@ const Transactions: React.FC = () => {
 export default Transactions;
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    paddingHorizontal: 12,
+    alignItems: 'baseline',
+  },
   title: {
-    fontSize: 28,
+    fontSize: 26,
     fontWeight: 'bold',
     color: colors.font,
+  },
+  seeAll: {
+    fontSize: 14,
+    color: colors.blue,
+    backgroundColor: colors.white,
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 12,
   },
 });

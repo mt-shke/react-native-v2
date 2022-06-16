@@ -12,7 +12,7 @@ export const expensesCategory = [
 ];
 
 export const incomesCategory = [
-  'Salaire et assimilié',
+  'Salaire et assimilé',
   'Revenu financier',
   'Rente',
   'Pension alimentaire',

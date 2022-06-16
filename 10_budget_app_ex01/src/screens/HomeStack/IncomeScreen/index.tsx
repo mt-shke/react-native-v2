@@ -1,11 +1,26 @@
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import Form from '../../../components/Form';
+import {HomeStackScreenParamList} from '../../../navigation/HomeStack';
 
-const IncomeScreen: React.FC = () => {
+export type IncomeScreenPropsType = NativeStackScreenProps<
+  HomeStackScreenParamList,
+  'IncomeScreen'
+>;
+
+const IncomeScreen: React.FC<IncomeScreenPropsType> = ({navigation, route}) => {
+  const user = route.params.user;
+
+  const submitForm = (data: any) => {
+    console.log(data);
+
+    // navigation.navigate('HomeScreen', )
+  };
+
   return (
     <View style={styles.container}>
-      <Form />
+      <Form submitForm={submitForm} />
     </View>
   );
 };

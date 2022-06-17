@@ -4,6 +4,7 @@ import {StyleSheet, View, Text, Pressable} from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import moment from 'moment';
+import dayjs from 'dayjs';
 
 interface IDateInputProps {
   name: string;
@@ -61,7 +62,8 @@ const DateInput: React.FC<IDateInputProps> = ({
                   isVisible={isDatePickerVisible}
                   mode="date"
                   onConfirm={(date: Date) => {
-                    onChange(moment(date).format('DD/MM/YYYY'));
+                    onChange(dayjs(date).format('DD/MM/YYYY'));
+                    // onChange(moment(new Date(date)).format('MM/DD/YYYY'));
                     hideDatePicker();
                   }}
                   onCancel={hideDatePicker}

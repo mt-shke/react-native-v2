@@ -6,8 +6,9 @@ import {colors} from '../../../../globals';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/typescript/src/types';
 import {HomeStackScreenParamList} from '../../../../navigation/HomeStack';
+import {IUser} from '../../../../ts/interfaces/user';
 
-const ContainerButton: React.FC = () => {
+const ContainerButton: React.FC<IUser> = ({user}) => {
   const navigation =
     useNavigation<
       NativeStackNavigationProp<HomeStackScreenParamList, 'HomeScreen'>
@@ -17,7 +18,7 @@ const ContainerButton: React.FC = () => {
     <View style={styles.containerButton}>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate('IncomeScreen')}>
+        onPress={() => navigation.navigate('IncomeScreen', {user: user})}>
         <CustomButton subTextContent="Add income">
           <AntDesign
             // style={styles.arrow}
@@ -29,7 +30,7 @@ const ContainerButton: React.FC = () => {
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate('ExpenseScreen')}>
+        onPress={() => navigation.navigate('ExpenseScreen', {user: user})}>
         <CustomButton subTextContent="Add expense" color="orange">
           <AntDesign
             // style={styles.arrow}

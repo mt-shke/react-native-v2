@@ -63,3 +63,22 @@ android/app/build.gradle
 ```
 
 </details>
+
+<details>
+<summary>Todo</summary>
+
+```js
+// FieldValues in Form.tsx
+```
+
+</details>
+
+<details>
+<summary>Victory native</summary>
+
+```js
+// npm i react-native-chart-kit
+// npm install --save react-native-svg
+```
+
+</details>

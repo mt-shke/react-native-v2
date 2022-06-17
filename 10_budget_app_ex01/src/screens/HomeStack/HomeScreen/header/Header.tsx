@@ -1,9 +1,10 @@
 import React from 'react';
-import {View, StyleSheet, Image} from 'react-native';
+import {View, StyleSheet, Image, Text} from 'react-native';
 import {colors} from '../../../../globals';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {IUser} from '../../../../ts/interfaces/user';
 
-const Header: React.FC = () => {
+const Header: React.FC<IUser> = ({user}) => {
   return (
     <>
       <View style={styles.container}>
@@ -14,6 +15,7 @@ const Header: React.FC = () => {
               uri: 'https://i.pravatar.cc/' + Math.ceil(Math.random() * 100),
             }}
           />
+          <Text style={styles.username}>{user.user}</Text>
         </View>
         <View style={styles.containerIcons}>
           <Ionicons
@@ -46,7 +48,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 10,
   },
-  containerAvatar: {},
+  containerAvatar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   containerIcons: {
     flexDirection: 'row',
   },
@@ -54,6 +59,12 @@ const styles = StyleSheet.create({
     height: 40,
     width: 40,
     borderRadius: 50,
+    marginRight: 10,
+  },
+  username: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: colors.lightblue,
   },
   icon: {
     paddingHorizontal: 6,

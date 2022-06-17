@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import moment from 'moment';
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
@@ -17,13 +18,16 @@ const PaymentItemData: React.FC<IPaymentItemDataProps> = ({payment}) => {
     color: isIncome ? colors.green : colors.orange,
   };
 
+  let date = payment.date;
+  if (date.includes('-')) {
+    date = dayjs(payment.date).format('DD/MM/YYYY');
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.containerCategory}>
         <Text style={styles.category}>{payment.category}</Text>
-        <Text style={styles.date}>
-          {moment(payment.date).format('MMM Do YY')}
-        </Text>
+        <Text style={styles.date}>{date}</Text>
       </View>
       <View style={styles.containerAmount}>
         <Text style={paymentStyle}>{payment.amount}€</Text>

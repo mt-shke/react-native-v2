@@ -1,4 +1,7 @@
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {
+  createNativeStackNavigator,
+  NativeStackScreenProps,
+} from '@react-navigation/native-stack';
 import {screenOptions} from '../ts/types';
 import React from 'react';
 import HomeScreen from '../screens/HomeStack/HomeScreen';
@@ -12,9 +15,12 @@ export type HomeStackScreenParamList = {
   ExpenseScreen: {user: IUserData};
 };
 
+export type HomeStackPropsType =
+  NativeStackScreenProps<HomeStackScreenParamList>;
+
 const Stack = createNativeStackNavigator<HomeStackScreenParamList>();
 
-const HomeStack: React.FC = () => {
+const HomeStack: React.FC<HomeStackPropsType> = ({navigation, route}) => {
   return (
     <Stack.Navigator
       initialRouteName="HomeScreen"

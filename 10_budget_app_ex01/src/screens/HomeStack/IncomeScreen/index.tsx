@@ -13,9 +13,22 @@ const IncomeScreen: React.FC<IncomeScreenPropsType> = ({navigation, route}) => {
   const user = route.params.user;
 
   const submitForm = (data: any) => {
-    console.log(data);
-
-    // navigation.navigate('HomeScreen', )
+    // Can do better
+    const randomId = Math.round(
+      Math.random() * 1524625663654155241 + 1000000000000,
+    ).toString();
+    const newPayment = {
+      ...data,
+      amount: data.amount.toString(),
+      _id_income: randomId,
+    };
+    const updatedUser = {
+      ...user,
+      incomes: [newPayment, ...user.incomes],
+    };
+    navigation.navigate('HomeScreen', {
+      user: updatedUser,
+    });
   };
 
   return (

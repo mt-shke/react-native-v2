@@ -11,8 +11,10 @@ export const colors = {
   orange: '#e0b96e',
   green: '#5cd17b',
   red: '#ff6666',
+  yellow: '#febd2d',
   lightred: '#f0b1ad',
   lightblue: '#e3ebff',
   lightorange: '#fdefdc',
   lightgreen: '#e7fef1',
+  lightyellow: '#e0f69b',
 };

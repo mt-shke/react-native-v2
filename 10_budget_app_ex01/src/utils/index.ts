@@ -1,5 +1,6 @@
 import tpData from '../../tpData.json';
 import {IUserData} from '../ts/interfaces/user';
+export * from './userData';
 
 const data: IUserData[] = tpData as IUserData[];
 const users = tpData.map(member => member.user);
@@ -19,3 +20,6 @@ export const randomArray = (number: number) => {
 export const getRandomUserData = () => {
   return data[randomNumber()];
 };
+
+export const convertAmount = (amount: string) =>
+  Number(amount.replace('€', '').replace(',', ''));

@@ -7,34 +7,34 @@ import Gap from '../../../../../components/UI/Gap';
 import moment from 'moment';
 
 const PaymentList: React.FC = () => {
-  const incomes = data[0].incomes;
-  const expenses = data[0].expenses;
-  const firstname = data[0].user.split(' ')[0];
-  const lastname = data[0].user.split(' ')[1];
+  // const incomes = data[0].incomes;
+  // const expenses = data[0].expenses;
+  // const firstname = data[0].user.split(' ')[0];
+  // const lastname = data[0].user.split(' ')[1];
 
-  const returnPayment = paymentArray =>
-    paymentArray.map(payment => ({
-      date: payment.date,
-      amount: Number(payment.amount.replace('€', '').replace(',', '')),
-      category: payment.category,
-      comments: payment.comments,
-      firstname: firstname,
-      lastname: lastname,
-    }));
+  // const returnPayment = paymentArray =>
+  //   paymentArray.map(payment => ({
+  //     date: payment.date,
+  //     amount: Number(payment.amount.replace('€', '').replace(',', '')),
+  //     category: payment.category,
+  //     comments: payment.comments,
+  //     firstname: firstname,
+  //     lastname: lastname,
+  //   }));
 
-  const incomesData = returnPayment(incomes);
-  const expensesData = returnPayment(expenses);
+  // const incomesData = returnPayment(incomes);
+  // const expensesData = returnPayment(expenses);
 
-  const orderedData = [...incomesData, ...expensesData].sort(
-    (a, b) => moment(a.date) - moment(b.date),
-  );
+  // const orderedData = [...incomesData, ...expensesData].sort(
+  //   (a, b) => moment(a.date) - moment(b.date),
+  // );
 
-  const reorderedData = [...orderedData].reverse();
+  // const reorderedData = [...orderedData].reverse();
 
   // Using FlatList
   return (
     <View style={styles.container}>
-      <FlatList
+      {/* <FlatList
         style={styles.containerFL}
         initialNumToRender={6}
         numColumns={1}
@@ -42,7 +42,7 @@ const PaymentList: React.FC = () => {
         data={reorderedData}
         renderItem={({item}) => <PaymentItem payment={item} />}
         ItemSeparatorComponent={() => <Gap height={20} />}
-      />
+      /> */}
     </View>
   );
 

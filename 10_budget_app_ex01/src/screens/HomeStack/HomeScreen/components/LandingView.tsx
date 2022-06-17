@@ -2,23 +2,24 @@ import React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 import {colors} from '../../../../globals';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {RouteProp, useRoute} from '@react-navigation/native';
-import {HomeStackScreenParamList} from '../../../../navigation/HomeStack';
 import {IUser} from '../../../../ts/interfaces/user';
+import {convertAmount} from '../../../../utils';
 
-interface ILandingViewProps {
-  user: IUser;
-}
+const LandingView: React.FC<IUser> = ({user}) => {
+  const incomes = user.incomes.map(inc => convertAmount(inc.amount));
+  const expenses = user.expenses.map(inc => convertAmount(inc.amount));
 
-const LandingView: React.FC<ILandingViewProps> = ({user}) => {
-  console.log(user);
+  const totalIncomes = incomes.reduce((acc, curr) => acc + curr);
+  const totalExpenses = expenses.reduce((acc, curr) => acc + curr);
+
+  const balance = (totalIncomes - totalExpenses).toFixed(2);
 
   return (
     <>
       <View style={styles.topContainer}>
         <View style={styles.containerHeader}>
           <Text>Available balance</Text>
-          <Text style={styles.price}>$16 485</Text>
+          <Text style={styles.price}>{balance}€</Text>
         </View>
         <Image
           style={styles.flag}
@@ -30,7 +31,6 @@ const LandingView: React.FC<ILandingViewProps> = ({user}) => {
           <Text>See More</Text>
           <View style={styles.containerArrow}>
             <MaterialIcons
-              style={styles.arrow}
               name={'keyboard-arrow-right'}
               color={colors.blue}
               size={20}
@@ -41,7 +41,6 @@ const LandingView: React.FC<ILandingViewProps> = ({user}) => {
           <Text>US Dollar</Text>
           <View style={styles.containerArrow}>
             <MaterialIcons
-              style={styles.arrow}
               name={'keyboard-arrow-down'}
               color={colors.blue}
               size={20}
@@ -74,7 +73,6 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     marginHorizontal: 6,
   },
-  arrow: {},
   price: {
     fontSize: 32,
     fontWeight: 'bold',

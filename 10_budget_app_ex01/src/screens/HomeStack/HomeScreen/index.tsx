@@ -1,17 +1,18 @@
 import {View, StyleSheet, FlatList} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Header from './header/Header';
 import LandingView from './components/LandingView';
 import {colors} from '../../../globals';
 import Transactions from './components/Transactions';
 import ContainerButton from './components/ContainerButton';
 import Gap from '../../../components/UI/Gap';
-import moment from 'moment';
 import PaymentItem from './components/payment/PaymentItem';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {HomeStackScreenParamList} from '../../../navigation/HomeStack';
 import {IUserData} from '../../../ts/interfaces/user';
-import {getRandomUserData} from '../../../utils';
+import {getOrderedPayments, getRandomUserData} from '../../../utils';
+import UsersList from './components/UsersList';
+import {IPayment} from '../../../ts/interfaces';
 
 export type IHomeScreenProps = NativeStackScreenProps<
   HomeStackScreenParamList,
@@ -23,44 +24,27 @@ const HomeScreen: React.FC<IHomeScreenProps> = ({navigation, route}) => {
   const randomUser = getRandomUserData();
   const [user, setUser] = useState<IUserData>(loggedUser ?? randomUser);
 
-  const incomes = user.incomes;
-  const expenses = user.expenses;
-  const [firstname, lastname] = user.user;
-
-  const returnPayment = (paymentArray: any) =>
-    paymentArray.map((payment: any) => ({
-      date: payment.date,
-      amount: Number(payment.amount.replace('€', '').replace(',', '')),
-      category: payment.category,
-      comments: payment.comments,
-      firstname: firstname,
-      lastname: lastname,
-    }));
-
-  const incomesData = returnPayment(incomes);
-  const expensesData = returnPayment(expenses);
-
-  const orderedData = [...incomesData, ...expensesData].sort(
-    (a, b) => moment(a.date).unix() - moment(b.date).unix(),
-  );
-
-  const reorderedData = [...orderedData].reverse();
+  useEffect(() => {
+    if (loggedUser) {
+      setUser(loggedUser);
+    }
+  }, [loggedUser]);
 
   return (
     <View style={styles.container}>
-      <Header />
+      <Header user={user} />
       <FlatList
         style={styles.containerFL}
         initialNumToRender={10}
         numColumns={1}
         // horizontal={true}
-        data={reorderedData}
+        data={getOrderedPayments({user})}
         ListHeaderComponent={
           <>
             <View style={styles.containerContent}>
-              <LandingView user={{user}} />
-              {/* <UsersList /> */}
-              <ContainerButton />
+              <LandingView user={user} />
+              <UsersList />
+              <ContainerButton user={user} />
             </View>
             <Gap height={30} />
             <Transactions />

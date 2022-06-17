@@ -4,7 +4,7 @@ import {colors} from '../../globals';
 import React from 'react';
 
 interface ICustomButtonProps {
-  color?: 'orange';
+  color?: 'orange' | 'yellow';
   children?: ReactNode | string;
   textContent?: string;
   subTextContent?: string;
@@ -16,18 +16,7 @@ const CustomButton: React.FC<ICustomButtonProps> = ({
   children,
   subTextContent,
 }) => {
-  if (color === 'orange' && !subTextContent) {
-    return (
-      <View
-        style={{
-          ...styles.container,
-          backgroundColor: colors.background,
-        }}>
-        {children}
-        {textContent && <Text style={styles.text}>{textContent}</Text>}
-      </View>
-    );
-  }
+  const customColor = color ?? 'blue';
 
   if (subTextContent) {
     return (
@@ -35,8 +24,7 @@ const CustomButton: React.FC<ICustomButtonProps> = ({
         <View
           style={{
             ...styles.containerChildren,
-            backgroundColor:
-              color === 'orange' ? colors.lightorange : colors.lightblue,
+            backgroundColor: colors[`light${customColor}`],
           }}>
           {children}
         </View>
@@ -46,9 +34,21 @@ const CustomButton: React.FC<ICustomButtonProps> = ({
   }
 
   return (
-    <View style={styles.container}>
+    <View
+      style={{
+        ...styles.container,
+        backgroundColor: colors[`light${customColor}`],
+      }}>
       {children}
-      {textContent && <Text style={styles.text}>{textContent}</Text>}
+      {textContent && (
+        <Text
+          style={{
+            ...styles.text,
+            color: colors[customColor === 'yellow' ? 'font' : customColor],
+          }}>
+          {textContent}
+        </Text>
+      )}
     </View>
   );
 };
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     // flexDirection: 'row',
     backgroundColor: colors.lightblue,
     paddingVertical: 8,
-    paddingHorizontal: 20,
+    paddingHorizontal: 4,
     borderRadius: 20,
     marginBottom: 26,
     justifyContent: 'center',
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     // fontFamily: globalStyles.fontBangers,
     // letterSpacing: 6,
     color: colors.font,
-    paddingHorizontal: 10,
+    paddingHorizontal: 4,
     fontSize: 12,
   },
   // with subTextContent

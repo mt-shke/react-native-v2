@@ -1,5 +1,5 @@
 import React from 'react';
-import {useForm} from 'react-hook-form';
+import {FieldValues, useForm} from 'react-hook-form';
 import {View, StyleSheet, Button} from 'react-native';
 import {yupResolver} from '@hookform/resolvers/yup';
 import Input from './Input';
@@ -11,11 +11,11 @@ import {
   incomeSchema,
 } from '../schema/payment';
 import DateInput from './DateInput';
-import {payment} from '../ts/interfaces';
+import {IPayment} from '../ts/interfaces';
 
 export interface IFormProps {
   schema?: 'expense';
-  submitForm: (data: any) => void;
+  submitForm: (data: IPayment) => void;
 }
 
 const Form: React.FC<IFormProps> = ({schema, submitForm}) => {
@@ -27,7 +27,7 @@ const Form: React.FC<IFormProps> = ({schema, submitForm}) => {
     resolver: yupResolver(schema === 'expense' ? expenseSchema : incomeSchema),
   });
 
-  const onSubmit = (data: payment | any) => submitForm(data);
+  const onSubmit = (data: IPayment) => submitForm(data);
   // const submitConsoleLogErrors = () => console.log(errors);
 
   return (
@@ -78,7 +78,7 @@ const Form: React.FC<IFormProps> = ({schema, submitForm}) => {
         options={schema === 'expense' ? expensesCategory : incomesCategory}
       />
       {/* <Button title="submit" onPress={submitConsoleLogErrors} /> */}
-      <Button title="submit" onPress={handleSubmit<payment>(onSubmit)} />
+      <Button title="submit" onPress={handleSubmit(onSubmit)} />
     </View>
   );
 };

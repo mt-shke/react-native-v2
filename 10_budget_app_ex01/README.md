@@ -25,8 +25,26 @@
 <details>
 <summary>Setup</summary>
 
+yupResolver
+
 ```js
 // npm i @hookform/resolvers
+```
+
+React native chart kit
+
+```js
+// npm i react-native-chart-kit
+// npm install --save react-native-svg
+```
+
+reanimated carousel
+
+```js
+// npm i react-native-reanimated-carousel
+// npm i react-native-reanimated
+// npx react-native start --reset-cache
+// npx react-native run-android
 ```
 
 </details>
@@ -36,15 +54,6 @@
 
 ```js
 //   endOfLine: 'auto',
-```
-
-</details>
-
-<details>
-<summary>Navigation</summary>
-
-```js
-
 ```
 
 </details>
@@ -69,16 +78,6 @@ android/app/build.gradle
 
 ```js
 // FieldValues in Form.tsx
-```
-
-</details>
-
-<details>
-<summary>Victory native</summary>
-
-```js
-// npm i react-native-chart-kit
-// npm install --save react-native-svg
 ```
 
 </details>

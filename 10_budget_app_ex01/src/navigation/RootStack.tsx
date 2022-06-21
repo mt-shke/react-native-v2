@@ -1,51 +1,30 @@
 import React from 'react';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
-import {
-  NavigationContainer,
-  RouteProp,
-  useRoute,
-} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {StyleSheet} from 'react-native';
-import {colors} from '../globals';
-import {screenOptions} from '../ts/types';
-import HomeStack, {HomeStackScreenParamList} from './HomeStack';
+import {colors, screenOptions} from '../globals';
+import HomeStack from './HomeStack';
 import AccountScreen from '../screens/AccountScreen/AccountScreen';
 import StatsScreen from '../screens/StatsScreen/StatsScreen';
 import {IUserData} from '../ts/interfaces/user';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
+// Using route props
+// export type RootStackParamsList = {
+//   HomeStack: undefined | {user: IUserData};
+//   AccountScreen: undefined;
+//   StatsScreen: undefined;
+// };
 export type RootStackParamsList = {
-  HomeStack: undefined | {user: IUserData};
-  AccountScreen: {user: IUserData};
-  StatsScreen: {user: IUserData};
+  HomeStack: undefined;
+  AccountScreen: undefined;
+  StatsScreen: undefined;
 };
 
 const Tab = createMaterialBottomTabNavigator();
 
-export type HomeStackProps = NativeStackScreenProps<
-  RootStackParamsList,
-  'HomeStack'
->;
-export type AccountScreenProps = NativeStackScreenProps<
-  RootStackParamsList,
-  'AccountScreen'
->;
-export type StatsScreenProps = NativeStackScreenProps<
-  RootStackParamsList,
-  'StatsScreen'
->;
-
-const RootStack: React.FC = ({}) => {
-  // const user = useRoute<RouteProp<HomeStackProps>>().params?.user
-  // const userHomeStack =
-  //   useRoute<RouteProp<RootStackParamsList, 'HomeStack'>>().params?.user;
-  // const userAccountScreen =
-  //   useRoute<RouteProp<RootStackParamsList, 'AccountScreen'>>().params.user;
-  // const userStatsScreen =
-  //   useRoute<RouteProp<RootStackParamsList, 'StatsScreen'>>().params.user;
-
+const RootStack: React.FC = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -73,7 +52,6 @@ const RootStack: React.FC = ({}) => {
         <Tab.Screen
           name="AccountScreen"
           component={AccountScreen}
-          // initialParams={{user: userAccountScreen}}
           options={{
             tabBarLabel: 'Account',
             tabBarIcon: ({focused}) => (
@@ -89,7 +67,6 @@ const RootStack: React.FC = ({}) => {
         <Tab.Screen
           name="StatsScreen"
           component={StatsScreen}
-          // initialParams={{user: userStatsScreen}}
           options={{
             tabBarLabel: 'Stats',
             tabBarIcon: ({focused}) => (

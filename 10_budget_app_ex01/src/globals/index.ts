@@ -1,6 +1,7 @@
 import {Dimensions} from 'react-native';
 
 export * from './colors';
+export * from './globalStyles';
 
 export const screenWidth = Dimensions.get('window').width;
 export const chartConfig = {

@@ -2,17 +2,24 @@ import {
   createNativeStackNavigator,
   NativeStackScreenProps,
 } from '@react-navigation/native-stack';
-import {screenOptions} from '../ts/types';
 import React from 'react';
 import HomeScreen from '../screens/HomeStack/HomeScreen';
 import IncomeScreen from '../screens/HomeStack/IncomeScreen';
 import ExpenseScreen from '../screens/HomeStack/ExpenseScreen';
 import {IUserData} from '../ts/interfaces/user';
+import {screenOptions} from '../globals';
+
+// Using Route params
+// export type HomeStackScreenParamList = {
+//   HomeScreen: undefined{user: IUserData};
+//   IncomeScreen: {user: IUserData};
+//   ExpenseScreen: {user: IUserData};
+// };
 
 export type HomeStackScreenParamList = {
-  HomeScreen: undefined | {user: IUserData};
-  IncomeScreen: {user: IUserData};
-  ExpenseScreen: {user: IUserData};
+  HomeScreen: undefined;
+  IncomeScreen: undefined;
+  ExpenseScreen: undefined;
 };
 
 export type HomeStackPropsType =

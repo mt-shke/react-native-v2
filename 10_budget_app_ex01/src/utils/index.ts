@@ -21,5 +21,8 @@ export const getRandomUserData = () => {
   return data[randomNumber()];
 };
 
+export const getRandomId = () =>
+  Math.round(Math.random() * 1524625663654155241 + 1000000000000).toString();
+
 export const convertAmount = (amount: string) =>
   Number(amount.replace('€', '').replace(',', ''));

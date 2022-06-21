@@ -1,5 +1,5 @@
 import {View, StyleSheet, FlatList} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import Header from './header/Header';
 import LandingView from './components/LandingView';
 import {colors} from '../../../globals';
@@ -7,28 +7,21 @@ import Transactions from './components/Transactions';
 import ContainerButton from './components/ContainerButton';
 import Gap from '../../../components/UI/Gap';
 import PaymentItem from './components/payment/PaymentItem';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {HomeStackScreenParamList} from '../../../navigation/HomeStack';
-import {IUserData} from '../../../ts/interfaces/user';
-import {getOrderedPayments, getRandomUserData} from '../../../utils';
+import {IUser, IUserData} from '../../../ts/interfaces/user';
+import {getOrderedPayments} from '../../../utils';
 import UsersList from './components/UsersList';
-import {IPayment} from '../../../ts/interfaces';
+import {IHomeScreenProps} from '../../../ts/types';
+import {UserContext} from '../../../state/UserContext';
 
-export type IHomeScreenProps = NativeStackScreenProps<
-  HomeStackScreenParamList,
-  'HomeScreen'
->;
+// Test with route params
+// const HomeScreen: React.FC<IHomeScreenProps> = ({navigation,route}) => {
+// const user = route.params?.user;
 
-const HomeScreen: React.FC<IHomeScreenProps> = ({navigation, route}) => {
-  const loggedUser = route.params?.user;
-  const randomUser = getRandomUserData();
-  const [user, setUser] = useState<IUserData>(loggedUser ?? randomUser);
+// Using context
+const HomeScreen: React.FC = () => {
+  const user = useContext(UserContext).state;
 
-  useEffect(() => {
-    if (loggedUser) {
-      setUser(loggedUser);
-    }
-  }, [loggedUser]);
+  // console.log(user);
 
   return (
     <View style={styles.container}>
@@ -38,7 +31,7 @@ const HomeScreen: React.FC<IHomeScreenProps> = ({navigation, route}) => {
         initialNumToRender={10}
         numColumns={1}
         // horizontal={true}
-        data={getOrderedPayments({user})}
+        data={getOrderedPayments({user: user})}
         ListHeaderComponent={
           <>
             <View style={styles.containerContent}>

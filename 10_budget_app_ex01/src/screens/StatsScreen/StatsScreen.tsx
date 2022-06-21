@@ -1,14 +1,17 @@
 import React from 'react';
 import {View, StyleSheet, ScrollView} from 'react-native';
 import Gap from '../../components/UI/Gap';
-import {IUser} from '../../ts/interfaces/user';
 import Chart from './chart/Chart';
-import Contribution from './chart/Contribution';
 import Pie from './chart/Pie';
 import NavBar from './header/NavBar';
+import {getRandomUserData} from '../../utils';
+import Contribution from './chart/Contribution';
+import {IUser} from '../../ts/interfaces/user';
 
-// const StatsScreen: React.FC<IUser> = ({user}) => {
 const StatsScreen: React.FC = () => {
+  // Need to set user
+  const user = getRandomUserData();
+
   return (
     <ScrollView>
       <View style={styles.container}>

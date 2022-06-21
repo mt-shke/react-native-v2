@@ -6,12 +6,12 @@ import {IUser} from '../../../../ts/interfaces/user';
 import {convertAmount} from '../../../../utils';
 
 const LandingView: React.FC<IUser> = ({user}) => {
-  const incomes = user.incomes.map(inc => convertAmount(inc.amount));
-  const expenses = user.expenses.map(inc => convertAmount(inc.amount));
+  const {incomes, expenses} = user;
 
-  const totalIncomes = incomes.reduce((acc, curr) => acc + curr);
-  const totalExpenses = expenses.reduce((acc, curr) => acc + curr);
-
+  const convertedIncomes = incomes.map(inc => convertAmount(inc.amount));
+  const convertedExpenses = expenses.map(inc => convertAmount(inc.amount));
+  const totalIncomes = convertedIncomes.reduce((acc, curr) => acc + curr);
+  const totalExpenses = convertedExpenses.reduce((acc, curr) => acc + curr);
   const balance = (totalIncomes - totalExpenses).toFixed(2);
 
   return (

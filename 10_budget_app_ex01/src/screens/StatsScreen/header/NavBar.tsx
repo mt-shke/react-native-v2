@@ -3,8 +3,6 @@ import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import CustomButton from '../../../components/UI/CustomButton';
 import SelectMonth from './SelectMonth';
 import Gap from '../../../components/UI/Gap';
-import {colors} from '../../../globals';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const NavBar: React.FC = () => {
   return (

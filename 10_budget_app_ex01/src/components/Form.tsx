@@ -28,7 +28,6 @@ const Form: React.FC<IFormProps> = ({schema, submitForm}) => {
   });
 
   const onSubmit = (data: IPayment) => submitForm(data);
-  // const submitConsoleLogErrors = () => console.log(errors);
 
   return (
     <View style={styles.container}>

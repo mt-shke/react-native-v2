@@ -8,7 +8,7 @@
  * @format
  */
 
-import React from 'react';
+import React, {createContext} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -20,23 +20,21 @@ import {colors} from './src/globals';
 // import {
 //   Colors,
 // } from 'react-native/Libraries/NewAppScreen';
-import RootStack from './src/navigation/RootStack';
+import 'react-native-gesture-handler';
+import UserProvider from './src/state/UserContext';
+import AuthNavigation from './src/navigation/AuthNavigation';
 
 const App = () => {
-  // const isDarkMode = useColorScheme() === 'dark';
-  // const backgroundStyle = {
-  //   backgroundColor: 'black',
-  //   flex: 1,
-  // };
-
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar
-        // barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={colors.blue}
-      />
-      <RootStack />
-    </SafeAreaView>
+    <UserProvider>
+      <SafeAreaView style={styles.container}>
+        <StatusBar
+          // barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+          backgroundColor={colors.blue}
+        />
+        <AuthNavigation />
+      </SafeAreaView>
+    </UserProvider>
   );
 };
 

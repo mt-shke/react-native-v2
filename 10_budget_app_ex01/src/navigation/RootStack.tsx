@@ -8,15 +8,8 @@ import {colors, screenOptions} from '../globals';
 import HomeStack from './HomeStack';
 import AccountScreen from '../screens/AccountScreen/AccountScreen';
 import StatsScreen from '../screens/StatsScreen/StatsScreen';
-import {IUserData} from '../ts/interfaces/user';
 
-// Using route props
-// export type RootStackParamsList = {
-//   HomeStack: undefined | {user: IUserData};
-//   AccountScreen: undefined;
-//   StatsScreen: undefined;
-// };
-export type RootStackParamsList = {
+export type TRootStackParamsList = {
   HomeStack: undefined;
   AccountScreen: undefined;
   StatsScreen: undefined;

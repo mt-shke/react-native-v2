@@ -21,20 +21,36 @@ import {colors} from './src/globals';
 //   Colors,
 // } from 'react-native/Libraries/NewAppScreen';
 import 'react-native-gesture-handler';
-import UserProvider from './src/state/UserContext';
+import 'react-native-get-random-values';
 import AuthNavigation from './src/navigation/AuthNavigation';
+import {createRealmContext} from '@realm/react';
+import {PaymentSchema, UserSchema} from './src/schema/realm';
+// import UserProvider from './src/state/UserContext';
+
+export const appContextConfig = {
+  schema: [UserSchema, PaymentSchema],
+};
+
+export const {RealmProvider, useRealm, useQuery} =
+  createRealmContext(appContextConfig);
 
 const App = () => {
   return (
-    <UserProvider>
+    // Using custom Context
+    // <UserProvider>
+    // Using Realm ReactContext
+    <RealmProvider>
       <SafeAreaView style={styles.container}>
         <StatusBar
           // barStyle={isDarkMode ? 'light-content' : 'dark-content'}
           backgroundColor={colors.blue}
         />
         <AuthNavigation />
+        {/* <AuthEmbedded /> */}
+        {/* <AuthLinked /> */}
       </SafeAreaView>
-    </UserProvider>
+    </RealmProvider>
+    // </UserProvider>
   );
 };
 

@@ -8,8 +8,8 @@ import {convertAmount} from '../../../../utils';
 const LandingView: React.FC<IUser> = ({user}) => {
   const {incomes, expenses} = user;
 
-  const convertedIncomes = incomes.map(inc => convertAmount(inc.amount));
-  const convertedExpenses = expenses.map(inc => convertAmount(inc.amount));
+  const convertedIncomes = incomes.map(inc => inc.amount);
+  const convertedExpenses = expenses.map(inc => inc.amount);
   const totalIncomes = convertedIncomes.reduce((acc, curr) => acc + curr);
   const totalExpenses = convertedExpenses.reduce((acc, curr) => acc + curr);
   const balance = (totalIncomes - totalExpenses).toFixed(2);

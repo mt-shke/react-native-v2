@@ -1,26 +1,4 @@
-export interface IPayment {
-  firstname: string;
-  lastname?: string;
-  amount: number;
-  category: CategoryType;
-  date: string;
-  comments: string;
-  _id_income?: string;
-  _id_expense?: string;
-}
-
-export interface IPayment {
-  firstname: string;
-  lastname?: string;
-  amount: number;
-  category: CategoryType;
-  date: string;
-  comments: string;
-  _id_income?: string;
-  _id_expense?: string;
-}
-
-export type CategoryType =
+export type TCategory =
   | 'Salaire et assimilié'
   | 'Revenu financier'
   | 'Rente'
@@ -39,7 +17,7 @@ export type CategoryType =
   | 'Vacances'
   | 'Shopping';
 
-export type IncomeType =
+export type TIncome =
   | 'Salaire et assimilié'
   | 'Revenu financier'
   | 'Rente'
@@ -50,7 +28,7 @@ export type IncomeType =
   | 'Revenu exceptionnel'
   | 'Autre revenu';
 
-export type ExpenseType =
+export type TExpense =
   | 'Alimentaire'
   | 'Factures'
   | 'Transport'

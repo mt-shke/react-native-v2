@@ -9,16 +9,21 @@ import {
   expenseSchema,
   incomesCategory,
   incomeSchema,
-} from '../schema/payment';
+} from '../schema/yup/payment';
 import DateInput from './DateInput';
-import {IPayment} from '../ts/interfaces';
+import {useQuery, useRealm} from '../../App';
+import {IPayment, IUserData} from '../ts/interfaces/user';
+import {UUID} from 'bson';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {THomeStackScreenParamList} from '../navigation/HomeStack';
+import {TExpenseScreenProps, TIncomeScreenProps} from '../ts/types';
+import {useNavigation} from '@react-navigation/native';
 
 export interface IFormProps {
-  schema?: 'expense';
-  submitForm: (data: IPayment) => void;
+  schema: 'income' | 'expense';
 }
 
-const Form: React.FC<IFormProps> = ({schema, submitForm}) => {
+const Form: React.FC<IFormProps> = ({schema}) => {
   const {
     control,
     handleSubmit,
@@ -26,6 +31,45 @@ const Form: React.FC<IFormProps> = ({schema, submitForm}) => {
   } = useForm({
     resolver: yupResolver(schema === 'expense' ? expenseSchema : incomeSchema),
   });
+
+  type TExpenseNavigation = NativeStackNavigationProp<
+    THomeStackScreenParamList,
+    'ExpenseScreen'
+  >;
+  type TIncomeNavigation = NativeStackNavigationProp<
+    THomeStackScreenParamList,
+    'IncomeScreen'
+  >;
+
+  let navigation: any = useNavigation<TIncomeNavigation>();
+  if (schema === 'expense') {
+    navigation = useNavigation<TExpenseNavigation>();
+  }
+
+  const realm = useRealm();
+  const users = useQuery('User');
+  const user: IUserData = users[0] as any;
+
+  const submitForm = (data: IPayment) => {
+    const loggedUser = realm.objectForPrimaryKey('User', user._id) as IUserData;
+    const newPaymentId = new UUID().toHexString();
+
+    if (schema === 'income') {
+      const payment = {...data, _id_income: newPaymentId};
+      realm.write(() => {
+        loggedUser.incomes = [...loggedUser.incomes, payment];
+      });
+    }
+
+    if (schema === 'expense') {
+      const payment = {...data, _id_expense: newPaymentId};
+      realm.write(() => {
+        loggedUser.expenses = [...loggedUser.expenses, payment];
+      });
+    }
+
+    navigation.navigate('HomeScreen');
+  };
 
   const onSubmit = (data: IPayment) => submitForm(data);
 
@@ -76,8 +120,8 @@ const Form: React.FC<IFormProps> = ({schema, submitForm}) => {
         label={'Category'}
         options={schema === 'expense' ? expensesCategory : incomesCategory}
       />
-      {/* <Button title="submit" onPress={submitConsoleLogErrors} /> */}
       <Button title="submit" onPress={handleSubmit(onSubmit)} />
+      {/* to fix  */}
     </View>
   );
 };

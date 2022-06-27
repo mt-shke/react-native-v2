@@ -1,22 +1,36 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {UserContext} from '../state/UserContext';
-import {IUserData} from '../ts/interfaces/user';
+import React, {useEffect} from 'react';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {useQuery, useRealm} from '../../App';
 import RootStack from './RootStack';
+import allUsers from '../../tpData.json';
+import {setUserJsonToDB} from '../realm';
 
 const AuthNavigation: React.FC = () => {
-  const {state: user, dispatch} = useContext(UserContext);
+  const realm = useRealm();
+  const users = useQuery('User');
 
   useEffect(() => {
-    if (!user.user) {
-      dispatch({type: 'SET_RANDOM_USER'});
-    }
+    // if (!users.length) {
+    //   realm.write(() => {
+    //     realm.create('Task', Task.generate('A first automated task'));
+    //   });
+    // }
   }, []);
 
-  if (!user.user) {
+  const oneUser = allUsers[0];
+
+  if (!users.length) {
     return (
       <View>
         <Text>Loading a random user...</Text>
+        <TouchableOpacity
+          onPress={() =>
+            realm.write(() => realm.create('User', setUserJsonToDB(oneUser)))
+          }>
+          <View style={styles.button}>
+            <Text>Set One user to Database</Text>
+          </View>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -29,5 +43,9 @@ export default AuthNavigation;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  button: {
+    padding: 20,
+    backgroundColor: 'green',
   },
 });

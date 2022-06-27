@@ -10,17 +10,17 @@ import {IUser} from '../../ts/interfaces/user';
 
 const StatsScreen: React.FC = () => {
   // Need to set user
-  const user = getRandomUserData();
+  // const user = getRandomUserData();
 
   return (
     <ScrollView>
       <View style={styles.container}>
         <NavBar />
         <Gap height={60} />
-        <Chart user={user} />
+        {/* <Chart user={user} /> */}
         <Gap height={60} />
         {/* <LineChart /> */}
-        <Pie user={user} />
+        {/* <Pie user={user} /> */}
         <Gap height={60} />
         {/* <Contribution /> */}
       </View>

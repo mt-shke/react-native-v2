@@ -5,13 +5,13 @@ import CustomButton from '../../../../components/UI/CustomButton';
 import {colors} from '../../../../globals';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/typescript/src/types';
-import {HomeStackScreenParamList} from '../../../../navigation/HomeStack';
+import {THomeStackScreenParamList} from '../../../../navigation/HomeStack';
 import {IUser} from '../../../../ts/interfaces/user';
 
 const ContainerButton: React.FC<IUser> = ({user}) => {
   const navigation =
     useNavigation<
-      NativeStackNavigationProp<HomeStackScreenParamList, 'HomeScreen'>
+      NativeStackNavigationProp<THomeStackScreenParamList, 'HomeScreen'>
     >();
 
   return (

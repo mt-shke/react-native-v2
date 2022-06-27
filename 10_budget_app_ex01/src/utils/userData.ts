@@ -11,7 +11,7 @@ export const getOrderedPayments = ({user}: IUser) => {
   const returnPayment = (paymentArray: any) =>
     paymentArray.map((payment: any) => ({
       date: payment.date,
-      amount: convertAmount(payment.amount),
+      amount: payment.amount,
       category: payment.category,
       comments: payment.comments,
       firstname: firstname,

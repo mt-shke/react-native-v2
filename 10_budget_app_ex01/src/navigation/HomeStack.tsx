@@ -6,28 +6,19 @@ import React from 'react';
 import HomeScreen from '../screens/HomeStack/HomeScreen';
 import IncomeScreen from '../screens/HomeStack/IncomeScreen';
 import ExpenseScreen from '../screens/HomeStack/ExpenseScreen';
-import {IUserData} from '../ts/interfaces/user';
 import {screenOptions} from '../globals';
 
-// Using Route params
-// export type HomeStackScreenParamList = {
-//   HomeScreen: undefined{user: IUserData};
-//   IncomeScreen: {user: IUserData};
-//   ExpenseScreen: {user: IUserData};
-// };
-
-export type HomeStackScreenParamList = {
+export type THomeStackScreenParamList = {
   HomeScreen: undefined;
   IncomeScreen: undefined;
   ExpenseScreen: undefined;
 };
 
-export type HomeStackPropsType =
-  NativeStackScreenProps<HomeStackScreenParamList>;
+export type THomeStackProps = NativeStackScreenProps<THomeStackScreenParamList>;
 
-const Stack = createNativeStackNavigator<HomeStackScreenParamList>();
+const Stack = createNativeStackNavigator<THomeStackScreenParamList>();
 
-const HomeStack: React.FC<HomeStackPropsType> = ({navigation, route}) => {
+const HomeStack: React.FC = () => {
   return (
     <Stack.Navigator
       initialRouteName="HomeScreen"

@@ -1,21 +1,31 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamsList} from '../../navigation/RootStack';
-import {HomeStackScreenParamList} from '../../navigation/HomeStack';
+import {TRootStackParamsList} from '../../navigation/RootStack';
+import {THomeStackScreenParamList} from '../../navigation/HomeStack';
 
-export type HomeStackProps = NativeStackScreenProps<
-  RootStackParamsList,
+export type THomeStackProps = NativeStackScreenProps<
+  TRootStackParamsList,
   'HomeStack'
 >;
 export type AccountScreenProps = NativeStackScreenProps<
-  RootStackParamsList,
+  TRootStackParamsList,
   'AccountScreen'
 >;
-export type StatsScreenProps = NativeStackScreenProps<
-  RootStackParamsList,
+export type TStatsScreenProps = NativeStackScreenProps<
+  TRootStackParamsList,
   'StatsScreen'
 >;
 
-export type IHomeScreenProps = NativeStackScreenProps<
-  HomeStackScreenParamList,
+export type THomeScreenProps = NativeStackScreenProps<
+  THomeStackScreenParamList,
   'HomeScreen'
+>;
+
+export type TExpenseScreenProps = NativeStackScreenProps<
+  THomeStackScreenParamList,
+  'ExpenseScreen'
+>;
+
+export type TIncomeScreenProps = NativeStackScreenProps<
+  THomeStackScreenParamList,
+  'IncomeScreen'
 >;

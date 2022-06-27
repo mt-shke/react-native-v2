@@ -1,3 +1,5 @@
+const {UUID} = Realm.BSON;
+import dayjs from 'dayjs';
 import tpData from '../../tpData.json';
 import {IUserData} from '../ts/interfaces/user';
 export * from './userData';
@@ -21,8 +23,9 @@ export const getRandomUserData = () => {
   return data[randomNumber()];
 };
 
-export const getRandomId = () =>
-  Math.round(Math.random() * 1524625663654155241 + 1000000000000).toString();
+export const getRandomId = () => new UUID().toHexString();
 
 export const convertAmount = (amount: string) =>
   Number(amount.replace('€', '').replace(',', ''));
+
+export const convertedDate = (date: string) => dayjs(date).format('DD/MM/YYYY');

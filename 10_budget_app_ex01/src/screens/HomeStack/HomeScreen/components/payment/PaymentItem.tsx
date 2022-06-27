@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import {CategoryType, IPayment} from '../../../../../ts/interfaces';
+import {TCategory, IPayment} from '../../../../../ts/interfaces';
 import PaymentItemData from './PaymentItemData';
 import PaymentItemIcon from './PaymentItemIcon';
 

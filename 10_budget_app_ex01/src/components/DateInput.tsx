@@ -3,8 +3,8 @@ import {Control, Controller} from 'react-hook-form';
 import {StyleSheet, View, Text, Pressable} from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import moment from 'moment';
 import dayjs from 'dayjs';
+import {convertedDate} from '../utils';
 
 interface IDateInputProps {
   name: string;
@@ -49,7 +49,7 @@ const DateInput: React.FC<IDateInputProps> = ({
                 numberOfLines={1}
                 ellipsizeMode={'tail'}
                 style={styles.input}>
-                {value}
+                {value && convertedDate(value)}
               </Text>
               <View style={styles.containerDate}>
                 <Ionicons
@@ -62,8 +62,7 @@ const DateInput: React.FC<IDateInputProps> = ({
                   isVisible={isDatePickerVisible}
                   mode="date"
                   onConfirm={(date: Date) => {
-                    onChange(dayjs(date).format('DD/MM/YYYY'));
-                    // onChange(moment(new Date(date)).format('MM/DD/YYYY'));
+                    onChange(date.toISOString());
                     hideDatePicker();
                   }}
                   onCancel={hideDatePicker}

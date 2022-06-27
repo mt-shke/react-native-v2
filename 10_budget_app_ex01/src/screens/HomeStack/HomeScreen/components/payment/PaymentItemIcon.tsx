@@ -2,11 +2,11 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {colors} from '../../../../../globals';
-import {incomesCategory} from '../../../../../schema/payment';
-import {CategoryType} from '../../../../../ts/interfaces';
+import {incomesCategory} from '../../../../../schema/yup/payment';
+import {TCategory} from '../../../../../ts/interfaces';
 
 interface IPaymentItemIconProps {
-  name: CategoryType;
+  name: TCategory;
 }
 
 const PaymentItemIcon: React.FC<IPaymentItemIconProps> = ({name}) => {

@@ -7,19 +7,7 @@
 
 </details>
 <details>
-<summary>todo</summary>
 
-```js
-// fix homescreen aboutUs button
-// add more data/content
-// changeFocusedInput borderColor
-```
-
-```js
-// input - textarea
-```
-
-</details>
 
 <details>
 <summary>Type React Navigation</summary>

@@ -1,10 +1,9 @@
-import dayjs from 'dayjs';
-import moment from 'moment';
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {colors} from '../../../../../globals';
-import {incomesCategory} from '../../../../../schema/payment';
+import {incomesCategory} from '../../../../../schema/yup/payment';
 import {IPayment} from '../../../../../ts/interfaces';
+import {convertedDate} from '../../../../../utils';
 
 export interface IPaymentItemDataProps {
   payment: IPayment;
@@ -18,16 +17,11 @@ const PaymentItemData: React.FC<IPaymentItemDataProps> = ({payment}) => {
     color: isIncome ? colors.green : colors.orange,
   };
 
-  let date = payment.date;
-  if (date.includes('-')) {
-    date = dayjs(payment.date).format('DD/MM/YYYY');
-  }
-
   return (
     <View style={styles.container}>
       <View style={styles.containerCategory}>
         <Text style={styles.category}>{payment.category}</Text>
-        <Text style={styles.date}>{date}</Text>
+        <Text style={styles.date}>{convertedDate(payment.date)}</Text>
       </View>
       <View style={styles.containerAmount}>
         <Text style={paymentStyle}>{payment.amount}€</Text>

@@ -1,4 +1,13 @@
 <details>
+<summary>Todo</summary>
+
+```js
+// FieldValues in Form.tsx
+```
+
+</details>
+
+<details>
 <summary>Install chocolatey jdk11 - Run android</summary>
 
 ```js
@@ -64,20 +73,56 @@ reanimated carousel
 android/app/build.gradle
 
 ```js
-// project.ext.vectoricons = [
-//     iconFontNames: [ 'Ionicons.ttf', 'AntDesign.ttf' ] // Name of the font files you want to copy
-// ]
+project.ext.vectoricons = [
+    iconFontNames: [ 'Ionicons.ttf', 'AntDesign.ttf' ] // Name of the font files you want to copy
+]
 
-// apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+```
+
+```js
+// import Ionicons from 'react-native-vector-icons/Ionicons';
+
+<Ionicons name={'home'} color={'black'} size={18} style={styles.icon} />
 ```
 
 </details>
 
 <details>
-<summary>Todo</summary>
+<summary>Realm</summary>
 
 ```js
-// FieldValues in Form.tsx
+// npm install realm
+// npm i @realm/react
+
+// Create MongoDB account and new cluster
+//  npm i -g mongodb-realm-cli
+
+// Cluster config
+// https://www.youtube.com/watch?v=lqo0Yf7lnyg&t=130s
+```
+
+</details>
+
+<details>
+<summary>Improve</summary>
+
+```js
+// Yup.Schema
+// Refac
+// https://www.npmjs.com/package/react-native-get-random-values.
+// BSON: For React Native please polyfill crypto.getRandomValues, e.g. using: https://www.npmjs.com/package/react-native-get-random-values.
+```
+
+</details>
+
+<details>
+<summary>uuid</summary>
+
+```js
+// npm install react-native-get-random-values
+// import 'react-native-get-random-values'
+// npm i --save-dev @types/uuid
 ```
 
 </details>

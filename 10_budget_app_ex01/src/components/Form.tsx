@@ -13,18 +13,16 @@ import {
 import DateInput from './DateInput';
 import {IPayment, IUserData} from '../ts/interfaces/user';
 import {useQuery, useRealm} from '../../App';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {THomeStackScreenParamList} from '../navigation/HomeStack';
-import {useNavigation} from '@react-navigation/native';
 import {TExpenseScreenProps, TIncomeScreenProps} from '../ts/types';
-import {TRootStackParamsList} from '../navigation/RootStack';
 import Realm from 'realm';
 
 const {UUID} = Realm.BSON;
-export interface IFormProps {
+
+interface IFormProps {
   schema: 'income' | 'expense';
   screenProps: TIncomeScreenProps | TExpenseScreenProps;
 }
+
 const Form: React.FC<IFormProps> = ({schema, screenProps}) => {
   const {
     control,
@@ -33,9 +31,7 @@ const Form: React.FC<IFormProps> = ({schema, screenProps}) => {
   } = useForm({
     resolver: yupResolver(schema === 'expense' ? expenseSchema : incomeSchema),
   });
-
-  const {route, navigation} = screenProps;
-
+  const {navigation} = screenProps;
   const realm = useRealm();
   const users = useQuery('User');
   const user: IUserData = users[0] as any;
@@ -108,7 +104,7 @@ const Form: React.FC<IFormProps> = ({schema, screenProps}) => {
         options={schema === 'expense' ? expensesCategory : incomesCategory}
       />
       <Button title="submit" onPress={handleSubmit(onSubmit)} />
-      {/* to fix  */}
+      {/* to fix */}
     </View>
   );
 };

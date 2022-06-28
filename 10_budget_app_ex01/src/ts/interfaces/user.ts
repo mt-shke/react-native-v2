@@ -21,29 +21,3 @@ export interface IPayment {
   _id_income?: string;
   _id_expense?: string;
 }
-
-// For customContext - may delete
-
-export interface IUserIncome {
-  income: IUserIncomeData;
-}
-
-export interface IUserIncomeData {
-  date: string;
-  amount: string;
-  category: TCategory;
-  comments: string;
-  _id_income?: string;
-}
-
-export interface IUserExpense {
-  expense: IUserExpenseData;
-}
-
-export interface IUserExpenseData {
-  date: string;
-  amount: string;
-  category: string;
-  comments: string;
-  _id_expense: string;
-}

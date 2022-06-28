@@ -1,11 +1,12 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import Form from '../../../components/Form';
+import {TExpenseScreenProps} from '../../../ts/types';
 
-const ExpenseScreen: React.FC = () => {
+const ExpenseScreen: React.FC<TExpenseScreenProps> = ({navigation, route}) => {
   return (
     <View style={styles.container}>
-      <Form schema="expense" />
+      <Form schema="expense" screenProps={{navigation, route}} />
     </View>
   );
 };

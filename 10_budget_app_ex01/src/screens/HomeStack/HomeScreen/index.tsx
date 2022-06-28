@@ -10,22 +10,12 @@ import PaymentItem from './components/payment/PaymentItem';
 import {IUser, IUserData} from '../../../ts/interfaces/user';
 import {getOrderedPayments} from '../../../utils';
 import UsersList from './components/UsersList';
-import {THomeScreenProps} from '../../../ts/types';
-import {UserContext} from '../../../state/UserContext';
 import {useQuery, useRealm} from '../../../../App';
 
-// Test with route params
-// const HomeScreen: React.FC<THomeScreenProps> = ({navigation,route}) => {
-// const user = route.params?.user;
-
-// Using context
 const HomeScreen: React.FC = () => {
   const users = useQuery('User');
   const firstUser = users[0] as unknown;
   const user = firstUser as IUserData;
-
-  console.log('AllUsers in home:', users);
-  console.log('First user', user);
 
   return (
     <View style={styles.container}>
@@ -80,16 +70,12 @@ const styles = StyleSheet.create({
   },
   containerFL: {
     backgroundColor: colors.transparent,
-    // borderRadius: 12,
-    // marginHorizontal: 12,
   },
   containerItem: {
     backgroundColor: colors.white,
     paddingHorizontal: 10,
     paddingVertical: 10,
     marginHorizontal: 20,
-    // borderRadius: 12,
-    // marginHorizontal: 12,
   },
   itemsTop: {
     height: 20,

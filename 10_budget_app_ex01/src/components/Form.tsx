@@ -11,19 +11,21 @@ import {
   incomeSchema,
 } from '../schema/yup/payment';
 import DateInput from './DateInput';
-import {useQuery, useRealm} from '../../App';
 import {IPayment, IUserData} from '../ts/interfaces/user';
-import {UUID} from 'bson';
+import {useQuery, useRealm} from '../../App';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {THomeStackScreenParamList} from '../navigation/HomeStack';
-import {TExpenseScreenProps, TIncomeScreenProps} from '../ts/types';
 import {useNavigation} from '@react-navigation/native';
+import {TExpenseScreenProps, TIncomeScreenProps} from '../ts/types';
+import {TRootStackParamsList} from '../navigation/RootStack';
+import Realm from 'realm';
 
+const {UUID} = Realm.BSON;
 export interface IFormProps {
   schema: 'income' | 'expense';
+  screenProps: TIncomeScreenProps | TExpenseScreenProps;
 }
-
-const Form: React.FC<IFormProps> = ({schema}) => {
+const Form: React.FC<IFormProps> = ({schema, screenProps}) => {
   const {
     control,
     handleSubmit,
@@ -32,19 +34,7 @@ const Form: React.FC<IFormProps> = ({schema}) => {
     resolver: yupResolver(schema === 'expense' ? expenseSchema : incomeSchema),
   });
 
-  type TExpenseNavigation = NativeStackNavigationProp<
-    THomeStackScreenParamList,
-    'ExpenseScreen'
-  >;
-  type TIncomeNavigation = NativeStackNavigationProp<
-    THomeStackScreenParamList,
-    'IncomeScreen'
-  >;
-
-  let navigation: any = useNavigation<TIncomeNavigation>();
-  if (schema === 'expense') {
-    navigation = useNavigation<TExpenseNavigation>();
-  }
+  const {route, navigation} = screenProps;
 
   const realm = useRealm();
   const users = useQuery('User');
@@ -53,21 +43,18 @@ const Form: React.FC<IFormProps> = ({schema}) => {
   const submitForm = (data: IPayment) => {
     const loggedUser = realm.objectForPrimaryKey('User', user._id) as IUserData;
     const newPaymentId = new UUID().toHexString();
-
     if (schema === 'income') {
       const payment = {...data, _id_income: newPaymentId};
       realm.write(() => {
-        loggedUser.incomes = [...loggedUser.incomes, payment];
+        loggedUser.incomes.push(payment);
       });
     }
-
     if (schema === 'expense') {
       const payment = {...data, _id_expense: newPaymentId};
       realm.write(() => {
-        loggedUser.expenses = [...loggedUser.expenses, payment];
+        loggedUser.expenses.push(payment);
       });
     }
-
     navigation.navigate('HomeScreen');
   };
 

@@ -9,8 +9,8 @@ import CustomCarousel from './cards/CustomCarousel';
 import Settings from './profileSettings/Settings';
 
 const AccountScreen: React.FC = () => {
-  const users = useRealm('User');
-  const user = users[0];
+  // const users = useRealm('User');
+  // const user = users[0];
 
   return (
     <View style={styles.container}>

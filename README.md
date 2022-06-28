@@ -13,9 +13,13 @@ Setup
 
 // choco install -y nodejs-lts openjdk11
 
+// -Install Android SDK
 // -Configure the ANDROID_HOME environment variable
+// https://reactnative.dev/docs/environment-setup
 // -Test in powershell:
 // Get-ChildItem -Path Env:\
+
+// npx react-native
 
 // -Connect usb
 // -Give developpers options and set Files share mode
@@ -31,6 +35,11 @@ Setup
 <summary style='font-size: 20px'>Main packages - setup</summary>
 
 <div style='margin-left: 2rem'>
+
+```js
+// npx react-native init MyApp --template react-native-template-typescript
+// npx --ignore-existing react-native init MyApp --template react-native-template-typescript
+```
 
 <details>
 <summary>Vector Icons</summary>

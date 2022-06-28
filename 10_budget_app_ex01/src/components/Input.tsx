@@ -23,25 +23,6 @@ const Input: React.FC<IInputProps> = ({
   control,
   keyboard,
 }) => {
-  // Using field / useController
-  // const {
-  //   field,
-  //   formState: {errors},
-  // } = useController({control, defaultValue: '', name});
-  // console.log('in input');
-  // console.log(errors);
-
-  // useEffect(() => {}, [errors]);
-
-  // const input = (
-  //   <TextInput
-  //     style={styles.input}
-  //     onBlur={field.onBlur}
-  //     onChangeText={field.onChange}
-  //     value={field.value}
-  //   />
-  // );
-
   return (
     <View style={styles.containerInput}>
       <Text>{label}</Text>

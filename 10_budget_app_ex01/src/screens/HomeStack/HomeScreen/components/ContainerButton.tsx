@@ -18,7 +18,7 @@ const ContainerButton: React.FC<IUser> = ({user}) => {
     <View style={styles.containerButton}>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate('IncomeScreen', {user: user})}>
+        onPress={() => navigation.navigate('IncomeScreen')}>
         <CustomButton subTextContent="Add income">
           <AntDesign
             // style={styles.arrow}
@@ -30,7 +30,7 @@ const ContainerButton: React.FC<IUser> = ({user}) => {
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate('ExpenseScreen', {user: user})}>
+        onPress={() => navigation.navigate('ExpenseScreen')}>
         <CustomButton subTextContent="Add expense" color="orange">
           <AntDesign
             // style={styles.arrow}
